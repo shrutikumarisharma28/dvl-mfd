@@ -178,7 +178,7 @@
         </div>
       </div>
 
-      <!-- FULLY WORKING CALCULATOR SECTION -->
+      <!-- CALCULATOR SECTION -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
           <div class="flex justify-between items-center border-b pb-3 border-slate-100">
@@ -193,10 +193,7 @@
             </div>
           </div>
 
-          <!-- Dynamic Container for Calculator Controls -->
-          <div id="calc-content" class="space-y-4">
-            <!-- Dynamic Form Loaded Here via JS -->
-          </div>
+          <div id="calc-content" class="space-y-4"></div>
         </div>
 
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
@@ -318,7 +315,8 @@
         <button onclick="openCustomModal('Invest Additional Capital', 'Select a scheme or fund from your watchlist to initiate a lump sum investment.')" class="bg-teal-700 hover:bg-teal-800 text-white p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
           <i data-lucide="plus-circle" class="w-4 h-4"></i> Invest More
         </button>
-        <button onclick="openCustomModal('SIP Management', 'Modify, pause, or step up active SIP mandates.')" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
+        <!-- UPDATED: Manage SIPs button now opens screenshot modal -->
+        <button onclick="openManageSipModal()" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
           <i data-lucide="sliders" class="w-4 h-4"></i> Manage SIPs
         </button>
         <button onclick="openCustomModal('Tax & Capital Gains', 'Download FY2025-26 capital gains report and ELSS deduction statements.')" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
@@ -387,7 +385,7 @@
         <div>
           <span class="bg-teal-900 text-teal-300 text-[10px] font-mono px-2 py-0.5 rounded tracking-wider uppercase">Super-Admin Operations</span>
           <h2 class="text-xl font-bold mt-1">FolioCraft Control Center</h2>
-          <p class="text-xs text-teal-200">System-wide governance, license monitoring, blacklist management, and execution routing</p>
+          <p class="text-xs text-teal-200">System-wide governance, license monitoring, and execution routing</p>
         </div>
         <div class="flex items-center gap-2 bg-teal-950/60 px-3 py-1.5 rounded-lg border border-teal-800">
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -414,57 +412,55 @@
         </div>
       </div>
 
-      <!-- Admin Governance Modules -->
+      <!-- Admin Governance Modules - Row 1 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
-        <!-- Blacklist Vault -->
+        <!-- ARN & EUIN Compliance Vault -->
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex justify-between items-center border-b pb-3 border-slate-100">
             <h3 class="font-bold text-slate-800 flex items-center gap-2">
-              <i data-lucide="award" class="w-4 h-4 text-teal-600"></i> ARN Compliance & Blacklist Control
+              <i data-lucide="shield-check" class="w-4 h-4 text-teal-600"></i> ARN & EUIN Compliance Vault
             </h3>
-            <span class="text-[11px] bg-teal-50 text-teal-700 font-semibold px-2 py-0.5 rounded border border-teal-200">Governance Active</span>
+            <span class="text-[11px] bg-teal-50 text-teal-700 font-semibold px-2 py-0.5 rounded border border-teal-200">Auto-Reminders Active</span>
           </div>
-          <p class="text-xs text-slate-500">Tracks active licenses and allows instant blacklisting of distributors flagged for unlawful activity.</p>
+          <p class="text-xs text-slate-500">Tracks active MFD licenses, flags expiring certifications, and prevents non-compliant trade routing.</p>
           <div class="overflow-x-auto">
             <table class="w-full text-xs text-left border-collapse">
               <thead>
                 <tr class="bg-slate-50 border-b border-slate-200 text-slate-600">
                   <th class="p-2 font-semibold">Distributor / Firm</th>
                   <th class="p-2 font-semibold">ARN / EUIN</th>
-                  <th class="p-2 font-semibold">Status</th>
-                  <th class="p-2 font-semibold text-right">Governance Action</th>
+                  <th class="p-2 font-semibold">Expiry Date</th>
+                  <th class="p-2 font-semibold text-right">License Status</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100" id="mfd-compliance-table">
                 <tr id="mfd-row-284910">
                   <td class="p-2 font-medium">Horizon Wealth Partners</td>
                   <td class="p-2 font-mono text-slate-600">ARN-284910</td>
-                  <td class="p-2" id="status-badge-284910"><span class="bg-emerald-100 text-emerald-800 font-medium px-2 py-0.5 rounded text-[10px]">Active & Valid</span></td>
-                  <td class="p-2 text-right">
-                    <button onclick="openBlacklistModal('Horizon Wealth Partners', 'ARN-284910')" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-semibold px-2.5 py-1 rounded text-[11px] transition">
-                      Blacklist MFD
+                  <td class="p-2 font-mono text-slate-500">14-Nov-2028</td>
+                  <td class="p-2 text-right" id="status-badge-284910">
+                    <button onclick="openBlacklistModal('Horizon Wealth Partners', 'ARN-284910')" class="bg-emerald-100 hover:bg-rose-100 text-emerald-800 hover:text-rose-700 border border-emerald-200 hover:border-rose-200 font-semibold px-2 py-0.5 rounded text-[10px] transition">
+                      Active & Valid
                     </button>
                   </td>
                 </tr>
                 <tr id="mfd-row-192041">
                   <td class="p-2 font-medium">Apex Financial Consultants</td>
                   <td class="p-2 font-mono text-slate-600">ARN-192041</td>
-                  <td class="p-2" id="status-badge-192041"><span class="bg-amber-100 text-amber-800 font-medium px-2 py-0.5 rounded text-[10px]">Expiring (38d)</span></td>
-                  <td class="p-2 text-right">
-                    <button onclick="openBlacklistModal('Apex Financial Consultants', 'ARN-192041')" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-semibold px-2.5 py-1 rounded text-[11px] transition">
-                      Blacklist MFD
+                  <td class="p-2 font-mono text-slate-500">28-Oct-2026</td>
+                  <td class="p-2 text-right" id="status-badge-192041">
+                    <button onclick="openBlacklistModal('Apex Financial Consultants', 'ARN-192041')" class="bg-amber-100 hover:bg-rose-100 text-amber-800 hover:text-rose-700 border border-amber-200 hover:border-rose-200 font-semibold px-2 py-0.5 rounded text-[10px] transition">
+                      Expiring (38d)
                     </button>
                   </td>
                 </tr>
                 <tr id="mfd-row-094123">
                   <td class="p-2 font-medium">Shree Wealth Management</td>
-                  <td class="p-2 font-mono text-slate-600">ARN-094123</td>
-                  <td class="p-2" id="status-badge-094123"><span class="bg-rose-100 text-rose-800 font-medium px-2 py-0.5 rounded text-[10px]">Blacklisted / Blocked</span></td>
-                  <td class="p-2 text-right">
-                    <button disabled class="bg-slate-100 text-slate-400 border border-slate-200 font-semibold px-2.5 py-1 rounded text-[11px] cursor-not-allowed">
-                      Access Revoked
-                    </button>
+                  <td class="p-2 font-mono text-slate-600">ARN-896123</td>
+                  <td class="p-2 font-mono text-slate-500">12-Aug-2026</td>
+                  <td class="p-2 text-right" id="status-badge-094123">
+                    <span class="bg-rose-100 text-rose-800 font-medium px-2 py-0.5 rounded text-[10px]">Expired / Blocked</span>
                   </td>
                 </tr>
               </tbody>
@@ -472,7 +468,7 @@
           </div>
         </div>
 
-        <!-- Gateway Routing -->
+        <!-- Gateway & NAV Sync Engine -->
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex justify-between items-center border-b pb-3 border-slate-100">
             <h3 class="font-bold text-slate-800 flex items-center gap-2">
@@ -512,6 +508,56 @@
                 <span class="text-[10px] text-slate-500 block">38,400 NAVs Updated</span>
               </div>
             </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Admin Governance Modules - Row 2 (ADDED FROM SCREENSHOT) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Tenant Commission & GST Settlement Stream -->
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex justify-between items-center border-b pb-3 border-slate-100">
+            <h3 class="font-bold text-slate-800 flex items-center gap-2">
+              <i data-lucide="receipt" class="w-4 h-4 text-teal-600"></i> Tenant Commission & GST Settlement Stream
+            </h3>
+            <span class="text-[11px] bg-teal-50 text-teal-700 font-semibold px-2 py-0.5 rounded border border-teal-200">GSTR Ledger</span>
+          </div>
+          <p class="text-xs text-slate-500">System-wide overview of total trail commissions processed and GST proof verification status across all 1,240 tenant MFDs.</p>
+          
+          <div class="grid grid-cols-2 gap-4 pt-2">
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+              <p class="text-[11px] text-slate-500 font-medium">Total Monthly Trail Processed</p>
+              <p class="text-lg font-bold text-slate-800 mt-0.5">₹3.42 Crore</p>
+            </div>
+            <div class="bg-amber-50/50 p-3 rounded-lg border border-amber-200/80">
+              <p class="text-[11px] text-amber-800 font-medium">GST Currently Withheld</p>
+              <p class="text-lg font-bold text-amber-900 mt-0.5">₹12.45 Lakh</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Platform Health & Audit Exporter -->
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center border-b pb-3 border-slate-100">
+              <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                <i data-lucide="file-archive" class="w-4 h-4 text-teal-600"></i> Platform Health & Audit Exporter
+              </h3>
+              <span class="text-[11px] bg-teal-50 text-teal-700 font-semibold px-2 py-0.5 rounded border border-teal-200">8-Year Immutable</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-3">Single-click download for 8-year immutable audit trail logs required for regulatory due diligence inspections.</p>
+          </div>
+
+          <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+            <div>
+              <p class="text-xs font-bold text-slate-800">Complete Master System Audit (2020 - 2026)</p>
+              <p class="text-[11px] text-slate-400">Contains CAN creations, SIP mandates, and ARN logs</p>
+            </div>
+            <button onclick="openCustomModal('Export Master System Audit', 'Downloading master audit trail log (2020-2026)...')" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold px-3.5 py-1.5 rounded-lg text-xs shadow-sm transition flex items-center gap-1.5">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> Export Vault
+            </button>
           </div>
         </div>
 
@@ -600,6 +646,32 @@
     }
     function closeInteractiveModal() { document.getElementById('interactive-modal').classList.add('hidden'); }
 
+    // MANAGE SIP MODAL (MATCHING SCREENSHOT 2 EXACTLY)
+    function openManageSipModal() {
+      openCustomModal(
+        'Manage Active SIP Mandates',
+        `<div class="space-y-3 pt-1">
+          <div class="flex justify-between items-center py-2.5 border-b border-slate-100">
+            <div>
+              <p class="font-semibold text-slate-800 text-xs">Large Cap Growth (<span class="font-medium text-slate-600">₹15,000/mo</span>)</p>
+            </div>
+            <button onclick="openCustomModal('Pause SIP', 'SIP mandate for Large Cap Growth has been paused successfully.')" class="bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 font-medium px-3 py-1 rounded text-[11px] transition">
+              Pause
+            </button>
+          </div>
+          <div class="flex justify-between items-center py-2.5 border-b border-slate-100">
+            <div>
+              <p class="font-semibold text-slate-800 text-xs">Flexi Cap Growth (<span class="font-medium text-slate-600">₹10,000/mo</span>)</p>
+            </div>
+            <button onclick="openCustomModal('Step Up SIP', 'Configured top-up step up for Flexi Cap Growth.')" class="bg-teal-50 hover:bg-teal-100 text-teal-700 border border-teal-200 font-medium px-3 py-1 rounded text-[11px] transition">
+              Step Up
+            </button>
+          </div>
+        </div>`,
+        `<button onclick="closeInteractiveModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold px-4 py-1.5 rounded text-xs transition">Close</button>`
+      );
+    }
+
     // Public ROI Simulator
     function runRoiSimulator() {
       const investors = parseInt(document.getElementById('slider-investors').value);
@@ -631,7 +703,7 @@
       }
     }
 
-    // --- CALCULATOR ENGINE LOGIC ---
+    // CALCULATOR ENGINE LOGIC
     function switchCalcTab(tab) {
       document.querySelectorAll('.subtab-btn').forEach(btn => btn.classList.remove('active'));
       const activeBtn = document.getElementById(`calc-${tab}`);
@@ -778,7 +850,7 @@
       document.getElementById('emi-sip-yield').innerText = `₹${Math.round(sipYield).toLocaleString('en-IN')}`;
     }
 
-    // --- BLACKLIST FLOW LOGIC ---
+    // BLACKLIST FLOW LOGIC
     let pendingBlacklistArn = '';
     let pendingBlacklistName = '';
 
@@ -809,15 +881,10 @@
 
     function confirmBlacklist() {
       const arnKey = pendingBlacklistArn.replace('ARN-', '');
-      const badgeElem = document.getElementById(`status-badge-${arnKey}`);
-      const rowElem = document.getElementById(`mfd-row-${arnKey}`);
+      const statusTd = document.getElementById(`status-badge-${arnKey}`);
 
-      if (badgeElem && rowElem) {
-        badgeElem.innerHTML = `<span class="bg-rose-100 text-rose-800 font-medium px-2 py-0.5 rounded text-[10px]">Blacklisted / Blocked</span>`;
-        const actionTd = rowElem.querySelector('td:last-child');
-        if (actionTd) {
-          actionTd.innerHTML = `<button disabled class="bg-slate-100 text-slate-400 border border-slate-200 font-semibold px-2.5 py-1 rounded text-[11px] cursor-not-allowed">Access Revoked</button>`;
-        }
+      if (statusTd) {
+        statusTd.innerHTML = `<span class="bg-rose-100 text-rose-800 font-medium px-2 py-0.5 rounded text-[10px]">Expired / Blocked</span>`;
       }
       closeInteractiveModal();
     }

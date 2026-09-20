@@ -7,16 +7,20 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     body { font-family: 'Inter', sans-serif; }
     .tab-btn.active { background-color: #0f766e; color: #ffffff; }
     .subtab-btn.active { background-color: #0d9488; color: #ffffff; }
+    /* Custom Slider Styling */
+    input[type=range] {
+      accent-color: #0d9488;
+    }
   </style>
 </head>
-<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
   <!-- TOP NAVIGATION BAR -->
-  <header class="bg-[#003838] text-white px-6 py-3 flex flex-wrap items-center justify-between border-b border-teal-800 shadow-md">
+  <header class="bg-[#003838] text-white px-6 py-3.5 flex flex-wrap items-center justify-between border-b border-teal-800 shadow-md sticky top-0 z-40">
     <div class="flex items-center space-x-3 mb-2 sm:mb-0">
       <div class="bg-teal-500 text-teal-950 font-bold px-2 py-1 rounded text-lg tracking-wider">FC</div>
       <div>
@@ -25,46 +29,128 @@
       </div>
     </div>
     <nav class="flex flex-wrap gap-1 bg-[#002b2b] p-1 rounded-lg border border-teal-900/50">
-      <button onclick="switchPortal('public')" id="nav-public" class="tab-btn active px-3 py-1.5 text-xs font-medium rounded transition">Public & ROI</button>
-      <button onclick="switchPortal('distributor')" id="nav-distributor" class="tab-btn px-3 py-1.5 text-xs font-medium rounded transition">Distributor Studio</button>
-      <button onclick="switchPortal('client')" id="nav-client" class="tab-btn px-3 py-1.5 text-xs font-medium rounded transition">Client Portal</button>
-      <button onclick="switchPortal('admin')" id="nav-admin" class="tab-btn px-3 py-1.5 text-xs font-medium rounded transition">Admin Portal</button>
+      <button onclick="switchPortal('public')" id="nav-public" class="tab-btn active px-3.5 py-1.5 text-xs font-medium rounded transition">Public & ROI</button>
+      <button onclick="switchPortal('distributor')" id="nav-distributor" class="tab-btn px-3.5 py-1.5 text-xs font-medium rounded transition">Distributor Portal</button>
+      <button onclick="switchPortal('client')" id="nav-client" class="tab-btn px-3.5 py-1.5 text-xs font-medium rounded transition">Client Portal</button>
+      <button onclick="switchPortal('admin')" id="nav-admin" class="tab-btn px-3.5 py-1.5 text-xs font-medium rounded transition">Admin Portal</button>
     </nav>
   </header>
 
   <!-- MAIN CONTAINER -->
   <main class="max-w-7xl w-full mx-auto p-4 sm:p-6 flex-grow space-y-6">
 
-    <!-- 1. PUBLIC & ROI PORTAL -->
-    <section id="portal-public" class="portal-view space-y-6">
-      <div class="bg-[#003838] text-white p-6 rounded-xl shadow border border-teal-800 flex justify-between items-center flex-wrap gap-4">
-        <div>
-          <span class="bg-teal-900 text-teal-200 text-xs px-2.5 py-1 rounded font-mono uppercase tracking-wider">Network Growth Engine</span>
-          <h2 class="text-2xl font-bold mt-2">Scale Your Mutual Fund Distribution Business</h2>
-          <p class="text-teal-200 text-sm mt-1">Multi-tenant infrastructure, zero-friction MFU CAN setup, and automated GST retention management.</p>
+    <!-- 1. PUBLIC & ROI PORTAL (MATCHES SCREENSHOT EXACTLY) -->
+    <section id="portal-public" class="portal-view space-y-10 py-6">
+      
+      <!-- HERO HEADER SECTION -->
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <span class="text-[11px] font-bold text-teal-700 tracking-widest uppercase bg-teal-50 border border-teal-200 px-3 py-1 rounded-full">
+          MULTI-SIDED WEALTH PLATFORM
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          Empowering Distributors & Investors on One Network
+        </h1>
+        <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          Real-time portfolio tracking, paperless eKYC, automated GST reconciliation, and integrated support ticketing for modern financial growth.
+        </p>
+        <div class="flex items-center justify-center gap-4 pt-2">
+          <button onclick="switchPortal('distributor')" class="bg-[#0f4c4c] hover:bg-[#093535] text-white font-semibold px-5 py-2.5 rounded-lg text-xs shadow-md transition flex items-center gap-2">
+            Launch Advisor Dashboard <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+          <button onclick="openEkycModal()" class="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-xs shadow-sm transition flex items-center gap-2">
+            <i data-lucide="user-check" class="w-4 h-4 text-slate-500"></i> Try Quick eKYC
+          </button>
         </div>
-        <button onclick="openEkycModal()" class="bg-teal-500 hover:bg-teal-400 text-teal-950 font-bold px-5 py-2.5 rounded-lg text-sm shadow flex items-center gap-2 transition">
-          <i data-lucide="shield-check" class="w-4 h-4"></i> Start Quick eKYC
+      </div>
+
+      <!-- DISTRIBUTOR EARNINGS & GST PAYOUT SIMULATOR CARD -->
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl border border-slate-200/80 shadow-lg p-6 sm:p-8 space-y-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Distributor Earnings & GST Payout Simulator</h2>
+          <p class="text-xs text-slate-500 mt-1">Calculate estimated 5-year recurring trail commission and model the GST withholding mandate.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Controls Column -->
+          <div class="lg:col-span-7 space-y-6">
+            <!-- Slider 1 -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-slate-700">Active Investors</label>
+                <span id="slider-investors-val" class="font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border">150</span>
+              </div>
+              <input type="range" id="slider-investors" min="10" max="1000" value="150" step="10" oninput="runRoiSimulator()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+            </div>
+
+            <!-- Slider 2 -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-slate-700">Avg. Monthly SIP per Investor</label>
+                <span id="slider-sip-val" class="font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border">₹8,000</span>
+              </div>
+              <input type="range" id="slider-sip" min="1000" max="50000" value="8000" step="1000" oninput="runRoiSimulator()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+            </div>
+
+            <!-- Slider 3 -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-slate-700">Blended Trail Commission</label>
+                <span id="slider-trail-val" class="font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border">0.70%</span>
+              </div>
+              <input type="range" id="slider-trail" min="0.1" max="1.5" value="0.70" step="0.05" oninput="runRoiSimulator()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+            </div>
+
+            <!-- GST Checkbox -->
+            <div class="pt-2">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="gst-checkbox" checked onchange="runRoiSimulator()" class="w-4 h-4 rounded text-teal-600 focus:ring-teal-500 border-slate-300">
+                <span class="text-xs font-semibold text-slate-800">GST Registered Distributor (Claiming ITC)</span>
+              </label>
+              <p class="text-[11px] text-slate-400 mt-0.5 pl-6">Unregistered MFDs incur a ~18.25% net deduction under current GST rules.</p>
+            </div>
+          </div>
+
+          <!-- Result Column (Dark Card) -->
+          <div class="lg:col-span-5 bg-[#002e2e] text-white p-6 rounded-xl shadow-inner space-y-6 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono tracking-widest uppercase text-teal-300 font-bold">5-YEAR NETWORK GROWTH PROJECTION</span>
+              
+              <div class="mt-4 space-y-1">
+                <p class="text-[11px] text-teal-200 font-medium">Total Managed AUM</p>
+                <p id="sim-aum" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">₹9,89,83,640</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-teal-800/80">
+                <div>
+                  <p class="text-[10px] text-teal-300 uppercase font-semibold">Gross Annual Trail</p>
+                  <p id="sim-trail" class="text-sm font-bold text-white mt-0.5">₹6,92,885</p>
+                </div>
+                <div>
+                  <p class="text-[10px] text-teal-300 uppercase font-semibold">GST Status</p>
+                  <p id="sim-gst-status" class="text-sm font-bold text-emerald-400 mt-0.5">100% Released</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 flex justify-between items-center text-[11px] text-teal-300/80 border-t border-teal-900">
+              <span>Includes 12% CAGR market growth</span>
+              <button onclick="openJoinModal()" class="bg-teal-500 hover:bg-teal-400 text-teal-950 font-bold px-3 py-1.5 rounded text-xs transition">
+                Join Network
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FLOATING SUPPORT BUTTON -->
+      <div class="fixed bottom-5 right-5 z-30">
+        <button onclick="openSupportModal()" class="bg-[#0f4c4c] hover:bg-[#093535] text-white px-4 py-2.5 rounded-full shadow-lg text-xs font-semibold flex items-center gap-2 border border-teal-600 transition">
+          <i data-lucide="message-square" class="w-4 h-4"></i> Help & Support
         </button>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <p class="text-xs text-slate-500 font-medium">Network MFDs</p>
-          <p class="text-2xl font-bold text-slate-800 mt-1">1,240+</p>
-          <p class="text-xs text-emerald-600 mt-1 font-medium">↑ 18% expanded this quarter</p>
-        </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <p class="text-xs text-slate-500 font-medium">Platform AUM Managed</p>
-          <p class="text-2xl font-bold text-slate-800 mt-1">₹4,150 Crore</p>
-          <p class="text-xs text-emerald-600 mt-1 font-medium">Across all tenant MFDs</p>
-        </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <p class="text-xs text-slate-500 font-medium">Average Revenue Boost</p>
-          <p class="text-2xl font-bold text-slate-800 mt-1">+24.5%</p>
-          <p class="text-xs text-teal-600 mt-1 font-medium">via Direct GST recovery & SWP tools</p>
-        </div>
-      </div>
     </section>
 
     <!-- 2. DISTRIBUTOR STUDIO PORTAL -->
@@ -78,10 +164,10 @@
           <button onclick="openEkycModal()" class="bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
             <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> SBI-Style eKYC
           </button>
-          <button onclick="alert('Generating new proposal wizard...')" class="bg-teal-700 hover:bg-teal-800 text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
+          <button onclick="openProposalModal()" class="bg-teal-700 hover:bg-teal-800 text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
             <i data-lucide="file-plus" class="w-3.5 h-3.5"></i> Create Proposal
           </button>
-          <button onclick="alert('Exporting Audit Log Vault...')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
+          <button onclick="openAuditModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
             <i data-lucide="download" class="w-3.5 h-3.5"></i> Export Audit Vault
           </button>
         </div>
@@ -102,12 +188,12 @@
         <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm bg-amber-50/30">
           <p class="text-xs text-amber-700 font-medium">GST Commission Withheld</p>
           <p class="text-xl font-bold text-amber-800 mt-1">₹18,420</p>
-          <button onclick="alert('Opening GSTR-3B Proof Upload...')" class="text-xs text-amber-600 underline font-medium mt-1 inline-block">Upload Proof to Release</button>
+          <button onclick="openGstModal()" class="text-xs text-amber-600 underline font-medium mt-1 inline-block">Upload Proof to Release</button>
         </div>
         <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <p class="text-xs text-slate-500 font-medium">Investor Service Desk</p>
           <p class="text-xl font-bold text-slate-800 mt-1">2 Pending</p>
-          <button onclick="alert('Viewing open support tickets...')" class="text-xs text-teal-600 font-medium mt-1 inline-block">Resolve Tickets →</button>
+          <button onclick="openTicketsModal()" class="text-xs text-teal-600 font-medium mt-1 inline-block">Resolve Tickets →</button>
         </div>
       </div>
 
@@ -210,7 +296,7 @@
                 <td class="p-2.5">₹25,000/mo</td>
                 <td class="p-2.5"><span class="bg-emerald-100 text-emerald-800 font-medium px-2 py-0.5 rounded text-[11px]">Very Low (12)</span></td>
                 <td class="p-2.5 text-teal-600 flex items-center gap-1"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Verified</td>
-                <td class="p-2.5"><button onclick="alert('Opening Rajesh Sharma 360 View...')" class="text-teal-700 hover:underline font-semibold">View 360</button></td>
+                <td class="p-2.5"><button onclick="openInvestor360('Rajesh Sharma', 'CAN-9821-X', '₹42,10,000')" class="text-teal-700 hover:underline font-semibold">View 360</button></td>
               </tr>
               <tr>
                 <td class="p-2.5 font-medium text-slate-800">Priya Nair</td>
@@ -220,7 +306,7 @@
                 <td class="p-2.5">₹10,000/mo</td>
                 <td class="p-2.5"><span class="bg-amber-100 text-amber-800 font-medium px-2 py-0.5 rounded text-[11px]">Medium (58)</span></td>
                 <td class="p-2.5 text-teal-600 flex items-center gap-1"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Verified</td>
-                <td class="p-2.5"><button onclick="alert('Opening Priya Nair 360 View...')" class="text-teal-700 hover:underline font-semibold">View 360</button></td>
+                <td class="p-2.5"><button onclick="openInvestor360('Priya Nair', 'CAN-8812-Y', '₹18,50,000')" class="text-teal-700 hover:underline font-semibold">View 360</button></td>
               </tr>
               <tr>
                 <td class="p-2.5 font-medium text-slate-800">Anil Verma</td>
@@ -230,7 +316,7 @@
                 <td class="p-2.5 text-slate-400">Paused</td>
                 <td class="p-2.5"><span class="bg-rose-100 text-rose-800 font-medium px-2 py-0.5 rounded text-[11px]">Critical (83)</span></td>
                 <td class="p-2.5 text-amber-600 flex items-center gap-1"><i data-lucide="alert-circle" class="w-3.5 h-3.5"></i> Pending FATCA</td>
-                <td class="p-2.5"><button onclick="alert('Opening Anil Verma 360 View...')" class="text-teal-700 hover:underline font-semibold">View 360</button></td>
+                <td class="p-2.5"><button onclick="openInvestor360('Anil Verma', 'Pending CAN', '₹65,00,000')" class="text-teal-700 hover:underline font-semibold">View 360</button></td>
               </tr>
             </tbody>
           </table>
@@ -254,7 +340,7 @@
             <p class="text-xs text-teal-100 mt-0.5">Wishing you a prosperous year ahead. Your wealth portfolio grew by +14.8% since last year!</p>
           </div>
         </div>
-        <button onclick="alert('Bonus claimed! Free portfolio rebalance session added to your account.')" class="bg-amber-400 hover:bg-amber-300 text-amber-950 font-bold px-4 py-2 rounded-lg text-xs shadow transition">
+        <button onclick="claimBonus()" class="bg-amber-400 hover:bg-amber-300 text-amber-950 font-bold px-4 py-2 rounded-lg text-xs shadow transition">
           Claim Birthday Bonus
         </button>
       </div>
@@ -273,16 +359,16 @@
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <button onclick="alert('Opening fresh investment modal...')" class="bg-teal-700 hover:bg-teal-800 text-white p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
+        <button onclick="openInvestModal()" class="bg-teal-700 hover:bg-teal-800 text-white p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
           <i data-lucide="plus-circle" class="w-4 h-4"></i> Invest More
         </button>
-        <button onclick="alert('Opening SIP management panel...')" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
+        <button onclick="openSipManagerModal()" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
           <i data-lucide="sliders" class="w-4 h-4"></i> Manage SIPs
         </button>
-        <button onclick="alert('Downloading capital gains tax statement...')" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
+        <button onclick="openTaxModal()" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
           <i data-lucide="file-text" class="w-4 h-4"></i> Tax Statement
         </button>
-        <button onclick="alert('Connecting to dedicated help desk...')" class="bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
+        <button onclick="openSupportModal()" class="bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
           <i data-lucide="help-circle" class="w-4 h-4"></i> Help & Queries
         </button>
       </div>
@@ -313,7 +399,7 @@
                 <td class="p-2.5 text-emerald-600 font-semibold">+18.4%</td>
                 <td class="p-2.5 text-emerald-600 font-semibold">+15.2%</td>
                 <td class="p-2.5 text-emerald-600 font-semibold">+16.8%</td>
-                <td class="p-2.5"><button onclick="alert('Top-up order created')" class="text-teal-700 font-semibold hover:underline">Top Up</button></td>
+                <td class="p-2.5"><button onclick="openInvestModal('SBI Large & Midcap Fund')" class="text-teal-700 font-semibold hover:underline">Top Up</button></td>
               </tr>
               <tr>
                 <td class="p-2.5 font-semibold text-slate-800">HDFC Flexi Cap Fund - Reg (G)</td>
@@ -322,7 +408,7 @@
                 <td class="p-2.5 text-emerald-600 font-semibold">+21.1%</td>
                 <td class="p-2.5 text-emerald-600 font-semibold">+17.8%</td>
                 <td class="p-2.5 text-emerald-600 font-semibold">+18.2%</td>
-                <td class="p-2.5"><button onclick="alert('Top-up order created')" class="text-teal-700 font-semibold hover:underline">Top Up</button></td>
+                <td class="p-2.5"><button onclick="openInvestModal('HDFC Flexi Cap Fund')" class="text-teal-700 font-semibold hover:underline">Top Up</button></td>
               </tr>
               <tr>
                 <td class="p-2.5 font-semibold text-slate-800">ICICI Pru Corporate Bond Fund - Reg (G)</td>
@@ -331,7 +417,7 @@
                 <td class="p-2.5 text-emerald-600 font-semibold">+7.4%</td>
                 <td class="p-2.5 text-emerald-600 font-semibold">+7.1%</td>
                 <td class="p-2.5 text-emerald-600 font-semibold">+7.6%</td>
-                <td class="p-2.5"><button onclick="alert('SWP setup wizard opened')" class="text-teal-700 font-semibold hover:underline">Setup SWP</button></td>
+                <td class="p-2.5"><button onclick="openSwpModal('ICICI Pru Corporate Bond Fund')" class="text-teal-700 font-semibold hover:underline">Setup SWP</button></td>
               </tr>
             </tbody>
           </table>
@@ -339,7 +425,7 @@
       </div>
     </section>
 
-    <!-- 4. ADMIN PORTAL (ENHANCED) -->
+    <!-- 4. ADMIN PORTAL -->
     <section id="portal-admin" class="portal-view hidden space-y-6">
       <div class="bg-gradient-to-r from-[#002b2b] to-[#003838] text-white p-5 rounded-xl border border-teal-800 shadow-md flex justify-between items-center flex-wrap gap-4">
         <div>
@@ -418,7 +504,7 @@
           </div>
         </div>
 
-        <!-- Module 2: MFU Gateway Routing & API Latency Monitor -->
+        <!-- Module 2: MFU Gateway Routing -->
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex justify-between items-center border-b pb-3 border-slate-100">
             <h3 class="font-bold text-slate-800 flex items-center gap-2">
@@ -461,13 +547,13 @@
           </div>
         </div>
 
-        <!-- Module 3: Tenant Commission & GST Settlement Stream -->
+        <!-- Module 3: Commission & GST Settlement Stream -->
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex justify-between items-center border-b pb-3 border-slate-100">
             <h3 class="font-bold text-slate-800 flex items-center gap-2">
               <i data-lucide="receipt" class="w-4 h-4 text-teal-600"></i> Tenant Commission & GST Settlement Stream
             </h3>
-            <button onclick="alert('Exporting system-wide GSTR-3B audit ledger...')" class="text-xs text-teal-700 font-semibold hover:underline">GSTR-3B Ledger →</button>
+            <button onclick="openGstrLedgerModal()" class="text-xs text-teal-700 font-semibold hover:underline">GSTR-3B Ledger →</button>
           </div>
           <p class="text-xs text-slate-500">System-wide overview of total trail commissions processed and GST proof verification status across all 1,240 tenant MFDs.</p>
           <div class="grid grid-cols-2 gap-3 pt-1">
@@ -482,7 +568,7 @@
           </div>
         </div>
 
-        <!-- Module 4: Platform-Wide Audit & SEBI Compliance Vault -->
+        <!-- Module 4: Audit & SEBI Compliance Vault -->
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex justify-between items-center border-b pb-3 border-slate-100">
             <h3 class="font-bold text-slate-800 flex items-center gap-2">
@@ -496,7 +582,7 @@
               <p class="text-xs font-semibold text-slate-800">Complete Master System Audit (2020 - 2026)</p>
               <p class="text-[11px] text-slate-500">Contains CAN creations, SIP mandates, and ARN logs</p>
             </div>
-            <button onclick="alert('Preparing SEBI Audit Zip Vault (Cryptographically Signed)...')" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs px-3 py-2 rounded-lg flex items-center gap-1.5 transition">
+            <button onclick="openAuditModal()" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs px-3 py-2 rounded-lg flex items-center gap-1.5 transition">
               <i data-lucide="download" class="w-3.5 h-3.5"></i> Export Vault
             </button>
           </div>
@@ -508,11 +594,11 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-white border-t border-slate-200 py-3 text-center text-xs text-slate-500">
+  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
     FolioCraft • The Investor Growth Network • Built for Independent Mutual Fund Distributors • SEBI/AMFI Compliance Ready
   </footer>
 
-  <!-- QUICK eKYC MODAL -->
+  <!-- MODAL 1: QUICK eKYC MODAL (KEPT EXACTLY AS BEFORE) -->
   <div id="ekyc-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-xl border border-slate-200 max-w-md w-full p-6 space-y-5 relative">
       <button onclick="closeEkycModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1">
@@ -550,10 +636,27 @@
         </div>
       </div>
 
-      <!-- Primary Action Button -->
       <button onclick="submitEkyc()" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition">
         Verify & Send Invite
       </button>
+    </div>
+  </div>
+
+  <!-- DYNAMIC GENERIC INTERACTIVE MODAL FOR DEMO BUTTONS -->
+  <div id="interactive-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 max-w-lg w-full p-6 space-y-4 relative">
+      <button onclick="closeInteractiveModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="interactive-modal-header">
+        <!-- Injected via JS -->
+      </div>
+      <div id="interactive-modal-body" class="text-xs text-slate-600 space-y-3">
+        <!-- Injected via JS -->
+      </div>
+      <div class="pt-2 flex justify-end gap-2" id="interactive-modal-footer">
+        <button onclick="closeInteractiveModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs transition">Close</button>
+      </div>
     </div>
   </div>
 
@@ -562,7 +665,7 @@
     // Initialize Icons
     lucide.createIcons();
 
-    // Portal Switching Logic
+    // Portal Switcher
     function switchPortal(portalId) {
       document.querySelectorAll('.portal-view').forEach(view => view.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -571,28 +674,192 @@
       document.getElementById(`nav-${portalId}`).classList.add('active');
     }
 
-    // Modal Handlers
+    // eKYC Modal Handlers (Preserved)
     function openEkycModal() {
       document.getElementById('ekyc-modal').classList.remove('hidden');
     }
-
     function closeEkycModal() {
       document.getElementById('ekyc-modal').classList.add('hidden');
     }
-
     function submitEkyc() {
-      alert("Verification link & eKYC invite successfully sent to investor's Aadhaar-linked mobile!");
+      openCustomModal(
+        'eKYC Verification Initiated',
+        '<p class="text-emerald-600 font-semibold mb-2">✓ Aadhaar & PAN validation successful.</p><p>An instant digital consent link and eKYC onboarding invite have been dispatched via SMS to the provided mobile number. Common Account Number (CAN) draft generated on MFU node.</p>',
+        '<button onclick="closeInteractiveModal()" class="bg-teal-700 text-white font-bold px-4 py-2 rounded-lg text-xs">Done</button>'
+      );
       closeEkycModal();
     }
 
-    // Calculator Tab Handler
+    // ROI Simulator Engine (Public & ROI Page)
+    function runRoiSimulator() {
+      const investors = parseInt(document.getElementById('slider-investors').value);
+      const monthlySip = parseInt(document.getElementById('slider-sip').value);
+      const trailRate = parseFloat(document.getElementById('slider-trail').value);
+      const isGstRegistered = document.getElementById('gst-checkbox').checked;
+
+      // Update Slider Labels
+      document.getElementById('slider-investors-val').innerText = investors.toLocaleString('en-IN');
+      document.getElementById('slider-sip-val').innerText = `₹${monthlySip.toLocaleString('en-IN')}`;
+      document.getElementById('slider-trail-val').innerText = `${trailRate.toFixed(2)}%`;
+
+      // Math Computation
+      // Total monthly SIP volume across all investors
+      const totalMonthlySip = investors * monthlySip;
+      
+      // Estimated 5-year accumulated AUM with compounding at 12% CAGR
+      // FV = Monthly SIP * [((1 + r)^n - 1) / r] * (1 + r)
+      const r = 0.12 / 12; // 1% monthly
+      const n = 60; // 5 years = 60 months
+      const fvFactor = ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+      const totalAum = totalMonthlySip * fvFactor;
+
+      // Gross annual trail commission based on year 5 projected average AUM
+      const grossAnnualTrail = totalAum * (trailRate / 100);
+
+      // Display Outputs
+      document.getElementById('sim-aum').innerText = `₹${Math.round(totalAum).toLocaleString('en-IN')}`;
+      document.getElementById('sim-trail').innerText = `₹${Math.round(grossAnnualTrail).toLocaleString('en-IN')}`;
+      
+      const gstStatus = document.getElementById('sim-gst-status');
+      if (isGstRegistered) {
+        gstStatus.innerText = "100% Released";
+        gstStatus.className = "text-sm font-bold text-emerald-400 mt-0.5";
+      } else {
+        gstStatus.innerText = "18.25% Withheld";
+        gstStatus.className = "text-sm font-bold text-amber-400 mt-0.5";
+      }
+    }
+
+    // Generic Custom Interactive Modal Handler
+    function openCustomModal(title, contentHtml, footerButtons) {
+      document.getElementById('interactive-modal-header').innerHTML = `<h3 class="text-lg font-bold text-slate-800">${title}</h3>`;
+      document.getElementById('interactive-modal-body').innerHTML = contentHtml;
+      if (footerButtons) {
+        document.getElementById('interactive-modal-footer').innerHTML = footerButtons;
+      } else {
+        document.getElementById('interactive-modal-footer').innerHTML = `<button onclick="closeInteractiveModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs transition">Close</button>`;
+      }
+      document.getElementById('interactive-modal').classList.remove('hidden');
+    }
+
+    function closeInteractiveModal() {
+      document.getElementById('interactive-modal').classList.add('hidden');
+    }
+
+    // Dynamic Button Action Handlers for Class Demo Walkthrough
+    function openJoinModal() {
+      openCustomModal(
+        'Join the FolioCraft Network',
+        '<div class="space-y-3"><p>You are joining over 1,240+ independent Mutual Fund Distributors scaling their client assets.</p><div><label class="block text-slate-700 font-semibold mb-1">Enter ARN / EUIN Code</label><input type="text" placeholder="ARN-123456" class="w-full p-2 border border-slate-300 rounded text-xs font-mono"></div><div><label class="block text-slate-700 font-semibold mb-1">Mobile Number for OTP</label><input type="tel" placeholder="+91 98765 43210" class="w-full p-2 border border-slate-300 rounded text-xs"></div></div>',
+        '<button onclick="closeInteractiveModal()" class="bg-slate-200 text-slate-700 px-3 py-1.5 rounded text-xs">Cancel</button><button onclick="alert(\'Application submitted! Network onboarding representative will call you.\'); closeInteractiveModal();" class="bg-teal-700 text-white font-bold px-4 py-1.5 rounded text-xs">Submit Application</button>'
+      );
+    }
+
+    function openProposalModal() {
+      openCustomModal(
+        'Generate Investor Advisory Proposal',
+        '<div class="space-y-3"><p>Create a customized, branded PDF asset allocation proposal for your client.</p><div><label class="block text-slate-700 font-semibold mb-1">Investor Name</label><input type="text" value="Rajesh Sharma" class="w-full p-2 border border-slate-300 rounded text-xs"></div><div><label class="block text-slate-700 font-semibold mb-1">Recommended Portfolio Mix</label><select class="w-full p-2 border border-slate-300 rounded text-xs"><option>80% Equity / 20% Debt (Aggressive Growth)</option><option>60% Equity / 40% Debt (Balanced Wealth)</option><option>30% Equity / 70% Debt (Conservative Growth)</option></select></div></div>',
+        '<button onclick="alert(\'Generating high-resolution proposal PDF...\'); closeInteractiveModal();" class="bg-teal-700 text-white font-bold px-4 py-2 rounded-lg text-xs">Download Proposal PDF</button>'
+      );
+    }
+
+    function openAuditModal() {
+      openCustomModal(
+        'Export SEBI Immutable Audit Vault',
+        '<p>Preparing cryptographically signed master log vault containing all CAN creations, SIP mandates, and ARN logs for regulatory compliance inspection.</p><div class="bg-slate-100 p-3 rounded font-mono text-[11px] text-slate-700">Audit Checksum: 0x8F9A2B...4C1E<br>Retention Period: 6 Years Mandatory<br>Encryption: AES-256</div>',
+        '<button onclick="alert(\'Audit Vault Downloaded Successfully!\'); closeInteractiveModal();" class="bg-teal-700 text-white font-bold px-4 py-2 rounded-lg text-xs">Confirm & Download ZIP</button>'
+      );
+    }
+
+    function openGstModal() {
+      openCustomModal(
+        'GST Retention Release Request',
+        '<div class="space-y-3"><p class="text-amber-800 bg-amber-50 p-2 rounded border border-amber-200">Current Withheld Trail: ₹18,420</p><p>Upload your filed GSTR-3B return acknowledgment receipt to automatically release the withheld commission balance directly to your bank account.</p><div><label class="block text-slate-700 font-semibold mb-1">Select GSTR-3B File (PDF/Image)</label><input type="file" class="w-full text-xs text-slate-500"></div></div>',
+        '<button onclick="alert(\'GSTR-3B proof submitted. Verification engine will release funds in 2 hours.\'); closeInteractiveModal();" class="bg-amber-600 text-white font-bold px-4 py-2 rounded-lg text-xs">Upload & Release Funds</button>'
+      );
+    }
+
+    function openTicketsModal() {
+      openCustomModal(
+        'Investor Support Desk Queue',
+        '<div class="space-y-2"><div class="p-2 border rounded border-slate-200 flex justify-between items-center"><div><p class="font-bold text-slate-800">#TK-9081 - Bank Mandate Change</p><p class="text-[11px] text-slate-500">Client: Rajesh Sharma</p></div><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]">Open</span></div><div class="p-2 border rounded border-slate-200 flex justify-between items-center"><div><p class="font-bold text-slate-800">#TK-8812 - Address Update (KRA)</p><p class="text-[11px] text-slate-500">Client: Priya Nair</p></div><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]">In Progress</span></div></div>',
+        '<button onclick="closeInteractiveModal()" class="bg-teal-700 text-white font-bold px-4 py-2 rounded-lg text-xs">Close Queue</button>'
+      );
+    }
+
+    function openInvestor360(name, can, aum) {
+      openCustomModal(
+        `360° Investor Profile: ${name}`,
+        `<div class="space-y-3"><div class="grid grid-cols-2 gap-2 bg-slate-50 p-3 rounded border"><p><strong>CAN ID:</strong> ${can}</p><p><strong>Total AUM:</strong> ${aum}</p><p><strong>KYC Status:</strong> <span class="text-emerald-600 font-bold">Verified</span></p><p><strong>FATCA:</strong> Compliant</p></div><p class="font-semibold text-slate-800">Recent Mandate Transactions:</p><ul class="list-disc pl-4 text-[11px] space-y-1"><li>₹15,000 SIP - SBI Large Cap - Successful (10th)</li><li>₹10,000 SIP - HDFC Flexi Cap - Successful (10th)</li></ul></div>`,
+        '<button onclick="closeInteractiveModal()" class="bg-teal-700 text-white font-bold px-4 py-2 rounded-lg text-xs">Close Profile</button>'
+      );
+    }
+
+    function openSupportModal() {
+      openCustomModal(
+        'FolioCraft Concierge Help & Support',
+        '<div class="space-y-3"><p>Need assistance with MFU order execution, ARN registration, or client migrations?</p><div><label class="block font-semibold mb-1">Query Subject</label><input type="text" placeholder="e.g. MFU CAN Batch Sync Query" class="w-full p-2 border border-slate-300 rounded text-xs"></div><div><label class="block font-semibold mb-1">Message</label><textarea placeholder="Describe your issue..." class="w-full p-2 border border-slate-300 rounded text-xs h-20"></textarea></div></div>',
+        '<button onclick="alert(\'Support ticket #TK-9921 created! Our MFD desk will respond shortly.\'); closeInteractiveModal();" class="bg-teal-700 text-white font-bold px-4 py-2 rounded-lg text-xs">Send Ticket</button>'
+      );
+    }
+
+    function openInvestModal(schemeName) {
+      const scheme = schemeName ? schemeName : 'SBI Large & Midcap Fund - Reg (G)';
+      openCustomModal(
+        `Fresh Investment: ${scheme}`,
+        `<div class="space-y-3"><p class="text-slate-500">Order Routing: MFU CAN Gateway</p><div><label class="block font-semibold mb-1">Investment Type</label><select class="w-full p-2 border rounded text-xs"><option>Lump Sum Purchase</option><option>New Monthly SIP</option></select></div><div><label class="block font-semibold mb-1">Amount (₹)</label><input type="number" value="25000" class="w-full p-2 border rounded text-xs"></div></div>`,
+        '<button onclick="alert(\'Order placed! Redirecting to net banking / UPI payment gateway...\'); closeInteractiveModal();" class="bg-teal-700 text-white font-bold px-4 py-2 rounded-lg text-xs">Proceed to Payment</button>'
+      );
+    }
+
+    function openSwpModal(schemeName) {
+      openCustomModal(
+        `Systematic Withdrawal Plan (SWP): ${schemeName}`,
+        '<div class="space-y-3"><p>Set up automated monthly payouts directly into your registered bank account.</p><div><label class="block font-semibold mb-1">Monthly Withdrawal Amount (₹)</label><input type="number" value="5000" class="w-full p-2 border rounded text-xs"></div><div><label class="block font-semibold mb-1">Payout Date</label><select class="w-full p-2 border rounded text-xs"><option>5th of every month</option><option>15th of every month</option><option>25th of every month</option></select></div></div>',
+        '<button onclick="alert(\'SWP Mandate created successfully!\'); closeInteractiveModal();" class="bg-teal-700 text-white font-bold px-4 py-2 rounded-lg text-xs">Activate SWP</button>'
+      );
+    }
+
+    function openSipManagerModal() {
+      openCustomModal(
+        'Manage Active SIP Mandates',
+        '<div class="space-y-2"><div class="p-2 border rounded flex justify-between items-center"><p class="font-bold">SBI Large Cap (₹15,000/mo)</p><button onclick="alert(\'SIP paused for 30 days\')" class="text-amber-600 text-[11px] underline">Pause</button></div><div class="p-2 border rounded flex justify-between items-center"><p class="font-bold">HDFC Flexi Cap (₹10,000/mo)</p><button onclick="alert(\'SIP step-up increased by 10%\')" class="text-teal-600 text-[11px] underline">Step Up</button></div></div>',
+        '<button onclick="closeInteractiveModal()" class="bg-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs">Close</button>'
+      );
+    }
+
+    function openTaxModal() {
+      openCustomModal(
+        'Capital Gains & FY Tax Statement',
+        '<div class="space-y-3"><p>Download ready-to-file Capital Gains Statements for IT Return filing.</p><div><label class="block font-semibold mb-1">Select Financial Year</label><select class="w-full p-2 border rounded text-xs"><option>FY 2025 - 2026</option><option>FY 2024 - 2025</option></select></div></div>',
+        '<button onclick="alert(\'Capital Gains PDF Statement generated & downloaded!\'); closeInteractiveModal();" class="bg-teal-700 text-white font-bold px-4 py-2 rounded-lg text-xs">Download PDF</button>'
+      );
+    }
+
+    function openGstrLedgerModal() {
+      openCustomModal(
+        'System GSTR-3B Master Audit Ledger',
+        '<p class="text-xs text-slate-600 mb-2">Displaying real-time GST retention status across all registered and unregistered distributor tenants.</p><div class="bg-slate-50 p-2 rounded border font-mono text-[11px] space-y-1"><div>• Registered MFDs: 1,020 (GST Released)</div><div>• Unregistered MFDs: 220 (18.25% Retention Active)</div></div>',
+        '<button onclick="closeInteractiveModal()" class="bg-teal-700 text-white font-bold px-4 py-2 rounded-lg text-xs">Close Ledger</button>'
+      );
+    }
+
+    function claimBonus() {
+      openCustomModal(
+        '🎉 Anniversary Bonus Claimed!',
+        '<p class="text-emerald-700 font-semibold mb-1">Congratulations Rajesh!</p><p>As part of your 3-Year Investor Anniversary, a complimentary 1-on-1 Portfolio Rebalancing Session with Horizon Wealth Partners has been credited to your desk.</p>',
+        '<button onclick="closeInteractiveModal()" class="bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-xs">Great, Thanks!</button>'
+      );
+    }
+
+    // Calculator Sub-Tab Switcher
     function switchCalcTab(tab) {
       document.querySelectorAll('.subtab-btn').forEach(btn => btn.classList.remove('active'));
       document.getElementById(`calc-${tab}`).classList.add('active');
       runSipCalc();
     }
 
-    // Dynamic SIP Calculator Computation
+    // Dynamic SIP Calculator
     function runSipCalc() {
       const p = parseFloat(document.getElementById('sip-amount').value) || 0;
       const r = (parseFloat(document.getElementById('sip-rate').value) || 0) / 12 / 100;
@@ -610,6 +877,9 @@
       document.getElementById('sip-invested').innerText = `₹${Math.round(invested).toLocaleString('en-IN')}`;
       document.getElementById('sip-future').innerText = `₹${Math.round(futureVal).toLocaleString('en-IN')}`;
     }
+
+    // Initial Trigger for Simulator
+    runRoiSimulator();
   </script>
 </body>
 </html>

@@ -58,7 +58,7 @@
 
     <!-- TOP NAVIGATION BAR -->
     <header class="bg-teal-900 text-white sticky top-0 z-40 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPortal('public')">
                 <div class="bg-teal-600 text-white p-2 rounded-lg font-bold text-xl font-serif tracking-wider">FC</div>
                 <div>
@@ -68,17 +68,17 @@
             </div>
 
             <!-- Portal Selector Controls -->
-            <div class="flex items-center bg-teal-800/80 p-1 rounded-xl border border-teal-600/30">
-                <button onclick="switchPortal('public')" id="btn-public" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-teal-600 text-white shadow-sm">
+            <div class="flex items-center bg-teal-800/80 p-1 rounded-xl border border-teal-600/30 overflow-x-auto max-w-full">
+                <button onclick="switchPortal('public')" id="btn-public" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-teal-600 text-white shadow-sm whitespace-nowrap">
                     Public & ROI
                 </button>
-                <button onclick="switchPortal('distributor')" id="btn-distributor" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white">
-                    Distributor Portal
+                <button onclick="switchPortal('distributor')" id="btn-distributor" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white whitespace-nowrap">
+                    Distributor Studio
                 </button>
-                <button onclick="switchPortal('customer')" id="btn-customer" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white">
+                <button onclick="switchPortal('customer')" id="btn-customer" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white whitespace-nowrap">
                     Client Portal
                 </button>
-                <button onclick="switchPortal('admin')" id="btn-admin" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white">
+                <button onclick="switchPortal('admin')" id="btn-admin" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white whitespace-nowrap">
                     Admin Portal
                 </button>
             </div>
@@ -89,31 +89,31 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
         <!-- ==================== 1. PUBLIC SITE & ROI CALCULATOR ==================== -->
-        <section id="portal-public" class="space-y-12">
+        <section id="portal-public" class="space-y-8">
             <!-- Hero Banner -->
-            <div class="text-center max-w-3xl mx-auto space-y-4 pt-6">
+            <div class="text-center max-w-3xl mx-auto space-y-4 pt-4">
                 <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Multi-Sided Wealth Platform</span>
-                <h1 class="font-serif text-4xl sm:text-5xl font-bold text-teal-900 leading-tight">
+                <h1 class="font-serif text-3xl sm:text-5xl font-bold text-teal-900 leading-tight">
                     Empowering Distributors & Investors on One Network
                 </h1>
-                <p class="text-slate-600 text-base sm:text-lg">
-                    Real-time portfolio tracking, paperless eKYC, automated GST reconciliation, and integrated support ticketing for modern financial growth[cite: 1].
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Real-time portfolio tracking, paperless eKYC, MFU CAN routing, automated GST reconciliation, and integrated support ticketing for modern financial growth.
                 </p>
-                <div class="pt-2 flex justify-center gap-4">
-                    <button onclick="switchPortal('distributor')" class="bg-teal-600 hover:bg-teal-800 text-white px-6 py-3 rounded-xl font-medium shadow-lg shadow-teal-600/20 transition-all flex items-center gap-2">
+                <div class="pt-2 flex flex-wrap justify-center gap-3">
+                    <button onclick="switchPortal('distributor')" class="bg-teal-600 hover:bg-teal-800 text-white px-5 py-2.5 rounded-xl text-xs font-medium shadow-lg shadow-teal-600/20 transition-all flex items-center gap-2">
                         Launch Advisor Dashboard <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
-                    <button onclick="openModal('modal-onboarding')" class="bg-white text-teal-800 hover:bg-teal-50 px-6 py-3 rounded-xl font-medium border border-teal-200 transition-all flex items-center gap-2">
-                        <i data-lucide="user-plus" class="w-4 h-4"></i> Try Quick eKYC
+                    <button onclick="openModal('modal-onboarding')" class="bg-white text-teal-800 hover:bg-teal-50 px-5 py-2.5 rounded-xl text-xs font-medium border border-teal-200 transition-all flex items-center gap-2">
+                        <i data-lucide="user-plus" class="w-4 h-4 text-teal-600"></i> Try Quick eKYC
                     </button>
                 </div>
             </div>
 
             <!-- Partner Earnings & GST Impact Calculator -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-sm">
                 <div class="border-b border-slate-200 pb-4 mb-6">
                     <h2 class="font-serif text-2xl font-bold text-teal-900">Distributor Earnings & GST Payout Simulator</h2>
-                    <p class="text-xs text-slate-500">Calculate estimated 5-year recurring trail commission and model the GST withholding mandate[cite: 1].</p>
+                    <p class="text-xs text-slate-500">Calculate estimated 5-year recurring trail commission and model the GST withholding mandate.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -148,7 +148,7 @@
                                 <input type="checkbox" id="calc-gst-registered" class="w-4 h-4 text-teal-600 rounded border-slate-300 focus:ring-teal-500" checked onchange="updateCalculator()">
                                 <span class="text-xs font-medium text-slate-700">GST Registered Distributor (Claiming ITC)</span>
                             </label>
-                            <p class="text-[11px] text-slate-500 mt-1 pl-7">Unregistered MFDs incur a ~15.25% net deduction under current GST rules[cite: 1].</p>
+                            <p class="text-[11px] text-slate-500 mt-1 pl-7">Unregistered MFDs incur a ~15.25% net deduction under current GST rules.</p>
                         </div>
                     </div>
 
@@ -171,7 +171,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-teal-800/80 flex justify-between items-center text-xs text-teal-100">
+                        <div class="mt-6 pt-4 border-t border-teal-800/80 flex flex-wrap justify-between items-center gap-2 text-xs text-teal-100">
                             <span>Includes 12% CAGR market growth</span>
                             <button onclick="switchPortal('distributor')" class="bg-mint-500 text-teal-900 font-semibold px-3 py-1.5 rounded-lg text-xs hover:bg-mint-500/90 transition-all">Join Network</button>
                         </div>
@@ -186,13 +186,16 @@
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-xl border border-slate-200">
                 <div>
                     <h1 class="font-serif text-2xl font-bold text-teal-900">Distributor Studio</h1>
-                    <p class="text-xs text-slate-500">ARN: ARN-284910 | Firm: Horizon Wealth Partners</p>
+                    <p class="text-xs text-slate-500">ARN: ARN-284910 | Firm: Horizon Wealth Partners | MFU CAN Gateway Enabled</p>
                 </div>
-                <div class="flex gap-2">
+                <div class="flex flex-wrap gap-2">
                     <button onclick="openModal('modal-onboarding')" class="bg-teal-100 text-teal-800 hover:bg-teal-200 text-xs font-semibold px-3 py-2 rounded-lg transition-all flex items-center gap-1.5">
-                        <i data-lucide="plus-circle" class="w-4 h-4"></i> Add Investor
+                        <i data-lucide="zap" class="w-4 h-4 text-teal-600"></i> Quick eKYC
                     </button>
-                    <button onclick="triggerToast('Downloading 6-Year Immutable Compliance Audit Log...')" class="bg-teal-600 text-white hover:bg-teal-800 text-xs font-semibold px-3 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                    <button onclick="openModal('modal-proposal')" class="bg-teal-600 text-white hover:bg-teal-800 text-xs font-semibold px-3 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                        <i data-lucide="file-plus" class="w-4 h-4"></i> Create Proposal
+                    </button>
+                    <button onclick="triggerToast('Downloading 6-Year Immutable Compliance Audit Log...')" class="bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-semibold px-3 py-2 rounded-lg transition-all flex items-center gap-1.5">
                         <i data-lucide="download" class="w-4 h-4"></i> Export Audit Vault
                     </button>
                 </div>
@@ -200,78 +203,256 @@
 
             <!-- Dashboard Metric Cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="triggerToast('Filtering table by active AUM contributors...')">
                     <div class="text-xs font-medium text-slate-500">Total Managed AUM</div>
                     <div class="text-2xl font-bold text-teal-900 mt-1">₹18,42,50,000</div>
                     <div class="text-xs text-mint-500 mt-1 flex items-center gap-1">
                         <i data-lucide="trending-up" class="w-3 h-3"></i> +12.4% this month
                     </div>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="openModal('modal-manage-sips')">
                     <div class="text-xs font-medium text-slate-500">Active Monthly SIPs</div>
                     <div class="text-2xl font-bold text-teal-900 mt-1">₹14,80,000</div>
                     <div class="text-xs text-mint-500 mt-1 flex items-center gap-1">
                         <i data-lucide="check-circle" class="w-3 h-3"></i> 214 Active Mandates
                     </div>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-amber-500 transition-all" onclick="openModal('modal-gst-proof')">
                     <div class="text-xs font-medium text-slate-500">GST Commission Withheld</div>
                     <div class="text-2xl font-bold text-amber-500 mt-1">₹18,420</div>
-                    <button onclick="triggerToast('Uploaded GSTR-3B Proof to AMCs')" class="text-[11px] text-teal-600 font-semibold hover:underline mt-1 block">Upload Proof to Release</button>
+                    <button onclick="event.stopPropagation(); openModal('modal-gst-proof')" class="text-[11px] text-teal-600 font-semibold hover:underline mt-1 block">Upload Proof to Release →</button>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="openModal('modal-tickets')">
                     <div class="text-xs font-medium text-slate-500">Investor Service Desk</div>
                     <div class="text-2xl font-bold text-teal-900 mt-1">2 Pending</div>
-                    <button onclick="openModal('modal-tickets')" class="text-[11px] text-teal-600 font-semibold hover:underline mt-1 block">Resolve Tickets →</button>
+                    <button onclick="event.stopPropagation(); openModal('modal-tickets')" class="text-[11px] text-teal-600 font-semibold hover:underline mt-1 block">Resolve Tickets →</button>
                 </div>
+            </div>
+
+            <!-- DISTRIBUTOR TOOLKITS: CALCULATORS & AMC COMMISSION DIRECTORY -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                <!-- Interactive Multi-Calculator Engine -->
+                <div class="lg:col-span-7 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-3">
+                        <div>
+                            <h3 class="font-serif font-bold text-teal-900 text-base">Financial Advisory Tool & Calculators</h3>
+                            <p class="text-xs text-slate-500">Model SIP growth, SWP capital longevity, and loan EMIs for clients</p>
+                        </div>
+                        <!-- Calculator Tab Buttons -->
+                        <div class="flex bg-slate-100 p-1 rounded-lg text-xs font-medium">
+                            <button id="tab-btn-sip" onclick="switchCalcTab('sip')" class="px-2.5 py-1 rounded bg-teal-600 text-white shadow-sm">SIP</button>
+                            <button id="tab-btn-swp" onclick="switchCalcTab('swp')" class="px-2.5 py-1 rounded text-slate-600 hover:text-slate-900">SWP</button>
+                            <button id="tab-btn-emi" onclick="switchCalcTab('emi')" class="px-2.5 py-1 rounded text-slate-600 hover:text-slate-900">EMI vs SIP</button>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Content Panels -->
+                    <!-- 1. SIP Panel -->
+                    <div id="calc-panel-sip" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div>
+                                <label class="text-[11px] font-medium text-slate-600">Monthly SIP (₹)</label>
+                                <input type="number" id="dist-sip-amt" value="10000" oninput="runDistCalculators()" class="w-full text-xs border rounded-lg p-2 focus:border-teal-600 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-[11px] font-medium text-slate-600">Expected CAGR (%)</label>
+                                <input type="number" id="dist-sip-rate" value="12" oninput="runDistCalculators()" class="w-full text-xs border rounded-lg p-2 focus:border-teal-600 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-[11px] font-medium text-slate-600">Tenure (Years)</label>
+                                <input type="number" id="dist-sip-years" value="10" oninput="runDistCalculators()" class="w-full text-xs border rounded-lg p-2 focus:border-teal-600 outline-none">
+                            </div>
+                        </div>
+                        <div class="p-3 bg-teal-50/80 rounded-xl flex justify-between items-center text-xs">
+                            <div>
+                                <span class="text-slate-500 block">Total Invested Amount:</span>
+                                <span id="dist-sip-invested" class="font-bold text-slate-800">₹12,00,000</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-teal-600 block">Est. Future Corpus:</span>
+                                <span id="dist-sip-future" class="font-bold text-teal-900 text-base">₹23,23,391</span>
+                            </div>
+                        </div>
+                        <div class="pt-1 flex justify-end">
+                            <button onclick="applyCalcToProposal('SIP')" class="bg-teal-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-teal-800 transition-all flex items-center gap-1">
+                                <i data-lucide="share-2" class="w-3.5 h-3.5"></i> Export SIP Model to Proposal
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 2. SWP Panel -->
+                    <div id="calc-panel-swp" class="hidden space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div>
+                                <label class="text-[11px] font-medium text-slate-600">Lump Sum Corpus (₹)</label>
+                                <input type="number" id="dist-swp-corpus" value="5000000" oninput="runDistCalculators()" class="w-full text-xs border rounded-lg p-2 focus:border-teal-600 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-[11px] font-medium text-slate-600">Monthly Withdrawal (₹)</label>
+                                <input type="number" id="dist-swp-draw" value="35000" oninput="runDistCalculators()" class="w-full text-xs border rounded-lg p-2 focus:border-teal-600 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-[11px] font-medium text-slate-600">Return Rate (%)</label>
+                                <input type="number" id="dist-swp-rate" value="8" oninput="runDistCalculators()" class="w-full text-xs border rounded-lg p-2 focus:border-teal-600 outline-none">
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-50/80 rounded-xl flex justify-between items-center text-xs">
+                            <div>
+                                <span class="text-slate-500 block">Annual Payout Rate:</span>
+                                <span id="dist-swp-payout-rate" class="font-bold text-slate-800">8.4%</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-amber-800 block">Corpus Longevity:</span>
+                                <span id="dist-swp-result" class="font-bold text-teal-900 text-base">25+ Years (Sustainable)</span>
+                            </div>
+                        </div>
+                        <div class="pt-1 flex justify-end">
+                            <button onclick="applyCalcToProposal('SWP')" class="bg-amber-500 text-white px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-amber-600 transition-all flex items-center gap-1">
+                                <i data-lucide="share-2" class="w-3.5 h-3.5"></i> Export SWP Model to Proposal
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 3. EMI Panel -->
+                    <div id="calc-panel-emi" class="hidden space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div>
+                                <label class="text-[11px] font-medium text-slate-600">Loan Principal (₹)</label>
+                                <input type="number" id="dist-emi-amount" value="2000000" oninput="runDistCalculators()" class="w-full text-xs border rounded-lg p-2 focus:border-teal-600 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-[11px] font-medium text-slate-600">Loan Rate (%)</label>
+                                <input type="number" id="dist-emi-rate" value="9" oninput="runDistCalculators()" class="w-full text-xs border rounded-lg p-2 focus:border-teal-600 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-[11px] font-medium text-slate-600">Tenure (Years)</label>
+                                <input type="number" id="dist-emi-years" value="15" oninput="runDistCalculators()" class="w-full text-xs border rounded-lg p-2 focus:border-teal-600 outline-none">
+                            </div>
+                        </div>
+                        <div class="p-3 bg-teal-50/80 rounded-xl flex justify-between items-center text-xs">
+                            <div>
+                                <span class="text-slate-500 block">Monthly Loan EMI:</span>
+                                <span id="dist-emi-monthly" class="font-bold text-rose-500">₹20,285</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-teal-600 block">SIP Needed to Offset Interest:</span>
+                                <span id="dist-emi-sip-offset" class="font-bold text-mint-500 text-base">₹3,850 / mo</span>
+                            </div>
+                        </div>
+                        <div class="pt-1 flex justify-end">
+                            <button onclick="applyCalcToProposal('EMI')" class="bg-teal-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-teal-800 transition-all flex items-center gap-1">
+                                <i data-lucide="share-2" class="w-3.5 h-3.5"></i> Export Offset Plan to Proposal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AMC Commission Matrix -->
+                <div class="lg:col-span-5 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="border-b pb-3 flex justify-between items-start">
+                        <div>
+                            <h3 class="font-serif font-bold text-teal-900 text-base">AMC Trail Commission Matrix</h3>
+                            <p class="text-[11px] text-slate-500">Trail rates paid directly by AMCs via Regular Plan TER</p>
+                        </div>
+                        <button onclick="triggerToast('Commission schedule updated from AMFI feed')" class="bg-mint-100 text-mint-500 text-[10px] font-bold px-2 py-0.5 rounded hover:bg-mint-200 transition-all">
+                            0% Client Direct Fee
+                        </button>
+                    </div>
+
+                    <!-- AMC Commission Rates Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-[11px]">
+                            <thead>
+                                <tr class="bg-slate-50 border-b border-slate-200 text-slate-500">
+                                    <th class="p-2">AMC Name</th>
+                                    <th class="p-2">Equity Trail</th>
+                                    <th class="p-2">Hybrid Trail</th>
+                                    <th class="p-2">Debt Trail</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Selected SBI Mutual Fund Schedule')">
+                                    <td class="p-2 font-semibold text-slate-800">SBI Mutual Fund</td>
+                                    <td class="p-2 text-mint-500 font-medium">0.85% – 1.05%</td>
+                                    <td class="p-2 text-teal-800">0.65%</td>
+                                    <td class="p-2 text-slate-600">0.30%</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Selected HDFC Mutual Fund Schedule')">
+                                    <td class="p-2 font-semibold text-slate-800">HDFC Mutual Fund</td>
+                                    <td class="p-2 text-mint-500 font-medium">0.80% – 1.00%</td>
+                                    <td class="p-2 text-teal-800">0.60%</td>
+                                    <td class="p-2 text-slate-600">0.25%</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Selected ICICI Prudential Schedule')">
+                                    <td class="p-2 font-semibold text-slate-800">ICICI Prudential</td>
+                                    <td class="p-2 text-mint-500 font-medium">0.85% – 1.10%</td>
+                                    <td class="p-2 text-teal-800">0.70%</td>
+                                    <td class="p-2 text-slate-600">0.35%</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Selected Nippon India Schedule')">
+                                    <td class="p-2 font-semibold text-slate-800">Nippon India MF</td>
+                                    <td class="p-2 text-mint-500 font-medium">0.75% – 0.95%</td>
+                                    <td class="p-2 text-teal-800">0.55%</td>
+                                    <td class="p-2 text-slate-600">0.20%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="p-3 bg-teal-50 rounded-xl border border-teal-100 text-[11px] text-teal-900">
+                        <strong>Client Transparency Guarantee:</strong> Investors pay <u>₹0 direct commission</u> to you. The AMC compensates MFDs directly from the built-in expense ratio.
+                    </div>
+                </div>
+
             </div>
 
             <!-- Client Directory & Churn Risk -->
             <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="p-4 border-b border-slate-200 flex justify-between items-center">
+                <div class="p-4 border-b border-slate-200 flex flex-wrap justify-between items-center gap-2">
                     <h3 class="font-bold text-slate-800 text-sm">Investor Portfolio & Churn Risk Tracker</h3>
-                    <input type="text" placeholder="Search investor name or PAN..." class="text-xs border border-slate-300 rounded-lg px-3 py-1.5 w-64 focus:outline-none focus:border-teal-600">
+                    <input type="text" id="investor-search" oninput="filterInvestorTable()" placeholder="Search investor name or CAN..." class="text-xs border border-slate-300 rounded-lg px-3 py-1.5 w-64 focus:outline-none focus:border-teal-600">
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse text-xs">
                         <thead>
                             <tr class="bg-slate-50 border-b border-slate-200 text-slate-500 font-medium">
                                 <th class="p-3">Investor Name</th>
-                                <th class="p-3">PAN</th>
+                                <th class="p-3">MFU CAN</th>
                                 <th class="p-3">Current AUM</th>
                                 <th class="p-3">Active SIPs</th>
-                                <th class="p-3">Churn Risk Score</th>
+                                <th class="p-3">Churn Risk</th>
                                 <th class="p-3">Audit Trail</th>
                                 <th class="p-3">Action</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-100">
-                            <tr class="hover:bg-slate-50/80">
+                        <tbody id="investor-table-body" class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50/80 cursor-pointer" onclick="openClientDrawer('Rajesh Sharma', '₹42,10,000', '₹25,000/mo')">
                                 <td class="p-3 font-semibold text-slate-800">Rajesh Sharma</td>
-                                <td class="p-3 font-mono text-slate-500">ABCDE****F</td>
+                                <td class="p-3 font-mono text-teal-600">CAN-9021-X</td>
                                 <td class="p-3 font-medium">₹42,10,000</td>
                                 <td class="p-3 text-slate-600">₹25,000/mo</td>
                                 <td class="p-3"><span class="bg-mint-100 text-mint-500 px-2 py-0.5 rounded font-medium text-[11px]">Very Low (12)</span></td>
                                 <td class="p-3 text-mint-500 flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Verified</td>
-                                <td class="p-3"><button onclick="openClientDrawer('Rajesh Sharma', '₹42,10,000', '₹25,000/mo')" class="text-teal-600 font-semibold hover:underline">View 360</button></td>
+                                <td class="p-3"><button onclick="event.stopPropagation(); openClientDrawer('Rajesh Sharma', '₹42,10,000', '₹25,000/mo')" class="text-teal-600 font-semibold hover:underline">View 360</button></td>
                             </tr>
-                            <tr class="hover:bg-slate-50/80">
+                            <tr class="hover:bg-slate-50/80 cursor-pointer" onclick="openClientDrawer('Priya Nair', '₹18,50,000', '₹10,000/mo')">
                                 <td class="p-3 font-semibold text-slate-800">Priya Nair</td>
-                                <td class="p-3 font-mono text-slate-500">BKWPR****K</td>
+                                <td class="p-3 font-mono text-teal-600">CAN-8812-Y</td>
                                 <td class="p-3 font-medium">₹18,50,000</td>
                                 <td class="p-3 text-slate-600">₹10,000/mo</td>
                                 <td class="p-3"><span class="bg-amber-100 text-amber-500 px-2 py-0.5 rounded font-medium text-[11px]">Medium (54)</span></td>
                                 <td class="p-3 text-mint-500 flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Verified</td>
-                                <td class="p-3"><button onclick="openClientDrawer('Priya Nair', '₹18,50,000', '₹10,000/mo')" class="text-teal-600 font-semibold hover:underline">View 360</button></td>
+                                <td class="p-3"><button onclick="event.stopPropagation(); openClientDrawer('Priya Nair', '₹18,50,000', '₹10,000/mo')" class="text-teal-600 font-semibold hover:underline">View 360</button></td>
                             </tr>
-                            <tr class="hover:bg-slate-50/80">
+                            <tr class="hover:bg-slate-50/80 cursor-pointer" onclick="openClientDrawer('Anil Verma', '₹65,00,000', 'Paused')">
                                 <td class="p-3 font-semibold text-slate-800">Anil Verma</td>
-                                <td class="p-3 font-mono text-slate-500">CZXPV****M</td>
+                                <td class="p-3 font-mono text-slate-400">Pending CAN</td>
                                 <td class="p-3 font-medium">₹65,00,000</td>
                                 <td class="p-3 text-slate-600">Paused</td>
                                 <td class="p-3"><span class="bg-rose-100 text-rose-500 px-2 py-0.5 rounded font-medium text-[11px]">Critical (88)</span></td>
                                 <td class="p-3 text-amber-500 flex items-center gap-1"><i data-lucide="alert-circle" class="w-3.5 h-3.5"></i> Pending FATCA</td>
-                                <td class="p-3"><button onclick="openClientDrawer('Anil Verma', '₹65,00,000', 'Paused')" class="text-teal-600 font-semibold hover:underline">View 360</button></td>
+                                <td class="p-3"><button onclick="event.stopPropagation(); openClientDrawer('Anil Verma', '₹65,00,000', 'Paused')" class="text-teal-600 font-semibold hover:underline">View 360</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -281,11 +462,32 @@
 
         <!-- ==================== 3. CUSTOMER / INVESTOR PORTAL ==================== -->
         <section id="portal-customer" class="hidden space-y-6">
+
+            <!-- CELEBRATION CARD -->
+            <div class="bg-gradient-to-r from-teal-900 via-teal-800 to-teal-900 text-white p-5 rounded-2xl shadow-lg border border-teal-700/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-amber-500/20 text-amber-400 p-3 rounded-2xl border border-amber-400/30 text-2xl">
+                        🎂
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="bg-amber-400/20 text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Birthday Celebration</span>
+                            <span class="bg-mint-500/20 text-mint-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">3-Year Investor Anniversary</span>
+                        </div>
+                        <h2 class="font-serif text-xl font-bold text-white mt-1">Happy Birthday, Rajesh Sharma! 🎉</h2>
+                        <p class="text-xs text-teal-100">Your portfolio grew by +14.8% over the past year. We have credited an exclusive offer to your account.</p>
+                    </div>
+                </div>
+                <button onclick="triggerToast('Birthday Investment Voucher Redeemed Successfully!')" class="bg-amber-500 hover:bg-amber-600 text-teal-900 font-bold px-4 py-2 rounded-xl text-xs transition-all whitespace-nowrap shadow-md">
+                    Claim Birthday Bonus
+                </button>
+            </div>
+
             <div class="bg-white p-6 rounded-xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                     <span class="text-xs text-teal-600 font-semibold uppercase tracking-wider">Horizon Wealth • Investor Desk</span>
                     <h1 class="font-serif text-2xl font-bold text-teal-900 mt-1">Welcome, Rajesh Sharma</h1>
-                    <p class="text-xs text-slate-500">Assigned Advisor: Horizon Wealth Partners (ARN-284910)</p>
+                    <p class="text-xs text-slate-500">Assigned Advisor: Horizon Wealth Partners (ARN-284910) | CAN: CAN-9021-X</p>
                 </div>
                 <div class="text-left sm:text-right">
                     <div class="text-xs text-slate-500">Total Portfolio Value</div>
@@ -296,69 +498,209 @@
 
             <!-- Single-Click Quick Action Bar for Investors -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <button onclick="triggerToast('Initiated Instant Top-up Order...')" class="p-3 bg-teal-600 hover:bg-teal-800 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+                <button onclick="openModal('modal-invest-more')" class="p-3 bg-teal-600 hover:bg-teal-800 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm">
                     <i data-lucide="plus" class="w-4 h-4"></i> Invest More
                 </button>
-                <button onclick="triggerToast('SIP Auto-Pay Mandate Status: Active')" class="p-3 bg-white hover:bg-teal-50 border border-teal-200 text-teal-900 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all">
-                    <i data-lucide="repeat" class="w-4 h-4"></i> Manage SIPs
+                <button onclick="openModal('modal-manage-sips')" class="p-3 bg-white hover:bg-teal-50 border border-teal-200 text-teal-900 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+                    <i data-lucide="repeat" class="w-4 h-4 text-teal-600"></i> Manage SIPs
                 </button>
                 <button onclick="triggerToast('Downloading Capital Gains Tax Statement (FY 2025-26)...')" class="p-3 bg-white hover:bg-teal-50 border border-teal-200 text-teal-900 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all">
-                    <i data-lucide="file-text" class="w-4 h-4"></i> Tax Statement
+                    <i data-lucide="file-text" class="w-4 h-4 text-teal-600"></i> Tax Statement
                 </button>
-                <button onclick="openModal('modal-helpdesk')" class="p-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+                <button onclick="openModal('modal-helpdesk')" class="p-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm">
                     <i data-lucide="help-circle" class="w-4 h-4"></i> Help & Queries
                 </button>
             </div>
 
-            <!-- Holdings Allocation -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="text-xs font-semibold text-slate-500">Equity Mutual Funds</div>
-                    <div class="text-lg font-bold text-teal-900 mt-1">₹31,50,000 (75%)</div>
-                    <div class="text-[11px] text-mint-500 mt-1">+16.2% Return</div>
+            <!-- Holdings Allocation & Scheme Performance Explorer -->
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-3">
+                    <h3 class="font-serif font-bold text-teal-900 text-base">Current Scheme Holdings & Historical Performance</h3>
+                    <span class="text-xs text-slate-500 flex items-center gap-1 cursor-pointer hover:text-teal-700" onclick="triggerToast('Refreshed AMFI NAV data successfully!')"><i data-lucide="refresh-cw" class="w-3 h-3 text-teal-600"></i> Live AMFI NAV Sync</span>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="text-xs font-semibold text-slate-500">Debt & Liquid Funds</div>
-                    <div class="text-lg font-bold text-teal-900 mt-1">₹8,40,000 (20%)</div>
-                    <div class="text-[11px] text-slate-500 mt-1">+7.1% Return</div>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="text-xs font-semibold text-slate-500">Hybrid & Gold</div>
-                    <div class="text-lg font-bold text-teal-900 mt-1">₹2,20,000 (5%)</div>
-                    <div class="text-[11px] text-mint-500 mt-1">+11.4% Return</div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead>
+                            <tr class="bg-slate-50 border-b text-slate-500">
+                                <th class="p-2.5">Scheme Name</th>
+                                <th class="p-2.5">Category</th>
+                                <th class="p-2.5">Current Value</th>
+                                <th class="p-2.5">1-Yr Return</th>
+                                <th class="p-2.5">3-Yr Return</th>
+                                <th class="p-2.5">5-Yr Return</th>
+                                <th class="p-2.5">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 cursor-pointer" onclick="openModal('modal-invest-more')">
+                                <td class="p-2.5 font-semibold text-slate-800">SBI Large & Midcap Fund - Reg (G)</td>
+                                <td class="p-2.5 text-slate-500">Equity</td>
+                                <td class="p-2.5 font-medium">₹18,50,000</td>
+                                <td class="p-2.5 text-mint-500 font-medium">+18.4%</td>
+                                <td class="p-2.5 text-mint-500 font-medium">+15.2%</td>
+                                <td class="p-2.5 text-mint-500 font-medium">+16.8%</td>
+                                <td class="p-2.5"><button onclick="event.stopPropagation(); openModal('modal-invest-more')" class="text-teal-600 font-semibold hover:underline">Top Up</button></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 cursor-pointer" onclick="openModal('modal-invest-more')">
+                                <td class="p-2.5 font-semibold text-slate-800">HDFC Flexi Cap Fund - Reg (G)</td>
+                                <td class="p-2.5 text-slate-500">Equity</td>
+                                <td class="p-2.5 font-medium">₹13,00,000</td>
+                                <td class="p-2.5 text-mint-500 font-medium">+21.1%</td>
+                                <td class="p-2.5 text-mint-500 font-medium">+17.8%</td>
+                                <td class="p-2.5 text-mint-500 font-medium">+18.2%</td>
+                                <td class="p-2.5"><button onclick="event.stopPropagation(); openModal('modal-invest-more')" class="text-teal-600 font-semibold hover:underline">Top Up</button></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('SWP Setup Link sent to registered email')">
+                                <td class="p-2.5 font-semibold text-slate-800">ICICI Pru Corporate Bond Fund - Reg (G)</td>
+                                <td class="p-2.5 text-slate-500">Debt</td>
+                                <td class="p-2.5 font-medium">₹10,60,000</td>
+                                <td class="p-2.5 text-slate-700 font-medium">+7.4%</td>
+                                <td class="p-2.5 text-slate-700 font-medium">+7.1%</td>
+                                <td class="p-2.5 text-slate-700 font-medium">+7.6%</td>
+                                <td class="p-2.5"><button onclick="event.stopPropagation(); triggerToast('SWP Setup Link sent to registered email')" class="text-teal-600 font-semibold hover:underline">Setup SWP</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== 4. ADMIN PORTAL ==================== -->
+        <!-- ==================== 4. SUPER-ADMIN PORTAL ==================== -->
         <section id="portal-admin" class="hidden space-y-6">
-            <div class="bg-teal-900 text-white p-6 rounded-xl flex justify-between items-center">
+            <div class="bg-teal-900 text-white p-6 rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h1 class="font-serif text-2xl font-bold">FolioCraft Super-Admin</h1>
-                    <p class="text-xs text-teal-100">Global Network Operations & AMC Sync</p>
+                    <h1 class="font-serif text-2xl font-bold">FolioCraft Super-Admin Control Center</h1>
+                    <p class="text-xs text-teal-100">Global Network Operations, AMFI ARN Health & MFU Gateway Sync</p>
                 </div>
-                <span class="bg-teal-800 text-teal-100 text-xs px-3 py-1 rounded-full border border-teal-600">Platform Health: 100% Operational</span>
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="bg-teal-800 text-teal-100 text-xs px-3 py-1.5 rounded-full border border-teal-600 flex items-center gap-1.5 cursor-pointer hover:bg-teal-700 transition-all" onclick="triggerToast('MFU Gateway Status: All 14 API nodes operating normally.')">
+                        <span class="w-2 h-2 rounded-full bg-mint-500"></span> MFU Gateway: 100% Operational
+                    </span>
+                    <button onclick="triggerToast('Full SEBI Compliance & Audit Vault Export Initiated')" class="bg-mint-500 text-teal-900 font-bold px-3 py-1.5 rounded-lg text-xs hover:bg-mint-500/90 transition-all">
+                        Download Master Vault
+                    </button>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="text-xs text-slate-500">Active Tenant MFDs</div>
-                    <div class="text-xl font-bold text-teal-900 mt-1">1,240 Advisors</div>
+            <!-- Operational Metrics Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="triggerToast('Displaying 1,240 Tenant Advisors')">
+                    <div class="text-xs font-medium text-slate-500">Active Tenant MFDs</div>
+                    <div class="text-2xl font-bold text-teal-900 mt-1">1,240 Advisors</div>
+                    <div class="text-xs text-mint-500 mt-1">+18 joined this week</div>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="text-xs text-slate-500">Total System AUM</div>
-                    <div class="text-xl font-bold text-teal-900 mt-1">₹4,150 Crore</div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="triggerToast('Platform System AUM Breakdown Loaded')">
+                    <div class="text-xs font-medium text-slate-500">Total System AUM</div>
+                    <div class="text-2xl font-bold text-teal-900 mt-1">₹4,150 Crore</div>
+                    <div class="text-xs text-mint-500 mt-1">across 42 AMCs</div>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="text-xs text-slate-500">AMFI NAV Sync Engine</div>
-                    <div class="text-xl font-bold text-mint-500 mt-1">Updated Today, 00:05 IST</div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="triggerToast('MFU CAN Routing Latency: 1.2s')">
+                    <div class="text-xs font-medium text-slate-500">MFU CAN Success Rate</div>
+                    <div class="text-2xl font-bold text-mint-500 mt-1">99.4%</div>
+                    <div class="text-xs text-slate-500 mt-1">Avg latency: 1.2s</div>
                 </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="triggerToast('8 License Renewal Notices Sent to MFDs')">
+                    <div class="text-xs font-medium text-slate-500">ARN / EUIN Compliance</div>
+                    <div class="text-2xl font-bold text-teal-900 mt-1">1,232 Verified</div>
+                    <div class="text-xs text-amber-500 mt-1">8 pending ARN renewals</div>
+                </div>
+            </div>
+
+            <!-- Admin Detailed Management Sections -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                <!-- AMFI ARN & EUIN License Health Monitor -->
+                <div class="lg:col-span-7 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-3">
+                        <div>
+                            <h3 class="font-serif font-bold text-teal-900 text-base">Distributor AMFI ARN & NISM License Health</h3>
+                            <p class="text-xs text-slate-500">Automated AMFI registry check for active advisory compliance</p>
+                        </div>
+                        <button onclick="triggerToast('AMFI ARN Database Sync Completed')" class="text-xs bg-teal-50 text-teal-700 px-2.5 py-1 rounded border border-teal-200 font-semibold hover:bg-teal-100 transition-all">
+                            Sync AMFI DB
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="bg-slate-50 border-b text-slate-500">
+                                    <th class="p-2.5">Distributor Firm</th>
+                                    <th class="p-2.5">ARN Code</th>
+                                    <th class="p-2.5">EUIN Mapping</th>
+                                    <th class="p-2.5">ARN Expiry</th>
+                                    <th class="p-2.5">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Viewing Horizon Wealth Partners Licenses')">
+                                    <td class="p-2.5 font-semibold text-slate-800">Horizon Wealth Partners</td>
+                                    <td class="p-2.5 font-mono text-slate-600">ARN-284910</td>
+                                    <td class="p-2.5 text-mint-500 font-medium">E392014 (Valid)</td>
+                                    <td class="p-2.5 text-slate-600">14-Nov-2028</td>
+                                    <td class="p-2.5"><span class="bg-mint-100 text-mint-500 px-2 py-0.5 rounded font-bold text-[10px]">Active</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Viewing Apex Capital Services Licenses')">
+                                    <td class="p-2.5 font-semibold text-slate-800">Apex Capital Services</td>
+                                    <td class="p-2.5 font-mono text-slate-600">ARN-192044</td>
+                                    <td class="p-2.5 text-mint-500 font-medium">E192830 (Valid)</td>
+                                    <td class="p-2.5 text-slate-600">02-Jan-2027</td>
+                                    <td class="p-2.5"><span class="bg-mint-100 text-mint-500 px-2 py-0.5 rounded font-bold text-[10px]">Active</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Renewal Alert Dispatched to Vanguard Financials')">
+                                    <td class="p-2.5 font-semibold text-slate-800">Vanguard Financials</td>
+                                    <td class="p-2.5 font-mono text-slate-600">ARN-102938</td>
+                                    <td class="p-2.5 text-amber-500 font-medium">E049382 (NISM Due)</td>
+                                    <td class="p-2.5 text-amber-600 font-medium">15-Oct-2026</td>
+                                    <td class="p-2.5"><span class="bg-amber-100 text-amber-500 px-2 py-0.5 rounded font-bold text-[10px]">Notice Sent</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Platform Infrastructure & MFU Gateway Logs -->
+                <div class="lg:col-span-5 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="border-b pb-3 flex justify-between items-center">
+                        <h3 class="font-serif font-bold text-teal-900 text-base">Node Sync & API Latency</h3>
+                        <span class="text-[11px] text-mint-500 font-semibold flex items-center gap-1 cursor-pointer" onclick="triggerToast('API ping healthy across all endpoint routes.')"><i data-lucide="activity" class="w-3.5 h-3.5"></i> Live Stream</span>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center hover:bg-teal-50 cursor-pointer transition-all" onclick="triggerToast('Pinging MFU India Order Routing API...')">
+                            <div>
+                                <div class="font-semibold text-slate-800">MFU India CAN Sync Engine</div>
+                                <div class="text-[11px] text-slate-500">Order Routing / Consolidated Ledger</div>
+                            </div>
+                            <span class="font-mono text-mint-500 font-bold">124ms</span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center hover:bg-teal-50 cursor-pointer transition-all" onclick="triggerToast('Pinging AMFI NAV Master Server...')">
+                            <div>
+                                <div class="font-semibold text-slate-800">AMFI NAV Master Sync</div>
+                                <div class="text-[11px] text-slate-500">Daily NAV updates across all AMCs</div>
+                            </div>
+                            <span class="font-mono text-mint-500 font-bold">88ms</span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center hover:bg-teal-50 cursor-pointer transition-all" onclick="triggerToast('Pinging KRA Gateway (NDML/CAMS)...')">
+                            <div>
+                                <div class="font-semibold text-slate-800">NDML / CAMS / Karvy KRA Gateway</div>
+                                <div class="text-[11px] text-slate-500">Instant Quick eKYC Lookup</div>
+                            </div>
+                            <span class="font-mono text-mint-500 font-bold">210ms</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-teal-50 rounded-xl border border-teal-100 text-[11px] text-teal-900">
+                        <strong>Immutable Compliance Audit:</strong> All transaction logs are timestamped and mirrored for SEBI 6-year retention rules.
+                    </div>
+                </div>
+
             </div>
         </section>
 
     </main>
 
-    <!-- FLOATING HELP DESK TRIGGER BUTTON (ALWAYS VISIBLE) -->
+    <!-- FLOATING HELP DESK TRIGGER BUTTON -->
     <div class="fixed bottom-6 right-6 z-30">
         <button onclick="openModal('modal-helpdesk')" class="bg-teal-600 hover:bg-teal-800 text-white p-3.5 rounded-full shadow-xl flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105">
             <i data-lucide="message-square" class="w-5 h-5"></i>
@@ -366,14 +708,14 @@
         </button>
     </div>
 
-    <!-- MODAL 1: HELPDESK & QUERY MODAL -->
+    <!-- MODAL 1: HELPDESK MODAL -->
     <div id="modal-helpdesk" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
             <div class="flex justify-between items-center border-b pb-3">
                 <h3 class="font-serif font-bold text-teal-900 text-lg">Investor Help Desk</h3>
                 <button onclick="closeModal('modal-helpdesk')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-            <p class="text-xs text-slate-500">Raise a direct query or operational request with your assigned distributor.</p>
+            <p class="text-xs text-slate-500">Raise a direct query or operational request with your assigned advisor.</p>
             <div class="space-y-3">
                 <label class="block text-xs font-medium text-slate-700">Select Category</label>
                 <select id="help-category" class="w-full text-xs border rounded-lg p-2.5 focus:border-teal-600 outline-none">
@@ -392,50 +734,161 @@
         </div>
     </div>
 
-    <!-- MODAL 2: E-KYC ONBOARDING DRAWER -->
+    <!-- MODAL 2: QUICK E-KYC DRAWER -->
     <div id="modal-onboarding" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
             <div class="flex justify-between items-center border-b pb-3">
-                <h3 class="font-serif font-bold text-teal-900 text-lg">Instant Investor eKYC</h3>
+                <div>
+                    <h3 class="font-serif font-bold text-teal-900 text-lg">Instant Quick eKYC & MFU CAN Setup</h3>
+                    <p class="text-[11px] text-slate-500">Frictionless Instant Paperless Verification</p>
+                </div>
                 <button onclick="closeModal('modal-onboarding')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             <div class="space-y-3">
                 <div>
-                    <label class="block text-xs font-medium text-slate-700">Full Name (As per PAN)</label>
-                    <input type="text" placeholder="e.g. Ramesh Kumar" class="w-full text-xs border rounded-lg p-2.5 outline-none focus:border-teal-600">
+                    <label class="block text-xs font-medium text-slate-700">Full Name</label>
+                    <input type="text" id="kyc-fullname" placeholder="e.g. Ramesh Kumar" class="w-full text-xs border rounded-lg p-2.5 outline-none focus:border-teal-600">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-slate-700">PAN Number</label>
-                    <input type="text" placeholder="ABCDE1234F" class="w-full text-xs border rounded-lg p-2.5 outline-none focus:border-teal-600">
+                    <label class="block text-xs font-medium text-slate-700">Mobile Number</label>
+                    <input type="text" placeholder="9876543210" class="w-full text-xs border rounded-lg p-2.5 outline-none focus:border-teal-600">
+                </div>
+                <div class="p-3 bg-teal-50 rounded-xl text-[11px] text-teal-800 space-y-1">
+                    <div class="flex items-center gap-1 font-semibold"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-mint-500"></i> Auto KRA & V-KYC Fetch Enabled</div>
+                    <p class="text-slate-500">Automatically creates Common Account Number (CAN) on MFU India</p>
                 </div>
             </div>
             <div class="flex gap-2 pt-2">
-                <button onclick="triggerToast('KRA Status Checked: Fully Verified! Mandate Ready.'); closeModal('modal-onboarding');" class="w-full bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2.5 rounded-xl text-xs transition-all">Verify & Send Invite</button>
+                <button onclick="submitEkyc()" class="w-full bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2.5 rounded-xl text-xs transition-all">Verify & Send Invite</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 3: DISTRIBUTOR TICKETS OVERVIEW -->
+    <!-- MODAL 3: PROPOSAL CREATION ENGINE -->
+    <div id="modal-proposal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-serif font-bold text-teal-900 text-lg">Create Investor Proposal</h3>
+                <button onclick="closeModal('modal-proposal')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Select Client</label>
+                    <select id="proposal-client-select" class="w-full border rounded-lg p-2 focus:border-teal-600 outline-none">
+                        <option>Rajesh Sharma</option>
+                        <option>Priya Nair</option>
+                        <option>Anil Verma</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Recommended Strategy</label>
+                    <select id="proposal-strategy-select" class="w-full border rounded-lg p-2 focus:border-teal-600 outline-none">
+                        <option>Aggressive Growth Portfolio (80% Equity / 20% Debt)</option>
+                        <option>Balanced Wealth Accumulator (60% Equity / 40% Debt)</option>
+                        <option>Retirement SWP Income Model</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Monthly SIP Amount (₹)</label>
+                    <input type="number" id="proposal-sip-input" value="15000" class="w-full border rounded-lg p-2 focus:border-teal-600 outline-none">
+                </div>
+            </div>
+            <div class="flex gap-2 pt-2">
+                <button onclick="triggerToast('Branded Proposal PDF generated & sent via WhatsApp!'); closeModal('modal-proposal')" class="w-full bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2.5 rounded-xl text-xs transition-all">Generate & Share PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: DISTRIBUTOR TICKETS OVERVIEW -->
     <div id="modal-tickets" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl space-y-4">
             <div class="flex justify-between items-center border-b pb-3">
                 <h3 class="font-serif font-bold text-teal-900 text-lg">Pending Investor Service Tickets</h3>
                 <button onclick="closeModal('modal-tickets')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-            <div class="space-y-3 text-xs">
-                <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl flex justify-between items-center">
+            <div id="tickets-list" class="space-y-3 text-xs">
+                <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl flex justify-between items-center" id="ticket-item-1">
                     <div>
                         <div class="font-bold text-slate-800">Anil Verma • SIP Pause Request</div>
                         <div class="text-slate-500">Requested 2 hours ago</div>
                     </div>
-                    <button onclick="triggerToast('Resolved & Processed with AMC'); closeModal('modal-tickets')" class="bg-teal-600 text-white px-2.5 py-1 rounded text-[11px]">Resolve</button>
+                    <button onclick="resolveTicket('ticket-item-1', 'Anil Verma SIP Pause')" class="bg-teal-600 text-white px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-teal-800 transition-all">Resolve</button>
                 </div>
-                <div class="p-3 bg-teal-50 border border-teal-200 rounded-xl flex justify-between items-center">
+                <div class="p-3 bg-teal-50 border border-teal-200 rounded-xl flex justify-between items-center" id="ticket-item-2">
                     <div>
                         <div class="font-bold text-slate-800">Rajesh Sharma • FY26 Tax Receipt</div>
                         <div class="text-slate-500">Requested 1 day ago</div>
                     </div>
-                    <button onclick="triggerToast('Tax Statement Emailed to Client'); closeModal('modal-tickets')" class="bg-teal-600 text-white px-2.5 py-1 rounded text-[11px]">Send PDF</button>
+                    <button onclick="resolveTicket('ticket-item-2', 'Rajesh Sharma Tax PDF')" class="bg-teal-600 text-white px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-teal-800 transition-all">Send PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: GST PROOF UPLOADER -->
+    <div id="modal-gst-proof" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-serif font-bold text-teal-900 text-lg">Release Withheld GST Commission</h3>
+                <button onclick="closeModal('modal-gst-proof')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <p class="text-xs text-slate-500">Upload your latest GSTR-3B filing acknowledgment to release held commission payouts across AMCs.</p>
+            <div class="border-2 border-dashed border-teal-200 rounded-xl p-6 text-center space-y-2 bg-teal-50/50 cursor-pointer hover:bg-teal-50" onclick="document.getElementById('file-input').click()">
+                <i data-lucide="upload-cloud" class="w-8 h-8 text-teal-600 mx-auto"></i>
+                <div class="text-xs font-semibold text-teal-900">Click to upload GSTR-3B PDF</div>
+                <div class="text-[10px] text-slate-400">Supported formats: PDF, PNG, JPG (Max 5MB)</div>
+                <input type="file" id="file-input" class="hidden" onchange="handleGstFileSelect(this)">
+            </div>
+            <button onclick="submitGstProof()" class="w-full bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2.5 rounded-xl text-xs transition-all">Submit Document</button>
+        </div>
+    </div>
+
+    <!-- MODAL 6: INVEST MORE (CLIENT ACTION) -->
+    <div id="modal-invest-more" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-serif font-bold text-teal-900 text-lg">Top Up Investment</h3>
+                <button onclick="closeModal('modal-invest-more')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Select Scheme</label>
+                    <select class="w-full border rounded-lg p-2.5 focus:border-teal-600 outline-none">
+                        <option>SBI Large & Midcap Fund - Reg (G)</option>
+                        <option>HDFC Flexi Cap Fund - Reg (G)</option>
+                        <option>ICICI Pru Corporate Bond Fund - Reg (G)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Investment Amount (₹)</label>
+                    <input type="number" value="10000" class="w-full border rounded-lg p-2.5 focus:border-teal-600 outline-none">
+                </div>
+            </div>
+            <button onclick="triggerToast('Order Submitted via MFU Gateway! Approval link sent to NetBanking/UPI.'); closeModal('modal-invest-more')" class="w-full bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2.5 rounded-xl text-xs transition-all">Proceed to Payment</button>
+        </div>
+    </div>
+
+    <!-- MODAL 7: MANAGE SIPS -->
+    <div id="modal-manage-sips" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-serif font-bold text-teal-900 text-lg">Active SIP Mandates</h3>
+                <button onclick="closeModal('modal-manage-sips')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex justify-between items-center">
+                    <div>
+                        <div class="font-semibold text-slate-800">SBI Large & Midcap</div>
+                        <div class="text-slate-500">₹15,000 / month • 10th of every month</div>
+                    </div>
+                    <button onclick="triggerToast('Step-Up Request Sent to Advisor')" class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-[11px] font-semibold hover:bg-teal-200 transition-all">Step Up</button>
+                </div>
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex justify-between items-center">
+                    <div>
+                        <div class="font-semibold text-slate-800">HDFC Flexi Cap</div>
+                        <div class="text-slate-500">₹10,000 / month • 15th of every month</div>
+                    </div>
+                    <button onclick="triggerToast('Step-Up Request Sent to Advisor')" class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-[11px] font-semibold hover:bg-teal-200 transition-all">Step Up</button>
                 </div>
             </div>
         </div>
@@ -462,7 +915,7 @@
                 </div>
                 <div class="p-3 bg-slate-50 rounded-xl space-y-1">
                     <span class="text-slate-500">Automated Audit & Compliance Status</span>
-                    <div class="text-mint-500 font-medium flex items-center gap-1"><i data-lucide="shield-check" class="w-4 h-4"></i> SEBI/AMFI Compliant[cite: 1]</div>
+                    <div class="text-mint-500 font-medium flex items-center gap-1"><i data-lucide="shield-check" class="w-4 h-4"></i> SEBI/AMFI Compliant</div>
                 </div>
             </div>
         </div>
@@ -483,7 +936,7 @@
     <!-- FOOTER -->
     <footer class="bg-white border-t border-slate-200 mt-auto py-4">
         <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
-            FolioCraft • The Investor Growth Network • Built for Independent Mutual Fund Distributors • SEBI/AMFI Compliance Ready[cite: 1]
+            FolioCraft • The Investor Growth Network • Built for Independent Mutual Fund Distributors • SEBI/AMFI Compliance Ready
         </div>
     </footer>
 
@@ -501,6 +954,19 @@
             const activeBtn = document.getElementById(`btn-${portalId}`);
             activeBtn.classList.add('bg-teal-600', 'text-white', 'shadow-sm');
             activeBtn.classList.remove('text-teal-100');
+        }
+
+        // Switch Calculator Tabs
+        function switchCalcTab(tab) {
+            ['sip', 'swp', 'emi'].forEach(t => {
+                document.getElementById(`calc-panel-${t}`).classList.add('hidden');
+                document.getElementById(`tab-btn-${t}`).classList.remove('bg-teal-600', 'text-white', 'shadow-sm');
+                document.getElementById(`tab-btn-${t}`).classList.add('text-slate-600');
+            });
+            document.getElementById(`calc-panel-${tab}`).classList.remove('hidden');
+            const activeTabBtn = document.getElementById(`tab-btn-${tab}`);
+            activeTabBtn.classList.add('bg-teal-600', 'text-white', 'shadow-sm');
+            activeTabBtn.classList.remove('text-slate-600');
         }
 
         // Modal Controllers
@@ -524,13 +990,100 @@
             setTimeout(() => { toast.classList.add('hidden'); }, 3000);
         }
 
+        // Apply Advisor Calculator Results Directly into Proposal
+        function applyCalcToProposal(type) {
+            let amount = 15000;
+            if (type === 'SIP') {
+                amount = document.getElementById('dist-sip-amt').value;
+            } else if (type === 'EMI') {
+                const emi = parseFloat(document.getElementById('dist-emi-monthly').innerText.replace(/[^\d]/g, '')) || 20000;
+                amount = Math.round(emi * 0.19);
+            }
+            document.getElementById('proposal-sip-input').value = amount;
+            openModal('modal-proposal');
+            triggerToast(`Exported ${type} calculations to Client Proposal wizard!`);
+        }
+
+        // Submit eKYC Dynamic Action
+        function submitEkyc() {
+            const name = document.getElementById('kyc-fullname').value || 'Investor';
+            triggerToast(`KRA Verified for ${name} & CAN Created! Mandate Link Sent via WhatsApp.`);
+            closeModal('modal-onboarding');
+        }
+
+        // Resolve Ticket Dynamic Action
+        function resolveTicket(elementId, ticketTitle) {
+            const el = document.getElementById(elementId);
+            if (el) el.remove();
+            triggerToast(`Ticket resolved: ${ticketTitle}`);
+            const remaining = document.querySelectorAll('#tickets-list > div').length;
+            if (remaining === 0) {
+                closeModal('modal-tickets');
+            }
+        }
+
+        // GST Proof File Handlers
+        function handleGstFileSelect(input) {
+            if (input.files && input.files[0]) {
+                triggerToast(`File selected: ${input.files[0].name}`);
+            }
+        }
+
+        function submitGstProof() {
+            triggerToast('GSTR-3B Proof Uploaded! Payout Release Requested.');
+            closeModal('modal-gst-proof');
+        }
+
+        // Search Filter for Investor Table
+        function filterInvestorTable() {
+            const query = document.getElementById('investor-search').value.toLowerCase();
+            const rows = document.querySelectorAll('#investor-table-body tr');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+
         // Helpdesk Submission
         function submitHelpDeskQuery() {
             closeModal('modal-helpdesk');
             triggerToast('Query submitted to your assigned advisor! Resolution expected within 2 hours.');
         }
 
-        // Revenue & GST Calculator
+        // Distributor Calculator Engine
+        function runDistCalculators() {
+            // SIP Calculation
+            const P = parseFloat(document.getElementById('dist-sip-amt').value) || 0;
+            const r = (parseFloat(document.getElementById('dist-sip-rate').value) || 0) / 12 / 100;
+            const n = (parseFloat(document.getElementById('dist-sip-years').value) || 0) * 12;
+            
+            if (r > 0 && n > 0) {
+                const totalInvested = P * n;
+                const futureValue = P * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+                document.getElementById('dist-sip-invested').innerText = '₹' + Math.round(totalInvested).toLocaleString('en-IN');
+                document.getElementById('dist-sip-future').innerText = '₹' + Math.round(futureValue).toLocaleString('en-IN');
+            }
+
+            // SWP Calculation
+            const corpus = parseFloat(document.getElementById('dist-swp-corpus').value) || 0;
+            const draw = parseFloat(document.getElementById('dist-swp-draw').value) || 0;
+            if (corpus > 0) {
+                const payoutRate = ((draw * 12) / corpus) * 100;
+                document.getElementById('dist-swp-payout-rate').innerText = payoutRate.toFixed(1) + '%';
+            }
+
+            // EMI Calculation
+            const loanP = parseFloat(document.getElementById('dist-emi-amount').value) || 0;
+            const loanR = (parseFloat(document.getElementById('dist-emi-rate').value) || 0) / 12 / 100;
+            const loanN = (parseFloat(document.getElementById('dist-emi-years').value) || 0) * 12;
+            if (loanP > 0 && loanR > 0 && loanN > 0) {
+                const emi = loanP * loanR * (Math.pow(1 + loanR, loanN) / (Math.pow(1 + loanR, loanN) - 1));
+                document.getElementById('dist-emi-monthly').innerText = '₹' + Math.round(emi).toLocaleString('en-IN');
+                document.getElementById('dist-emi-sip-offset').innerText = '₹' + Math.round(emi * 0.19).toLocaleString('en-IN') + ' / mo';
+            }
+        }
+
+        // Public Revenue & GST Calculator
         function updateCalculator() {
             const clients = parseInt(document.getElementById('calc-clients').value);
             const sip = parseInt(document.getElementById('calc-sip').value);
@@ -559,6 +1112,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             lucide.createIcons();
             updateCalculator();
+            runDistCalculators();
         });
     </script>
 </body>

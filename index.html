@@ -46,8 +46,6 @@
     </script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Chart.js CDN for Donut Chart -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .glass-card {
             background: rgba(255, 255, 255, 0.95);
@@ -60,7 +58,7 @@
 
     <!-- TOP NAVIGATION BAR -->
     <header class="bg-teal-900 text-white sticky top-0 z-40 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex flex-wrap items-center justify-between gap-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPortal('public')">
                 <div class="bg-teal-600 text-white p-2 rounded-lg font-bold text-xl font-serif tracking-wider">FC</div>
                 <div>
@@ -70,17 +68,17 @@
             </div>
 
             <!-- Portal Selector Controls -->
-            <div class="flex items-center bg-teal-800/80 p-1 rounded-xl border border-teal-600/30 overflow-x-auto max-w-full">
-                <button onclick="switchPortal('public')" id="btn-public" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-teal-600 text-white shadow-sm whitespace-nowrap">
+            <div class="flex items-center bg-teal-800/80 p-1 rounded-xl border border-teal-600/30">
+                <button onclick="switchPortal('public')" id="btn-public" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-teal-600 text-white shadow-sm">
                     Public & ROI
                 </button>
-                <button onclick="switchPortal('distributor')" id="btn-distributor" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white whitespace-nowrap">
+                <button onclick="switchPortal('distributor')" id="btn-distributor" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white">
                     Distributor Studio
                 </button>
-                <button onclick="switchPortal('customer')" id="btn-customer" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white whitespace-nowrap">
+                <button onclick="switchPortal('customer')" id="btn-customer" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white">
                     Client Portal
                 </button>
-                <button onclick="switchPortal('admin')" id="btn-admin" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white whitespace-nowrap">
+                <button onclick="switchPortal('admin')" id="btn-admin" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-teal-100 hover:text-white">
                     Admin Portal
                 </button>
             </div>
@@ -91,29 +89,28 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
         <!-- ==================== 1. PUBLIC SITE & ROI CALCULATOR ==================== -->
-        <section id="portal-public" class="space-y-8">
+        <section id="portal-public" class="space-y-12">
             <!-- Hero Banner -->
-            <div class="text-center max-w-3xl mx-auto space-y-4 pt-4">
-                <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">MULTI-SIDED WEALTH PLATFORM</span>
-                <h1 class="font-serif text-3xl sm:text-5xl font-bold text-teal-900 leading-tight">
+            <div class="text-center max-w-3xl mx-auto space-y-4 pt-6">
+                <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Multi-Sided Wealth Platform</span>
+                <h1 class="font-serif text-4xl sm:text-5xl font-bold text-teal-900 leading-tight">
                     Empowering Distributors & Investors on One Network
                 </h1>
-                <p class="text-slate-600 text-sm sm:text-base">
+                <p class="text-slate-600 text-base sm:text-lg">
                     Real-time portfolio tracking, paperless eKYC, MFU CAN routing, automated GST reconciliation, and integrated support ticketing for modern financial growth.
                 </p>
-                <div class="pt-2 flex flex-wrap justify-center gap-3">
-                    <button onclick="switchPortal('distributor')" class="bg-teal-600 hover:bg-teal-800 text-white px-5 py-2.5 rounded-xl text-xs font-medium shadow-lg shadow-teal-600/20 transition-all flex items-center gap-2">
+                <div class="pt-2 flex justify-center gap-4">
+                    <button onclick="switchPortal('distributor')" class="bg-teal-600 hover:bg-teal-800 text-white px-6 py-3 rounded-xl font-medium shadow-lg shadow-teal-600/20 transition-all flex items-center gap-2">
                         Launch Advisor Dashboard <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
-                    <!-- UPDATED BUTTON LABEL -->
-                    <button onclick="openModal('modal-onboarding')" class="bg-white text-teal-800 hover:bg-teal-50 px-5 py-2.5 rounded-xl text-xs font-medium border border-teal-200 transition-all flex items-center gap-2">
-                        <i data-lucide="user-plus" class="w-4 h-4 text-teal-600"></i> Quick eKYC
+                    <button onclick="openModal('modal-onboarding')" class="bg-white text-teal-800 hover:bg-teal-50 px-6 py-3 rounded-xl font-medium border border-teal-200 transition-all flex items-center gap-2">
+                        <i data-lucide="user-plus" class="w-4 h-4"></i> Try SBI-Style eKYC
                     </button>
                 </div>
             </div>
 
-            <!-- CALCULATOR 1: Partner Earnings & GST Impact Simulator -->
-            <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-sm">
+            <!-- Partner Earnings & GST Impact Calculator -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm">
                 <div class="border-b border-slate-200 pb-4 mb-6">
                     <h2 class="font-serif text-2xl font-bold text-teal-900">Distributor Earnings & GST Payout Simulator</h2>
                     <p class="text-xs text-slate-500">Calculate estimated 5-year recurring trail commission and model the GST withholding mandate.</p>
@@ -127,7 +124,7 @@
                                 <span>Active Investors</span>
                                 <span id="calc-clients-val" class="font-bold text-teal-800">150</span>
                             </div>
-                            <input type="range" id="calc-clients" min="10" max="1000" value="150" class="w-full accent-teal-600" oninput="updateDistributorGstCalculator()">
+                            <input type="range" id="calc-clients" min="10" max="1000" value="150" class="w-full accent-teal-600" oninput="updateCalculator()">
                         </div>
 
                         <div>
@@ -135,7 +132,7 @@
                                 <span>Avg. Monthly SIP per Investor</span>
                                 <span id="calc-sip-val" class="font-bold text-teal-800">₹8,000</span>
                             </div>
-                            <input type="range" id="calc-sip" min="1000" max="50000" step="1000" value="8000" class="w-full accent-teal-600" oninput="updateDistributorGstCalculator()">
+                            <input type="range" id="calc-sip" min="1000" max="50000" step="1000" value="8000" class="w-full accent-teal-600" oninput="updateCalculator()">
                         </div>
 
                         <div>
@@ -143,12 +140,12 @@
                                 <span>Blended Trail Commission</span>
                                 <span id="calc-trail-val" class="font-bold text-teal-800">0.70%</span>
                             </div>
-                            <input type="range" id="calc-trail" min="0.3" max="1.2" step="0.05" value="0.70" class="w-full accent-teal-600" oninput="updateDistributorGstCalculator()">
+                            <input type="range" id="calc-trail" min="0.3" max="1.2" step="0.05" value="0.70" class="w-full accent-teal-600" oninput="updateCalculator()">
                         </div>
 
                         <div class="p-4 bg-teal-50/60 rounded-xl border border-teal-100">
                             <label class="flex items-center space-x-3 cursor-pointer">
-                                <input type="checkbox" id="calc-gst-registered" class="w-4 h-4 text-teal-600 rounded border-slate-300 focus:ring-teal-500" checked onchange="updateDistributorGstCalculator()">
+                                <input type="checkbox" id="calc-gst-registered" class="w-4 h-4 text-teal-600 rounded border-slate-300 focus:ring-teal-500" checked onchange="updateCalculator()">
                                 <span class="text-xs font-medium text-slate-700">GST Registered Distributor (Claiming ITC)</span>
                             </label>
                             <p class="text-[11px] text-slate-500 mt-1 pl-7">Unregistered MFDs incur a ~15.25% net deduction under current GST rules.</p>
@@ -174,182 +171,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-teal-800/80 flex flex-wrap justify-between items-center gap-2 text-xs text-teal-100">
+                        <div class="mt-6 pt-4 border-t border-teal-800/80 flex justify-between items-center text-xs text-teal-100">
                             <span>Includes 12% CAGR market growth</span>
                             <button onclick="switchPortal('distributor')" class="bg-mint-500 text-teal-900 font-semibold px-3 py-1.5 rounded-lg text-xs hover:bg-mint-500/90 transition-all">Join Network</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- CALCULATOR 2: SIP & Wealth Compounder Calculator -->
-            <div class="glass-card rounded-2xl p-5 sm:p-8 shadow-sm space-y-6">
-                <div class="border-b border-slate-200 pb-4">
-                    <h2 class="font-serif text-2xl font-bold text-teal-900">SIP & Wealth Compounder Calculator</h2>
-                    <p class="text-xs text-slate-500">Project wealth growth over time with optional annual step-up contribution increases.</p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <div class="lg:col-span-6 space-y-4">
-                        <div>
-                            <div class="flex justify-between text-xs font-medium text-slate-700 mb-1">
-                                <span>Monthly Investment</span>
-                                <span id="sip-comp-amt-val" class="font-bold text-teal-800">₹10,000</span>
-                            </div>
-                            <input type="range" id="sip-comp-amt" min="1000" max="100000" step="1000" value="10000" class="w-full accent-teal-600" oninput="runSipCompounder()">
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-medium text-slate-700 mb-1">
-                                <span>Expected Annual Return Rate (CAGR)</span>
-                                <span id="sip-comp-rate-val" class="font-bold text-teal-800">12%</span>
-                            </div>
-                            <input type="range" id="sip-comp-rate" min="5" max="20" step="0.5" value="12" class="w-full accent-teal-600" oninput="runSipCompounder()">
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-medium text-slate-700 mb-1">
-                                <span>Investment Horizon (Years)</span>
-                                <span id="sip-comp-years-val" class="font-bold text-teal-800">15 Years</span>
-                            </div>
-                            <input type="range" id="sip-comp-years" min="1" max="30" value="15" class="w-full accent-teal-600" oninput="runSipCompounder()">
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-medium text-slate-700 mb-1">
-                                <span>Annual Step-up (%)</span>
-                                <span id="sip-comp-step-val" class="font-bold text-teal-800">10%</span>
-                            </div>
-                            <input type="range" id="sip-comp-step" min="0" max="25" value="10" class="w-full accent-teal-600" oninput="runSipCompounder()">
-                        </div>
-                    </div>
-                    <div class="lg:col-span-6 bg-slate-900 text-white rounded-xl p-6 flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <span class="text-xs font-semibold text-teal-300 uppercase tracking-wider">Compound Wealth Output</span>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <div class="text-xs text-slate-400">Total Invested</div>
-                                    <div id="sip-comp-invested-res" class="text-lg font-bold text-white">₹38,12,000</div>
-                                </div>
-                                <div>
-                                    <div class="text-xs text-slate-400">Est. Growth Gain</div>
-                                    <div id="sip-comp-gain-res" class="text-lg font-bold text-mint-500">₹45,20,000</div>
-                                </div>
-                            </div>
-                            <div class="pt-4 border-t border-slate-800">
-                                <div class="text-xs text-slate-400">Maturity Corpus</div>
-                                <div id="sip-comp-total-res" class="font-serif text-3xl font-bold text-teal-400">₹83,32,000</div>
-                            </div>
-                        </div>
-                        <button onclick="triggerToast('Proposal created based on SIP calculation!')" class="mt-4 w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 rounded-lg text-xs transition-all">
-                            Save Calculation to Client Proposal
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CALCULATOR 3 & 4 GRID: Rebalancing + Tax Engine -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
-                <!-- CALCULATOR 3: Portfolio Rebalancing & Asset Drift Calculator -->
-                <div class="glass-card rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
-                    <div class="border-b border-slate-200 pb-3">
-                        <h2 class="font-serif text-xl font-bold text-teal-900">Portfolio Rebalancing Calculator</h2>
-                        <p class="text-xs text-slate-500">Compute buy/sell orders needed to realign target asset allocation.</p>
-                    </div>
-                    <div class="space-y-3 text-xs">
-                        <div>
-                            <label class="block font-medium text-slate-700 mb-1">Total Portfolio Value (₹)</label>
-                            <input type="number" id="rebal-total-val" value="2500000" oninput="runRebalancingCalc()" class="w-full border rounded-lg p-2 focus:border-teal-600 outline-none">
-                        </div>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div>
-                                <label class="block font-medium text-slate-700 mb-1">Target Equity (%)</label>
-                                <input type="number" id="rebal-target-eq" value="70" oninput="runRebalancingCalc()" class="w-full border rounded-lg p-2 focus:border-teal-600 outline-none">
-                            </div>
-                            <div>
-                                <label class="block font-medium text-slate-700 mb-1">Current Equity (%)</label>
-                                <input type="number" id="rebal-curr-eq" value="82" oninput="runRebalancingCalc()" class="w-full border rounded-lg p-2 focus:border-teal-600 outline-none">
-                            </div>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                            <div class="font-semibold text-slate-800">Automated Order Recommendation:</div>
-                            <div id="rebal-output" class="font-mono text-teal-800 text-xs">
-                                Sell ₹3,00,000 Equity → Buy ₹3,00,000 Debt
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CALCULATOR 4: Tax & Capital Gains Calculator -->
-                <div class="glass-card rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
-                    <div class="border-b border-slate-200 pb-3">
-                        <h2 class="font-serif text-xl font-bold text-teal-900">Tax & Capital Gains Calculator</h2>
-                        <p class="text-xs text-slate-500">Estimate LTCG/STCG tax liabilities for Equity and Debt mutual funds.</p>
-                    </div>
-                    <div class="space-y-3 text-xs">
-                        <div class="grid grid-cols-2 gap-3">
-                            <div>
-                                <label class="block font-medium text-slate-700 mb-1">Asset Class</label>
-                                <select id="tax-asset-type" onchange="runTaxCalc()" class="w-full border rounded-lg p-2 focus:border-teal-600 outline-none">
-                                    <option value="equity">Equity Mutual Fund</option>
-                                    <option value="debt">Debt Mutual Fund</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block font-medium text-slate-700 mb-1">Holding Period</label>
-                                <select id="tax-holding-period" onchange="runTaxCalc()" class="w-full border rounded-lg p-2 focus:border-teal-600 outline-none">
-                                    <option value="ltcg">&gt; 12 Months (LTCG)</option>
-                                    <option value="stcg">&le; 12 Months (STCG)</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block font-medium text-slate-700 mb-1">Total Capital Gain Realized (₹)</label>
-                            <input type="number" id="tax-gain-amt" value="250000" oninput="runTaxCalc()" class="w-full border rounded-lg p-2 focus:border-teal-600 outline-none">
-                        </div>
-                        <div class="p-3 bg-amber-50/80 rounded-xl border border-amber-200 space-y-1">
-                            <div class="font-semibold text-amber-900">Estimated Tax Liability:</div>
-                            <div id="tax-result-val" class="font-serif text-xl font-bold text-rose-600">₹12,500</div>
-                            <div id="tax-explanation" class="text-[11px] text-slate-600">Applied 12.5% LTCG on gain above ₹1.25 Lakh exemption.</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- MULTI-ASSET ALLOCATION DONUT CHART SECTION -->
-            <div class="glass-card rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
-                <div class="border-b border-slate-200 pb-3 flex justify-between items-center">
-                    <div>
-                        <h2 class="font-serif text-xl font-bold text-teal-900">Ideal Multi-Asset Allocation Strategy</h2>
-                        <p class="text-xs text-slate-500">Optimal diversification ratio across asset classes</p>
-                    </div>
-                    <span class="text-xs bg-teal-100 text-teal-800 font-semibold px-2.5 py-1 rounded-full">Balanced Model</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    <div class="md:col-span-5 flex justify-center">
-                        <div class="w-48 h-48">
-                            <canvas id="assetAllocationChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="md:col-span-7 space-y-3 text-xs">
-                        <div class="flex justify-between items-center p-2 bg-slate-50 rounded-lg">
-                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-teal-600"></span> Large Cap Equity</span>
-                            <span class="font-bold">40%</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2 bg-slate-50 rounded-lg">
-                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-mint-500"></span> Mid/Small Cap Equity</span>
-                            <span class="font-bold">25%</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2 bg-slate-50 rounded-lg">
-                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-amber-500"></span> Corporate Debt & Gold</span>
-                            <span class="font-bold">25%</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2 bg-slate-50 rounded-lg">
-                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-slate-400"></span> Liquid Cash & Overnight</span>
-                            <span class="font-bold">10%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </section>
 
         <!-- ==================== 2. DISTRIBUTOR PORTAL ==================== -->
@@ -362,7 +190,7 @@
                 </div>
                 <div class="flex flex-wrap gap-2">
                     <button onclick="openModal('modal-onboarding')" class="bg-teal-100 text-teal-800 hover:bg-teal-200 text-xs font-semibold px-3 py-2 rounded-lg transition-all flex items-center gap-1.5">
-                        <i data-lucide="zap" class="w-4 h-4 text-teal-600"></i> Quick eKYC
+                        <i data-lucide="zap" class="w-4 h-4 text-teal-600"></i> SBI-Style eKYC
                     </button>
                     <button onclick="openModal('modal-proposal')" class="bg-teal-600 text-white hover:bg-teal-800 text-xs font-semibold px-3 py-2 rounded-lg transition-all flex items-center gap-1.5">
                         <i data-lucide="file-plus" class="w-4 h-4"></i> Create Proposal
@@ -392,7 +220,7 @@
                 <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                     <div class="text-xs font-medium text-slate-500">GST Commission Withheld</div>
                     <div class="text-2xl font-bold text-amber-500 mt-1">₹18,420</div>
-                    <button onclick="openModal('modal-gst-proof')" class="text-[11px] text-teal-600 font-semibold hover:underline mt-1 block">Upload Proof to Release →</button>
+                    <button onclick="triggerToast('Uploaded GSTR-3B Proof to AMCs')" class="text-[11px] text-teal-600 font-semibold hover:underline mt-1 block">Upload Proof to Release</button>
                 </div>
                 <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                     <div class="text-xs font-medium text-slate-500">Investor Service Desk</div>
@@ -406,9 +234,9 @@
 
                 <!-- Interactive Multi-Calculator Engine -->
                 <div class="lg:col-span-7 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                    <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-3">
+                    <div class="flex justify-between items-center border-b pb-3">
                         <div>
-                            <h3 class="font-serif font-bold text-teal-900 text-base">Financial Advisory Tool & Calculators</h3>
+                            <h3 class="font-serif font-bold text-teal-900 text-lg">Financial Advisory Tool & Calculators</h3>
                             <p class="text-xs text-slate-500">Model SIP growth, SWP capital longevity, and loan EMIs for clients</p>
                         </div>
                         <!-- Calculator Tab Buttons -->
@@ -505,16 +333,14 @@
                     </div>
                 </div>
 
-                <!-- AMC Commission Matrix -->
+                <!-- AMC Commission Matrix & Fee Transparency Explainer -->
                 <div class="lg:col-span-5 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
                     <div class="border-b pb-3 flex justify-between items-start">
                         <div>
                             <h3 class="font-serif font-bold text-teal-900 text-base">AMC Trail Commission Matrix</h3>
                             <p class="text-[11px] text-slate-500">Trail rates paid directly by AMCs via Regular Plan TER</p>
                         </div>
-                        <button onclick="triggerToast('Commission schedule updated from AMFI feed')" class="bg-mint-100 text-mint-500 text-[10px] font-bold px-2 py-0.5 rounded hover:bg-mint-200 transition-all">
-                            0% Client Direct Fee
-                        </button>
+                        <span class="bg-mint-100 text-mint-500 text-[10px] font-bold px-2 py-0.5 rounded">0% Client Direct Fee</span>
                     </div>
 
                     <!-- AMC Commission Rates Table -->
@@ -529,25 +355,25 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100">
-                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Selected SBI Mutual Fund Schedule')">
+                                <tr>
                                     <td class="p-2 font-semibold text-slate-800">SBI Mutual Fund</td>
                                     <td class="p-2 text-mint-500 font-medium">0.85% – 1.05%</td>
                                     <td class="p-2 text-teal-800">0.65%</td>
                                     <td class="p-2 text-slate-600">0.30%</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Selected HDFC Mutual Fund Schedule')">
+                                <tr>
                                     <td class="p-2 font-semibold text-slate-800">HDFC Mutual Fund</td>
                                     <td class="p-2 text-mint-500 font-medium">0.80% – 1.00%</td>
                                     <td class="p-2 text-teal-800">0.60%</td>
                                     <td class="p-2 text-slate-600">0.25%</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Selected ICICI Prudential Schedule')">
+                                <tr>
                                     <td class="p-2 font-semibold text-slate-800">ICICI Prudential</td>
                                     <td class="p-2 text-mint-500 font-medium">0.85% – 1.10%</td>
                                     <td class="p-2 text-teal-800">0.70%</td>
                                     <td class="p-2 text-slate-600">0.35%</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Selected Nippon India Schedule')">
+                                <tr>
                                     <td class="p-2 font-semibold text-slate-800">Nippon India MF</td>
                                     <td class="p-2 text-mint-500 font-medium">0.75% – 0.95%</td>
                                     <td class="p-2 text-teal-800">0.55%</td>
@@ -566,26 +392,28 @@
 
             <!-- Client Directory & Churn Risk -->
             <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="p-4 border-b border-slate-200 flex flex-wrap justify-between items-center gap-2">
+                <div class="p-4 border-b border-slate-200 flex justify-between items-center">
                     <h3 class="font-bold text-slate-800 text-sm">Investor Portfolio & Churn Risk Tracker</h3>
-                    <input type="text" id="investor-search" oninput="filterInvestorTable()" placeholder="Search investor name or CAN..." class="text-xs border border-slate-300 rounded-lg px-3 py-1.5 w-64 focus:outline-none focus:border-teal-600">
+                    <input type="text" placeholder="Search investor name or PAN..." class="text-xs border border-slate-300 rounded-lg px-3 py-1.5 w-64 focus:outline-none focus:border-teal-600">
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse text-xs">
                         <thead>
                             <tr class="bg-slate-50 border-b border-slate-200 text-slate-500 font-medium">
                                 <th class="p-3">Investor Name</th>
+                                <th class="p-3">PAN</th>
                                 <th class="p-3">MFU CAN</th>
                                 <th class="p-3">Current AUM</th>
                                 <th class="p-3">Active SIPs</th>
-                                <th class="p-3">Churn Risk</th>
+                                <th class="p-3">Churn Risk Score</th>
                                 <th class="p-3">Audit Trail</th>
                                 <th class="p-3">Action</th>
                             </tr>
                         </thead>
-                        <tbody id="investor-table-body" class="divide-y divide-slate-100">
+                        <tbody class="divide-y divide-slate-100">
                             <tr class="hover:bg-slate-50/80">
                                 <td class="p-3 font-semibold text-slate-800">Rajesh Sharma</td>
+                                <td class="p-3 font-mono text-slate-500">ABCDE****F</td>
                                 <td class="p-3 font-mono text-teal-600">CAN-9021-X</td>
                                 <td class="p-3 font-medium">₹42,10,000</td>
                                 <td class="p-3 text-slate-600">₹25,000/mo</td>
@@ -595,6 +423,7 @@
                             </tr>
                             <tr class="hover:bg-slate-50/80">
                                 <td class="p-3 font-semibold text-slate-800">Priya Nair</td>
+                                <td class="p-3 font-mono text-slate-500">BKWPR****K</td>
                                 <td class="p-3 font-mono text-teal-600">CAN-8812-Y</td>
                                 <td class="p-3 font-medium">₹18,50,000</td>
                                 <td class="p-3 text-slate-600">₹10,000/mo</td>
@@ -604,6 +433,7 @@
                             </tr>
                             <tr class="hover:bg-slate-50/80">
                                 <td class="p-3 font-semibold text-slate-800">Anil Verma</td>
+                                <td class="p-3 font-mono text-slate-500">CZXPV****M</td>
                                 <td class="p-3 font-mono text-slate-400">Pending CAN</td>
                                 <td class="p-3 font-medium">₹65,00,000</td>
                                 <td class="p-3 text-slate-600">Paused</td>
@@ -620,22 +450,22 @@
         <!-- ==================== 3. CUSTOMER / INVESTOR PORTAL ==================== -->
         <section id="portal-customer" class="hidden space-y-6">
 
-            <!-- CELEBRATION CARD -->
+            <!-- CELEBRATION & LIFE MILESTONE GREETING CARD -->
             <div class="bg-gradient-to-r from-teal-900 via-teal-800 to-teal-900 text-white p-5 rounded-2xl shadow-lg border border-teal-700/50 flex flex-col sm:flex-row justify-between items-center gap-4">
                 <div class="flex items-center space-x-4">
                     <div class="bg-amber-500/20 text-amber-400 p-3 rounded-2xl border border-amber-400/30 text-2xl">
                         🎂
                     </div>
                     <div>
-                        <div class="flex flex-wrap items-center gap-2">
+                        <div class="flex items-center gap-2">
                             <span class="bg-amber-400/20 text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Birthday Celebration</span>
                             <span class="bg-mint-500/20 text-mint-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">3-Year Investor Anniversary</span>
                         </div>
                         <h2 class="font-serif text-xl font-bold text-white mt-1">Happy Birthday, Rajesh Sharma! 🎉</h2>
-                        <p class="text-xs text-teal-100">Your portfolio grew by +14.8% over the past year. We have credited an exclusive offer to your account.</p>
+                        <p class="text-xs text-teal-100">Wishing you a prosperous year ahead. Your wealth portfolio grew by +14.8% since last year!</p>
                     </div>
                 </div>
-                <button onclick="triggerToast('Birthday Investment Voucher Redeemed Successfully!')" class="bg-amber-500 hover:bg-amber-600 text-teal-900 font-bold px-4 py-2 rounded-xl text-xs transition-all whitespace-nowrap shadow-md">
+                <button onclick="triggerToast('Claimed Special Birthday Investment Voucher!')" class="bg-amber-500 hover:bg-amber-600 text-teal-900 font-bold px-4 py-2 rounded-xl text-xs transition-all whitespace-nowrap shadow-md">
                     Claim Birthday Bonus
                 </button>
             </div>
@@ -655,25 +485,25 @@
 
             <!-- Single-Click Quick Action Bar for Investors -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <button onclick="openModal('modal-invest-more')" class="p-3 bg-teal-600 hover:bg-teal-800 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm">
+                <button onclick="triggerToast('Initiated Instant Top-up Order...')" class="p-3 bg-teal-600 hover:bg-teal-800 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all">
                     <i data-lucide="plus" class="w-4 h-4"></i> Invest More
                 </button>
-                <button onclick="openModal('modal-manage-sips')" class="p-3 bg-white hover:bg-teal-50 border border-teal-200 text-teal-900 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all">
-                    <i data-lucide="repeat" class="w-4 h-4 text-teal-600"></i> Manage SIPs
+                <button onclick="triggerToast('SIP Auto-Pay Mandate Status: Active')" class="p-3 bg-white hover:bg-teal-50 border border-teal-200 text-teal-900 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+                    <i data-lucide="repeat" class="w-4 h-4"></i> Manage SIPs
                 </button>
                 <button onclick="triggerToast('Downloading Capital Gains Tax Statement (FY 2025-26)...')" class="p-3 bg-white hover:bg-teal-50 border border-teal-200 text-teal-900 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all">
-                    <i data-lucide="file-text" class="w-4 h-4 text-teal-600"></i> Tax Statement
+                    <i data-lucide="file-text" class="w-4 h-4"></i> Tax Statement
                 </button>
-                <button onclick="openModal('modal-helpdesk')" class="p-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm">
+                <button onclick="openModal('modal-helpdesk')" class="p-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all">
                     <i data-lucide="help-circle" class="w-4 h-4"></i> Help & Queries
                 </button>
             </div>
 
             <!-- Holdings Allocation & Scheme Performance Explorer -->
             <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-3">
+                <div class="flex justify-between items-center border-b pb-3">
                     <h3 class="font-serif font-bold text-teal-900 text-base">Current Scheme Holdings & Historical Performance</h3>
-                    <span class="text-xs text-slate-500 flex items-center gap-1"><i data-lucide="refresh-cw" class="w-3 h-3 text-teal-600"></i> Live AMFI NAV Sync</span>
+                    <span class="text-xs text-slate-500">Live AMFI NAV Sync</span>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs">
@@ -696,7 +526,7 @@
                                 <td class="p-2.5 text-mint-500 font-medium">+18.4%</td>
                                 <td class="p-2.5 text-mint-500 font-medium">+15.2%</td>
                                 <td class="p-2.5 text-mint-500 font-medium">+16.8%</td>
-                                <td class="p-2.5"><button onclick="openModal('modal-invest-more')" class="text-teal-600 font-semibold hover:underline">Top Up</button></td>
+                                <td class="p-2.5"><button onclick="triggerToast('Order switch to Direct/Growth initiated')" class="text-teal-600 font-semibold hover:underline">Top Up</button></td>
                             </tr>
                             <tr>
                                 <td class="p-2.5 font-semibold text-slate-800">HDFC Flexi Cap Fund - Reg (G)</td>
@@ -705,7 +535,7 @@
                                 <td class="p-2.5 text-mint-500 font-medium">+21.1%</td>
                                 <td class="p-2.5 text-mint-500 font-medium">+17.8%</td>
                                 <td class="p-2.5 text-mint-500 font-medium">+18.2%</td>
-                                <td class="p-2.5"><button onclick="openModal('modal-invest-more')" class="text-teal-600 font-semibold hover:underline">Top Up</button></td>
+                                <td class="p-2.5"><button onclick="triggerToast('Order switch to Direct/Growth initiated')" class="text-teal-600 font-semibold hover:underline">Top Up</button></td>
                             </tr>
                             <tr>
                                 <td class="p-2.5 font-semibold text-slate-800">ICICI Pru Corporate Bond Fund - Reg (G)</td>
@@ -714,7 +544,7 @@
                                 <td class="p-2.5 text-slate-700 font-medium">+7.4%</td>
                                 <td class="p-2.5 text-slate-700 font-medium">+7.1%</td>
                                 <td class="p-2.5 text-slate-700 font-medium">+7.6%</td>
-                                <td class="p-2.5"><button onclick="triggerToast('SWP Setup Link sent to registered email')" class="text-teal-600 font-semibold hover:underline">Setup SWP</button></td>
+                                <td class="p-2.5"><button onclick="triggerToast('SWP Mandate set for ICICI Bond Fund')" class="text-teal-600 font-semibold hover:underline">Setup SWP</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -722,142 +552,35 @@
             </div>
         </section>
 
-        <!-- ==================== 4. SUPER-ADMIN PORTAL ==================== -->
+        <!-- ==================== 4. ADMIN PORTAL ==================== -->
         <section id="portal-admin" class="hidden space-y-6">
-            <div class="bg-teal-900 text-white p-6 rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div class="bg-teal-900 text-white p-6 rounded-xl flex justify-between items-center">
                 <div>
-                    <h1 class="font-serif text-2xl font-bold">FolioCraft Super-Admin Control Center</h1>
-                    <p class="text-xs text-teal-100">Global Network Operations, AMFI ARN Health & MFU Gateway Sync</p>
+                    <h1 class="font-serif text-2xl font-bold">FolioCraft Super-Admin</h1>
+                    <p class="text-xs text-teal-100">Global Network Operations & MFU Node Sync</p>
                 </div>
-                <div class="flex flex-wrap items-center gap-2">
-                    <span class="bg-teal-800 text-teal-100 text-xs px-3 py-1.5 rounded-full border border-teal-600 flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-mint-500"></span> MFU Gateway: 100% Operational
-                    </span>
-                    <button onclick="triggerToast('Full SEBI Compliance & Audit Vault Export Initiated')" class="bg-mint-500 text-teal-900 font-bold px-3 py-1.5 rounded-lg text-xs hover:bg-mint-500/90 transition-all">
-                        Download Master Vault
-                    </button>
-                </div>
+                <span class="bg-teal-800 text-teal-100 text-xs px-3 py-1 rounded-full border border-teal-600">Platform Health: 100% Operational</span>
             </div>
 
-            <!-- Operational Metrics Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="triggerToast('Displaying 1,240 Tenant Advisors')">
-                    <div class="text-xs font-medium text-slate-500">Active Tenant MFDs</div>
-                    <div class="text-2xl font-bold text-teal-900 mt-1">1,240 Advisors</div>
-                    <div class="text-xs text-mint-500 mt-1">+18 joined this week</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="text-xs text-slate-500">Active Tenant MFDs</div>
+                    <div class="text-xl font-bold text-teal-900 mt-1">1,240 Advisors</div>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="triggerToast('Platform System AUM Breakdown Loaded')">
-                    <div class="text-xs font-medium text-slate-500">Total System AUM</div>
-                    <div class="text-2xl font-bold text-teal-900 mt-1">₹4,150 Crore</div>
-                    <div class="text-xs text-mint-500 mt-1">across 42 AMCs</div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="text-xs text-slate-500">Total System AUM</div>
+                    <div class="text-xl font-bold text-teal-900 mt-1">₹4,150 Crore</div>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="triggerToast('MFU CAN Routing Latency: 1.2s')">
-                    <div class="text-xs font-medium text-slate-500">MFU CAN Success Rate</div>
-                    <div class="text-2xl font-bold text-mint-500 mt-1">99.4%</div>
-                    <div class="text-xs text-slate-500 mt-1">Avg latency: 1.2s</div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="text-xs text-slate-500">AMFI NAV & MFU Gateway</div>
+                    <div class="text-xl font-bold text-mint-500 mt-1">Synced & Active</div>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition-all" onclick="triggerToast('8 License Renewal Notices Sent to MFDs')">
-                    <div class="text-xs font-medium text-slate-500">ARN / EUIN Compliance</div>
-                    <div class="text-2xl font-bold text-teal-900 mt-1">1,232 Verified</div>
-                    <div class="text-xs text-amber-500 mt-1">8 pending ARN renewals</div>
-                </div>
-            </div>
-
-            <!-- Admin Detailed Management Sections -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-                <!-- AMFI ARN & EUIN License Health Monitor -->
-                <div class="lg:col-span-7 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                    <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-3">
-                        <div>
-                            <h3 class="font-serif font-bold text-teal-900 text-base">Distributor AMFI ARN & NISM License Health</h3>
-                            <p class="text-xs text-slate-500">Automated AMFI registry check for active advisory compliance</p>
-                        </div>
-                        <button onclick="triggerToast('AMFI ARN Database Sync Completed')" class="text-xs bg-teal-50 text-teal-700 px-2.5 py-1 rounded border border-teal-200 font-semibold hover:bg-teal-100 transition-all">
-                            Sync AMFI DB
-                        </button>
-                    </div>
-
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs">
-                            <thead>
-                                <tr class="bg-slate-50 border-b text-slate-500">
-                                    <th class="p-2.5">Distributor Firm</th>
-                                    <th class="p-2.5">ARN Code</th>
-                                    <th class="p-2.5">EUIN Mapping</th>
-                                    <th class="p-2.5">ARN Expiry</th>
-                                    <th class="p-2.5">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Viewing Horizon Wealth Partners Licenses')">
-                                    <td class="p-2.5 font-semibold text-slate-800">Horizon Wealth Partners</td>
-                                    <td class="p-2.5 font-mono text-slate-600">ARN-284910</td>
-                                    <td class="p-2.5 text-mint-500 font-medium">E392014 (Valid)</td>
-                                    <td class="p-2.5 text-slate-600">14-Nov-2028</td>
-                                    <td class="p-2.5"><span class="bg-mint-100 text-mint-500 px-2 py-0.5 rounded font-bold text-[10px]">Active</span></td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Viewing Apex Capital Services Licenses')">
-                                    <td class="p-2.5 font-semibold text-slate-800">Apex Capital Services</td>
-                                    <td class="p-2.5 font-mono text-slate-600">ARN-192044</td>
-                                    <td class="p-2.5 text-mint-500 font-medium">E192830 (Valid)</td>
-                                    <td class="p-2.5 text-slate-600">02-Jan-2027</td>
-                                    <td class="p-2.5"><span class="bg-mint-100 text-mint-500 px-2 py-0.5 rounded font-bold text-[10px]">Active</span></td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 cursor-pointer" onclick="triggerToast('Renewal Alert Dispatched to Vanguard Financials')">
-                                    <td class="p-2.5 font-semibold text-slate-800">Vanguard Financials</td>
-                                    <td class="p-2.5 font-mono text-slate-600">ARN-102938</td>
-                                    <td class="p-2.5 text-amber-500 font-medium">E049382 (NISM Due)</td>
-                                    <td class="p-2.5 text-amber-600 font-medium">15-Oct-2026</td>
-                                    <td class="p-2.5"><span class="bg-amber-100 text-amber-500 px-2 py-0.5 rounded font-bold text-[10px]">Notice Sent</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Platform Infrastructure & MFU Gateway Logs -->
-                <div class="lg:col-span-5 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                    <div class="border-b pb-3 flex justify-between items-center">
-                        <h3 class="font-serif font-bold text-teal-900 text-base">Node Sync & API Latency</h3>
-                        <span class="text-[11px] text-mint-500 font-semibold flex items-center gap-1"><i data-lucide="activity" class="w-3.5 h-3.5"></i> Live Stream</span>
-                    </div>
-
-                    <div class="space-y-3 text-xs">
-                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center hover:bg-teal-50 cursor-pointer transition-all" onclick="triggerToast('Pinging MFU India Order Routing API...')">
-                            <div>
-                                <div class="font-semibold text-slate-800">MFU India CAN Sync Engine</div>
-                                <div class="text-[11px] text-slate-500">Order Routing / Consolidated Ledger</div>
-                            </div>
-                            <span class="font-mono text-mint-500 font-bold">124ms</span>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center hover:bg-teal-50 cursor-pointer transition-all" onclick="triggerToast('Pinging AMFI NAV Master Server...')">
-                            <div>
-                                <div class="font-semibold text-slate-800">AMFI NAV Master Sync</div>
-                                <div class="text-[11px] text-slate-500">Daily NAV updates across all AMCs</div>
-                            </div>
-                            <span class="font-mono text-mint-500 font-bold">88ms</span>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl flex justify-between items-center hover:bg-teal-50 cursor-pointer transition-all" onclick="triggerToast('Pinging KRA Gateway (NDML/CAMS)...')">
-                            <div>
-                                <div class="font-semibold text-slate-800">NDML / CAMS / Karvy KRA Gateway</div>
-                                <div class="text-[11px] text-slate-500">Instant Quick eKYC Lookup</div>
-                            </div>
-                            <span class="font-mono text-mint-500 font-bold">210ms</span>
-                        </div>
-                    </div>
-
-                    <div class="p-3 bg-teal-50 rounded-xl border border-teal-100 text-[11px] text-teal-900">
-                        <strong>Immutable Compliance Audit:</strong> All transaction logs are timestamped and mirrored for SEBI 6-year retention rules.
-                    </div>
-                </div>
-
             </div>
         </section>
 
     </main>
 
-    <!-- FLOATING HELP DESK TRIGGER BUTTON -->
+    <!-- FLOATING HELP DESK TRIGGER BUTTON (ALWAYS VISIBLE) -->
     <div class="fixed bottom-6 right-6 z-30">
         <button onclick="openModal('modal-helpdesk')" class="bg-teal-600 hover:bg-teal-800 text-white p-3.5 rounded-full shadow-xl flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105">
             <i data-lucide="message-square" class="w-5 h-5"></i>
@@ -865,14 +588,14 @@
         </button>
     </div>
 
-    <!-- MODAL 1: HELPDESK MODAL -->
+    <!-- MODAL 1: HELPDESK & QUERY MODAL -->
     <div id="modal-helpdesk" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
             <div class="flex justify-between items-center border-b pb-3">
                 <h3 class="font-serif font-bold text-teal-900 text-lg">Investor Help Desk</h3>
                 <button onclick="closeModal('modal-helpdesk')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-            <p class="text-xs text-slate-500">Raise a direct query or operational request with your assigned advisor.</p>
+            <p class="text-xs text-slate-500">Raise a direct query or operational request with your assigned distributor.</p>
             <div class="space-y-3">
                 <label class="block text-xs font-medium text-slate-700">Select Category</label>
                 <select id="help-category" class="w-full text-xs border rounded-lg p-2.5 focus:border-teal-600 outline-none">
@@ -891,23 +614,27 @@
         </div>
     </div>
 
-    <!-- MODAL 2: QUICK E-KYC DRAWER -->
+    <!-- MODAL 2: FRICTIONLESS SBI-STYLE E-KYC DRAWER -->
     <div id="modal-onboarding" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
             <div class="flex justify-between items-center border-b pb-3">
                 <div>
-                    <h3 class="font-serif font-bold text-teal-900 text-lg">Instant Quick eKYC & MFU CAN Setup</h3>
-                    <p class="text-[11px] text-slate-500">Frictionless Instant Paperless Verification</p>
+                    <h3 class="font-serif font-bold text-teal-900 text-lg">Instant eKYC & MFU CAN Setup</h3>
+                    <p class="text-[11px] text-slate-500">SBI MF Partner Style Instant Verification</p>
                 </div>
                 <button onclick="closeModal('modal-onboarding')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             <div class="space-y-3">
                 <div>
-                    <label class="block text-xs font-medium text-slate-700">Full Name</label>
+                    <label class="block text-xs font-medium text-slate-700">Full Name (As per PAN)</label>
                     <input type="text" placeholder="e.g. Ramesh Kumar" class="w-full text-xs border rounded-lg p-2.5 outline-none focus:border-teal-600">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-slate-700">Mobile Number</label>
+                    <label class="block text-xs font-medium text-slate-700">PAN Number</label>
+                    <input type="text" placeholder="ABCDE1234F" class="w-full text-xs border rounded-lg p-2.5 outline-none focus:border-teal-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-700">Aadhaar Linked Mobile Number</label>
                     <input type="text" placeholder="9876543210" class="w-full text-xs border rounded-lg p-2.5 outline-none focus:border-teal-600">
                 </div>
                 <div class="p-3 bg-teal-50 rounded-xl text-[11px] text-teal-800 space-y-1">
@@ -932,9 +659,9 @@
                 <div>
                     <label class="block font-medium text-slate-700 mb-1">Select Client</label>
                     <select class="w-full border rounded-lg p-2 focus:border-teal-600 outline-none">
-                        <option>Rajesh Sharma</option>
-                        <option>Priya Nair</option>
-                        <option>Anil Verma</option>
+                        <option>Rajesh Sharma (PAN: ABCDE****F)</option>
+                        <option>Priya Nair (PAN: BKWPR****K)</option>
+                        <option>Anil Verma (PAN: CZXPV****M)</option>
                     </select>
                 </div>
                 <div>
@@ -969,83 +696,14 @@
                         <div class="font-bold text-slate-800">Anil Verma • SIP Pause Request</div>
                         <div class="text-slate-500">Requested 2 hours ago</div>
                     </div>
-                    <button onclick="triggerToast('Resolved & Processed with AMC'); closeModal('modal-tickets')" class="bg-teal-600 text-white px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-teal-800 transition-all">Resolve</button>
+                    <button onclick="triggerToast('Resolved & Processed with AMC'); closeModal('modal-tickets')" class="bg-teal-600 text-white px-2.5 py-1 rounded text-[11px]">Resolve</button>
                 </div>
                 <div class="p-3 bg-teal-50 border border-teal-200 rounded-xl flex justify-between items-center">
                     <div>
                         <div class="font-bold text-slate-800">Rajesh Sharma • FY26 Tax Receipt</div>
                         <div class="text-slate-500">Requested 1 day ago</div>
                     </div>
-                    <button onclick="triggerToast('Tax Statement Emailed to Client'); closeModal('modal-tickets')" class="bg-teal-600 text-white px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-teal-800 transition-all">Send PDF</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL 5: GST PROOF UPLOADER -->
-    <div id="modal-gst-proof" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
-            <div class="flex justify-between items-center border-b pb-3">
-                <h3 class="font-serif font-bold text-teal-900 text-lg">Release Withheld GST Commission</h3>
-                <button onclick="closeModal('modal-gst-proof')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            <p class="text-xs text-slate-500">Upload your latest GSTR-3B filing acknowledgment to release held commission payouts across AMCs.</p>
-            <div class="border-2 border-dashed border-teal-200 rounded-xl p-6 text-center space-y-2 bg-teal-50/50 cursor-pointer hover:bg-teal-50" onclick="document.getElementById('file-input').click()">
-                <i data-lucide="upload-cloud" class="w-8 h-8 text-teal-600 mx-auto"></i>
-                <div class="text-xs font-semibold text-teal-900">Click to upload GSTR-3B PDF</div>
-                <div class="text-[10px] text-slate-400">Supported formats: PDF, PNG, JPG (Max 5MB)</div>
-                <input type="file" id="file-input" class="hidden" onchange="triggerToast('GSTR-3B Proof Uploaded! Automated Verification Initiated.')">
-            </div>
-            <button onclick="triggerToast('GSTR-3B Proof Uploaded! Payout Release Requested.'); closeModal('modal-gst-proof')" class="w-full bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2.5 rounded-xl text-xs transition-all">Submit Document</button>
-        </div>
-    </div>
-
-    <!-- MODAL 6: INVEST MORE (CLIENT ACTION) -->
-    <div id="modal-invest-more" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
-            <div class="flex justify-between items-center border-b pb-3">
-                <h3 class="font-serif font-bold text-teal-900 text-lg">Top Up Investment</h3>
-                <button onclick="closeModal('modal-invest-more')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            <div class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-medium text-slate-700 mb-1">Select Scheme</label>
-                    <select class="w-full border rounded-lg p-2.5 focus:border-teal-600 outline-none">
-                        <option>SBI Large & Midcap Fund - Reg (G)</option>
-                        <option>HDFC Flexi Cap Fund - Reg (G)</option>
-                        <option>ICICI Pru Corporate Bond Fund - Reg (G)</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block font-medium text-slate-700 mb-1">Investment Amount (₹)</label>
-                    <input type="number" value="10000" class="w-full border rounded-lg p-2.5 focus:border-teal-600 outline-none">
-                </div>
-            </div>
-            <button onclick="triggerToast('Order Submitted via MFU Gateway! Approval link sent to NetBanking/UPI.'); closeModal('modal-invest-more')" class="w-full bg-teal-600 hover:bg-teal-800 text-white font-semibold py-2.5 rounded-xl text-xs transition-all">Proceed to Payment</button>
-        </div>
-    </div>
-
-    <!-- MODAL 7: MANAGE SIPS -->
-    <div id="modal-manage-sips" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
-            <div class="flex justify-between items-center border-b pb-3">
-                <h3 class="font-serif font-bold text-teal-900 text-lg">Active SIP Mandates</h3>
-                <button onclick="closeModal('modal-manage-sips')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            <div class="space-y-3 text-xs">
-                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex justify-between items-center">
-                    <div>
-                        <div class="font-semibold text-slate-800">SBI Large & Midcap</div>
-                        <div class="text-slate-500">₹15,000 / month • 10th of every month</div>
-                    </div>
-                    <button onclick="triggerToast('Step-Up Request Sent to Advisor')" class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-[11px] font-semibold hover:bg-teal-200 transition-all">Step Up</button>
-                </div>
-                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex justify-between items-center">
-                    <div>
-                        <div class="font-semibold text-slate-800">HDFC Flexi Cap</div>
-                        <div class="text-slate-500">₹10,000 / month • 15th of every month</div>
-                    </div>
-                    <button onclick="triggerToast('Step-Up Request Sent to Advisor')" class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-[11px] font-semibold hover:bg-teal-200 transition-all">Step Up</button>
+                    <button onclick="triggerToast('Tax Statement Emailed to Client'); closeModal('modal-tickets')" class="bg-teal-600 text-white px-2.5 py-1 rounded text-[11px]">Send PDF</button>
                 </div>
             </div>
         </div>
@@ -1113,7 +771,7 @@
             activeBtn.classList.remove('text-teal-100');
         }
 
-        // Switch Calculator Tabs in Distributor Portal
+        // Switch Calculator Tabs
         function switchCalcTab(tab) {
             ['sip', 'swp', 'emi'].forEach(t => {
                 document.getElementById(`calc-panel-${t}`).classList.add('hidden');
@@ -1147,126 +805,13 @@
             setTimeout(() => { toast.classList.add('hidden'); }, 3000);
         }
 
-        // Search Filter for Investor Table
-        function filterInvestorTable() {
-            const query = document.getElementById('investor-search').value.toLowerCase();
-            const rows = document.querySelectorAll('#investor-table-body tr');
-            rows.forEach(row => {
-                const text = row.innerText.toLowerCase();
-                row.style.display = text.includes(query) ? '' : 'none';
-            });
-        }
-
         // Helpdesk Submission
         function submitHelpDeskQuery() {
             closeModal('modal-helpdesk');
             triggerToast('Query submitted to your assigned advisor! Resolution expected within 2 hours.');
         }
 
-        // CALCULATOR 1: Public Revenue & GST Calculator
-        function updateDistributorGstCalculator() {
-            const clients = parseInt(document.getElementById('calc-clients').value);
-            const sip = parseInt(document.getElementById('calc-sip').value);
-            const trailRate = parseFloat(document.getElementById('calc-trail').value);
-            const isGstRegistered = document.getElementById('calc-gst-registered').checked;
-
-            document.getElementById('calc-clients-val').innerText = clients;
-            document.getElementById('calc-sip-val').innerText = '₹' + sip.toLocaleString('en-IN');
-            document.getElementById('calc-trail-val').innerText = trailRate.toFixed(2) + '%';
-
-            const monthlyInvestment = clients * sip;
-            const months = 60;
-            const monthlyRate = 0.12 / 12;
-            let projectedAUM = monthlyInvestment * (((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate));
-
-            let grossTrail = projectedAUM * (trailRate / 100);
-            if (!isGstRegistered) { grossTrail = grossTrail * 0.8475; }
-
-            document.getElementById('res-aum').innerText = '₹' + Math.round(projectedAUM).toLocaleString('en-IN');
-            document.getElementById('res-gross').innerText = '₹' + Math.round(grossTrail).toLocaleString('en-IN');
-            document.getElementById('res-gst-status').innerText = isGstRegistered ? '100% Released' : 'Withheld (Unregistered)';
-            document.getElementById('res-gst-status').className = isGstRegistered ? 'text-lg font-bold text-mint-500' : 'text-lg font-bold text-amber-500';
-        }
-
-        // CALCULATOR 2: SIP & Wealth Compounder
-        function runSipCompounder() {
-            const P = parseFloat(document.getElementById('sip-comp-amt').value) || 0;
-            const r = parseFloat(document.getElementById('sip-comp-rate').value) || 0;
-            const years = parseInt(document.getElementById('sip-comp-years').value) || 0;
-            const stepUpPct = parseFloat(document.getElementById('sip-comp-step').value) || 0;
-
-            document.getElementById('sip-comp-amt-val').innerText = '₹' + P.toLocaleString('en-IN');
-            document.getElementById('sip-comp-rate-val').innerText = r + '%';
-            document.getElementById('sip-comp-years-val').innerText = years + ' Years';
-            document.getElementById('sip-comp-step-val').innerText = stepUpPct + '%';
-
-            let currentMonthly = P;
-            let totalInvested = 0;
-            let corpus = 0;
-            const monthlyRate = r / 12 / 100;
-
-            for (let yr = 1; yr <= years; yr++) {
-                for (let m = 1; m <= 12; m++) {
-                    totalInvested += currentMonthly;
-                    corpus = (corpus + currentMonthly) * (1 + monthlyRate);
-                }
-                currentMonthly = currentMonthly * (1 + stepUpPct / 100);
-            }
-
-            const gain = corpus - totalInvested;
-            document.getElementById('sip-comp-invested-res').innerText = '₹' + Math.round(totalInvested).toLocaleString('en-IN');
-            document.getElementById('sip-comp-gain-res').innerText = '₹' + Math.round(gain).toLocaleString('en-IN');
-            document.getElementById('sip-comp-total-res').innerText = '₹' + Math.round(corpus).toLocaleString('en-IN');
-        }
-
-        // CALCULATOR 3: Portfolio Rebalancing
-        function runRebalancingCalc() {
-            const totalVal = parseFloat(document.getElementById('rebal-total-val').value) || 0;
-            const targetEq = parseFloat(document.getElementById('rebal-target-eq').value) || 0;
-            const currEq = parseFloat(document.getElementById('rebal-curr-eq').value) || 0;
-
-            const targetEqAmt = totalVal * (targetEq / 100);
-            const currEqAmt = totalVal * (currEq / 100);
-            const diff = currEqAmt - targetEqAmt;
-
-            const outputEl = document.getElementById('rebal-output');
-            if (diff > 0) {
-                outputEl.innerText = `Sell ₹${Math.round(diff).toLocaleString('en-IN')} Equity → Buy ₹${Math.round(diff).toLocaleString('en-IN')} Debt/Gold`;
-            } else if (diff < 0) {
-                outputEl.innerText = `Buy ₹${Math.round(Math.abs(diff)).toLocaleString('en-IN')} Equity ← Sell ₹${Math.round(Math.abs(diff)).toLocaleString('en-IN')} Debt/Gold`;
-            } else {
-                outputEl.innerText = `Portfolio is perfectly balanced with Target Allocation!`;
-            }
-        }
-
-        // CALCULATOR 4: Tax & Capital Gains
-        function runTaxCalc() {
-            const asset = document.getElementById('tax-asset-type').value;
-            const holding = document.getElementById('tax-holding-period').value;
-            const gain = parseFloat(document.getElementById('tax-gain-amt').value) || 0;
-
-            let tax = 0;
-            let expl = "";
-
-            if (asset === 'equity') {
-                if (holding === 'ltcg') {
-                    const taxableGain = Math.max(0, gain - 125000);
-                    tax = taxableGain * 0.125;
-                    expl = "12.5% LTCG applied on gains exceeding ₹1.25 Lakh exemption limit.";
-                } else {
-                    tax = gain * 0.20;
-                    expl = "20% STCG flat rate applied for equity held ≤ 12 months.";
-                }
-            } else {
-                tax = gain * 0.30;
-                expl = "Debt Mutual Funds taxed as per slab rate (assumed 30% slab rate).";
-            }
-
-            document.getElementById('tax-result-val').innerText = '₹' + Math.round(tax).toLocaleString('en-IN');
-            document.getElementById('tax-explanation').innerText = expl;
-        }
-
-        // Distributor Panel Tab Calculators (SIP/SWP/EMI)
+        // Distributor Calculator Engine
         function runDistCalculators() {
             // SIP Calculation
             const P = parseFloat(document.getElementById('dist-sip-amt').value) || 0;
@@ -1299,41 +844,36 @@
             }
         }
 
-        // Chart.js Donut Initialization
-        function initChart() {
-            const ctx = document.getElementById('assetAllocationChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Large Cap Equity', 'Mid/Small Cap Equity', 'Corporate Debt & Gold', 'Liquid Cash'],
-                        datasets: [{
-                            data: [40, 25, 25, 10],
-                            backgroundColor: ['#0B7A87', '#1E9E62', '#F5A524', '#94A3B8'],
-                            borderWidth: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false }
-                        },
-                        cutout: '70%'
-                    }
-                });
-            }
+        // Public Revenue & GST Calculator
+        function updateCalculator() {
+            const clients = parseInt(document.getElementById('calc-clients').value);
+            const sip = parseInt(document.getElementById('calc-sip').value);
+            const trailRate = parseFloat(document.getElementById('calc-trail').value);
+            const isGstRegistered = document.getElementById('calc-gst-registered').checked;
+
+            document.getElementById('calc-clients-val').innerText = clients;
+            document.getElementById('calc-sip-val').innerText = '₹' + sip.toLocaleString('en-IN');
+            document.getElementById('calc-trail-val').innerText = trailRate.toFixed(2) + '%';
+
+            const monthlyInvestment = clients * sip;
+            const months = 60;
+            const monthlyRate = 0.12 / 12;
+            let projectedAUM = monthlyInvestment * (((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate));
+
+            let grossTrail = projectedAUM * (trailRate / 100);
+            if (!isGstRegistered) { grossTrail = grossTrail * 0.8475; }
+
+            document.getElementById('res-aum').innerText = '₹' + Math.round(projectedAUM).toLocaleString('en-IN');
+            document.getElementById('res-gross').innerText = '₹' + Math.round(grossTrail).toLocaleString('en-IN');
+            document.getElementById('res-gst-status').innerText = isGstRegistered ? '100% Released' : 'Withheld (Unregistered)';
+            document.getElementById('res-gst-status').className = isGstRegistered ? 'text-lg font-bold text-mint-500' : 'text-lg font-bold text-amber-500';
         }
 
-        // Initialize icons and all calculators
+        // Initialize icons and calculator
         document.addEventListener("DOMContentLoaded", function() {
             lucide.createIcons();
-            updateDistributorGstCalculator();
-            runSipCompounder();
-            runRebalancingCalc();
-            runTaxCalc();
+            updateCalculator();
             runDistCalculators();
-            initChart();
         });
     </script>
 </body>

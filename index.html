@@ -8,12 +8,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Chart.js for Interactive Visuals -->
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-slate-100 font-sans text-slate-800 min-h-screen flex flex-col">
 
-    <!-- TOP NAVIGATION BAR -->
+    <!-- 1. NAVIGATION BAR -->
     <nav class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -22,7 +22,7 @@
                 </div>
                 <div>
                     <h1 class="font-serif font-bold text-base leading-tight tracking-tight">FolioCraft</h1>
-                    <p class="text-[10px] text-teal-400 font-medium">MFD Partner & Investor Portal</p>
+                    <p class="text-[10px] text-teal-400 font-medium">MFD Partner Network</p>
                 </div>
             </div>
 
@@ -37,14 +37,14 @@
         </div>
     </nav>
 
-    <!-- MAIN DASHBOARD WRAPPER -->
+    <!-- MAIN CONTAINER -->
     <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-8 flex-grow w-full">
 
-        <!-- 1. HERO CAROUSEL: PUBLIC & ROI INTERFACE -->
+        <!-- 2. HERO CAROUSEL FEATURE -->
         <section class="relative overflow-hidden bg-slate-900 text-white rounded-2xl shadow-xl">
             <div id="hero-carousel-track" class="flex transition-transform duration-500 ease-in-out">
                 
-                <!-- Slide 1: Quick Onboarding -->
+                <!-- Carousel Slide 1 -->
                 <div class="w-full flex-shrink-0 p-8 md:p-12 bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="max-w-xl space-y-4">
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-teal-500/20 text-teal-300 border border-teal-500/30">
@@ -70,7 +70,7 @@
                     </div>
                 </div>
 
-                <!-- Slide 2: High ROI & Growth -->
+                <!-- Carousel Slide 2 -->
                 <div class="w-full flex-shrink-0 p-8 md:p-12 bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="max-w-xl space-y-4">
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
@@ -98,7 +98,6 @@
 
             </div>
 
-            <!-- Carousel Navigation Buttons -->
             <button onclick="moveHeroSlide(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-800/60 hover:bg-slate-800 text-white p-2 rounded-full backdrop-blur-sm transition-all border border-slate-700">
                 <i data-lucide="chevron-left" class="w-4 h-4"></i>
             </button>
@@ -107,11 +106,11 @@
             </button>
         </section>
 
-        <!-- 2. STAKEHOLDER WORKFLOW SELECTOR -->
+        <!-- 3. STAKEHOLDER WORKFLOW SWITCHER -->
         <section class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center gap-2">
                 <i data-lucide="layers" class="w-5 h-5 text-teal-800"></i>
-                <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Stakeholder View:</span>
+                <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Stakeholder View Switcher:</span>
             </div>
             <div class="flex flex-wrap gap-2">
                 <button onclick="switchRole('mfd')" id="btn-role-mfd" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-teal-800 text-white transition-all shadow-sm">
@@ -126,7 +125,7 @@
             </div>
         </section>
 
-        <!-- 3. STATS OVERVIEW CARDS -->
+        <!-- 4. STATS OVERVIEW CARDS -->
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
                 <div class="flex justify-between items-center text-slate-500 text-xs font-medium">
@@ -171,10 +170,10 @@
             </div>
         </section>
 
-        <!-- 4. DASHBOARD BODY: GRAPH & STAKEHOLDER ACTIONS -->
+        <!-- 5. MAIN DASHBOARD GRAPH & QUICK ACTIONS -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <!-- Interactive Analytics & Chart Section -->
+            <!-- Growth Chart -->
             <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
                 <div class="flex items-center justify-between border-b border-slate-100 pb-4">
                     <div>
@@ -191,16 +190,154 @@
                 </div>
             </div>
 
-            <!-- Interactive Stakeholder Quick Actions Panel -->
+            <!-- Stakeholder Quick Actions Panel -->
             <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
                 <h3 id="actions-title" class="font-bold text-slate-800 text-base border-b border-slate-100 pb-3">MFD Partner Actions</h3>
-                
                 <div id="actions-container" class="space-y-3">
-                    <!-- Actions will dynamically render based on stakeholder view -->
+                    <!-- Dynamic rendering via JS -->
                 </div>
             </div>
 
         </div>
+
+        <!-- 6. MULTI-ASSET ALLOCATION & PORTFOLIO REBALANCING INTERFACE -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Allocation Visualizer -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-base">Multi-Asset Breakdown</h3>
+                    <span class="text-xs text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md font-medium">Optimal Diversity</span>
+                </div>
+                <div class="h-56 flex items-center justify-center">
+                    <canvas id="allocationChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Automated Portfolio Rebalancing Tools -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
+                        <h3 class="font-bold text-slate-800 text-base">Automated Portfolio Rebalancer</h3>
+                        <span class="text-[11px] bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full font-medium">Drift Alert: High Equity</span>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        Client portfolios have drifted <strong>+8.4% above target equity thresholds</strong> due to recent market rallies. Rebalance back into Debt/Gold with 1-click execution.
+                    </p>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between text-slate-500">
+                            <span>Target Model Allocation:</span>
+                            <span class="font-medium text-slate-800">60% Equity / 30% Debt / 10% Gold</span>
+                        </div>
+                        <div class="flex justify-between text-slate-500">
+                            <span>Current Drift Status:</span>
+                            <span class="font-medium text-amber-600">68.4% Equity / 23.6% Debt / 8% Gold</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-100 flex gap-3">
+                    <button onclick="triggerToast('Executing 1-Click Smart Rebalance across drifted portfolios...')" class="flex-1 bg-teal-800 hover:bg-teal-900 text-white text-xs font-semibold py-2.5 rounded-xl transition-all text-center">
+                        Execute 1-Click Rebalance
+                    </button>
+                    <button onclick="triggerToast('Custom rebalance parameters opened.')" class="px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold py-2.5 rounded-xl transition-all">
+                        Customize
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 7. REVENUE & COMMISSION ANALYTICS SECTION -->
+        <section class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+            <div class="flex flex-wrap justify-between items-center border-b border-slate-100 pb-3 gap-2">
+                <div>
+                    <h3 class="font-bold text-slate-800 text-base">Trail Commission & Earnings Breakdown</h3>
+                    <p class="text-xs text-slate-400">Brokerage payout tracking by Asset Management Company (AMC)</p>
+                </div>
+                <button onclick="triggerToast('Commission statement PDF generated for tax filings.')" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-colors">
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i> Statement PDF
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center py-2">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <p class="text-[11px] text-slate-400 font-medium">B30 City Incentive Boost</p>
+                    <p class="text-lg font-bold text-teal-800">+ 18.2% Extra</p>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <p class="text-[11px] text-slate-400 font-medium">Avg. Trail Rate Yield</p>
+                    <p class="text-lg font-bold text-teal-800">0.78% p.a.</p>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <p class="text-[11px] text-slate-400 font-medium">Next Payout Date</p>
+                    <p class="text-lg font-bold text-teal-800">10th Oct 2026</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CLIENT DIRECTORY & ACTIVE FOLIOS TABLE -->
+        <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="p-6 border-b border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <h3 class="font-bold text-slate-800 text-base">Client Portfolio Directory</h3>
+                    <p class="text-xs text-slate-400">Manage individual investor accounts and eKYC statuses</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" placeholder="Search investor name or PAN..." class="text-xs border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-teal-600 w-48 sm:w-64">
+                    <button onclick="triggerToast('Filter applied!')" class="p-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
+                        <i data-lucide="filter" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase font-semibold">
+                        <tr>
+                            <th class="p-4">Investor Name</th>
+                            <th class="p-4">PAN / CAN</th>
+                            <th class="p-4">Current AUM</th>
+                            <th class="p-4">Monthly SIP</th>
+                            <th class="p-4">eKYC Status</th>
+                            <th class="p-4 text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-900">Rajesh Sharma</td>
+                            <td class="p-4 uppercase text-slate-500">BHVPS1029K</td>
+                            <td class="p-4 font-bold">₹ 24,50,000</td>
+                            <td class="p-4 text-teal-700 font-semibold">₹ 45,000</td>
+                            <td class="p-4"><span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-full font-medium text-[10px]">VERIFIED</span></td>
+                            <td class="p-4 text-right">
+                                <button onclick="triggerToast('Opening portfolio details for Rajesh Sharma...')" class="text-teal-700 hover:underline font-semibold">View Folios</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-900">Ananya Verma</td>
+                            <td class="p-4 uppercase text-slate-500">ALPVM8832P</td>
+                            <td class="p-4 font-bold">₹ 12,80,000</td>
+                            <td class="p-4 text-teal-700 font-semibold">₹ 20,000</td>
+                            <td class="p-4"><span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-full font-medium text-[10px]">VERIFIED</span></td>
+                            <td class="p-4 text-right">
+                                <button onclick="triggerToast('Opening portfolio details for Ananya Verma...')" class="text-teal-700 hover:underline font-semibold">View Folios</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-900">Vikramaditya Roy</td>
+                            <td class="p-4 uppercase text-slate-500">CKPRR4011M</td>
+                            <td class="p-4 font-bold">₹ 5,10,000</td>
+                            <td class="p-4 text-teal-700 font-semibold">₹ 10,000</td>
+                            <td class="p-4"><span class="px-2 py-1 bg-amber-100 text-amber-800 rounded-full font-medium text-[10px]">PENDING MANDATE</span></td>
+                            <td class="p-4 text-right">
+                                <button onclick="openModal('modal-onboarding')" class="text-teal-700 hover:underline font-semibold">Complete KYC</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
     </main>
 
@@ -215,7 +352,6 @@
     <!-- MODAL 1: QUICK E-KYC DRAWER -->
     <div id="modal-onboarding" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 relative">
-            <!-- Header -->
             <div class="flex justify-between items-start border-b border-slate-100 pb-3">
                 <div>
                     <h3 class="font-serif font-bold text-slate-800 text-xl tracking-tight">Instant Quick eKYC & MFU CAN Setup</h3>
@@ -226,7 +362,6 @@
                 </button>
             </div>
 
-            <!-- Form Fields -->
             <div class="space-y-3.5 pt-1">
                 <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name (As per PAN)</label>
@@ -241,7 +376,6 @@
                     <input type="tel" placeholder="9876543210" class="w-full text-xs border border-slate-200 rounded-lg p-3 outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600 transition-all text-slate-800 placeholder:text-slate-300">
                 </div>
 
-                <!-- Info Box -->
                 <div class="p-3 bg-teal-50/70 rounded-xl border border-teal-100/60 space-y-0.5">
                     <div class="flex items-center gap-1.5 text-xs font-semibold text-teal-800">
                         <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-teal-600"></i>
@@ -251,7 +385,6 @@
                 </div>
             </div>
 
-            <!-- Submit Button -->
             <div class="pt-2">
                 <button onclick="triggerToast('KRA Verified & CAN Created! Mandate Link Sent via WhatsApp.'); closeModal('modal-onboarding');" class="w-full bg-teal-800 hover:bg-teal-900 text-white font-semibold py-3 rounded-xl text-xs transition-all shadow-md shadow-teal-900/10">
                     Verify & Send Invite
@@ -292,7 +425,7 @@
         </div>
     </div>
 
-    <!-- TOAST NOTIFICATION -->
+    <!-- TOAST NOTIFICATION SYSTEM -->
     <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-lg border border-slate-700 hidden z-50 transition-all flex items-center gap-2">
         <i data-lucide="info" class="w-4 h-4 text-teal-400"></i>
         <span id="toast-message">Action completed successfully!</span>
@@ -300,10 +433,10 @@
 
     <!-- JAVASCRIPT APP LOGIC -->
     <script>
-        // Initialize Icons
+        // Lucide Icons
         lucide.createIcons();
 
-        // Hero Carousel Navigation
+        // Hero Carousel Logic
         let currentHeroSlide = 0;
         function moveHeroSlide(direction) {
             const track = document.getElementById('hero-carousel-track');
@@ -312,29 +445,22 @@
             track.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
         }
 
-        // Modal Logic
-        function openModal(id) {
-            document.getElementById(id).classList.remove('hidden');
-        }
+        // Modal Controls
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
-        function closeModal(id) {
-            document.getElementById(id).classList.add('hidden');
-        }
-
-        // Toast Feedback System
+        // Toast Popup Notification
         function triggerToast(message) {
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toast-message');
             toastMsg.innerText = message;
             toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3200);
+            setTimeout(() => { toast.classList.add('hidden'); }, 3200);
         }
 
-        // Initialize Interactive Chart
-        const ctx = document.getElementById('aumChart').getContext('2d');
-        const aumChart = new Chart(ctx, {
+        // Chart 1: Growth Line Chart
+        const ctxAum = document.getElementById('aumChart').getContext('2d');
+        const aumChart = new Chart(ctxAum, {
             type: 'line',
             data: {
                 labels: ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
@@ -371,7 +497,26 @@
             aumChart.update();
         }
 
-        // Stakeholder Role Switching Logic
+        // Chart 2: Multi-Asset Donut Chart
+        const ctxAlloc = document.getElementById('allocationChart').getContext('2d');
+        new Chart(ctxAlloc, {
+            type: 'doughnut',
+            data: {
+                labels: ['Equity Funds', 'Debt & Liquid', 'Gold ETFs', 'Global/Hybrid'],
+                datasets: [{
+                    data: [62, 24, 8, 6],
+                    backgroundColor: ['#0f766e', '#3b82f6', '#eab308', '#6366f1'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'right', labels: { font: { size: 11 } } } }
+            }
+        });
+
+        // Dynamic Stakeholder Switching Data
         const roleData = {
             mfd: {
                 stat1: "₹ 14.82 Cr", label1: "Total AUM", sub1: "+12.4% vs last month",
@@ -415,7 +560,6 @@
         };
 
         function switchRole(role) {
-            // Update button styles
             ['mfd', 'investor', 'admin'].forEach(r => {
                 const btn = document.getElementById(`btn-role-${r}`);
                 if (r === role) {
@@ -425,7 +569,6 @@
                 }
             });
 
-            // Update stats & chart titles
             const data = roleData[role];
             document.getElementById('stat-1').innerText = data.stat1;
             document.getElementById('label-stat-1').innerText = data.label1;
@@ -447,7 +590,6 @@
             document.getElementById('chart-subtitle').innerText = data.chartSubtitle;
             document.getElementById('actions-title').innerText = data.actionsTitle;
 
-            // Render Actions
             const actionsContainer = document.getElementById('actions-container');
             actionsContainer.innerHTML = '';
             data.actions.forEach(item => {

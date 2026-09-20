@@ -39,7 +39,7 @@
   <!-- MAIN CONTAINER -->
   <main class="max-w-7xl w-full mx-auto p-4 sm:p-6 flex-grow space-y-6">
 
-    <!-- 1. PUBLIC & ROI PORTAL (MATCHES SCREENSHOT LAYOUT) -->
+    <!-- 1. PUBLIC & ROI PORTAL -->
     <section id="portal-public" class="portal-view space-y-10 py-6">
       
       <!-- HERO HEADER SECTION -->
@@ -200,7 +200,7 @@
           <div class="flex justify-between items-center border-b pb-3 border-slate-100">
             <div>
               <h3 class="font-bold text-slate-800">Financial Advisory Tool & Calculators</h3>
-              <p class="text-xs text-slate-500">Model SIP growth, SWP capital longevity, and loan EMIs for clients</p>
+              <p class="text-xs text-slate-500" id="calc-subtitle">Model SIP growth, SWP capital longevity, and loan EMIs for clients</p>
             </div>
             <div class="flex gap-1 bg-slate-100 p-1 rounded-lg">
               <button onclick="switchCalcTab('sip')" id="calc-sip" class="subtab-btn active px-2.5 py-1 text-xs font-medium rounded">SIP</button>
@@ -208,31 +208,10 @@
               <button onclick="switchCalcTab('emi')" id="calc-emi" class="subtab-btn px-2.5 py-1 text-xs font-medium rounded">EMI vs SIP</button>
             </div>
           </div>
+
+          <!-- Dynamic Calculator Container -->
           <div id="calc-content" class="space-y-4">
-            <div class="grid grid-cols-3 gap-3">
-              <div>
-                <label class="text-[11px] font-semibold text-slate-600">Monthly SIP (₹)</label>
-                <input id="sip-amount" type="number" value="10000" oninput="runSipCalc()" class="w-full mt-1 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
-              </div>
-              <div>
-                <label class="text-[11px] font-semibold text-slate-600">Expected CAGR (%)</label>
-                <input id="sip-rate" type="number" value="12" oninput="runSipCalc()" class="w-full mt-1 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
-              </div>
-              <div>
-                <label class="text-[11px] font-semibold text-slate-600">Tenure (Years)</label>
-                <input id="sip-years" type="number" value="30" oninput="runSipCalc()" class="w-full mt-1 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
-              </div>
-            </div>
-            <div class="bg-slate-50 p-3 rounded-lg flex justify-between items-center border border-slate-200">
-              <div>
-                <p class="text-xs text-slate-500">Total Invested Amount</p>
-                <p id="sip-invested" class="text-sm font-bold text-slate-700">₹36,00,000</p>
-              </div>
-              <div class="text-right">
-                <p class="text-xs text-slate-500">Est. Future Corpus</p>
-                <p id="sip-future" class="text-lg font-bold text-teal-700">₹3,52,99,138</p>
-              </div>
-            </div>
+            <!-- Rendered dynamically via switchCalcTab JS -->
           </div>
         </div>
 
@@ -424,7 +403,7 @@
         <div>
           <span class="bg-teal-900 text-teal-300 text-[10px] font-mono px-2 py-0.5 rounded tracking-wider uppercase">Super-Admin Operations</span>
           <h2 class="text-xl font-bold mt-1">FolioCraft Control Center</h2>
-          <p class="text-xs text-teal-200">System-wide governance, license monitoring, and execution routing</p>
+          <p class="text-xs text-teal-200">System-wide governance, license monitoring, blacklist management, and execution routing</p>
         </div>
         <div class="flex items-center gap-2 bg-teal-950/60 px-3 py-1.5 rounded-lg border border-teal-800">
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -436,7 +415,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <p class="text-xs text-slate-500 font-medium">Active Tenant MFDs</p>
-          <p class="text-xl font-bold text-slate-800 mt-1">1,240 MFDs</p>
+          <p id="admin-active-mfds" class="text-xl font-bold text-slate-800 mt-1">1,240 MFDs</p>
           <p class="text-xs text-slate-400 mt-0.5">Across 42 nationwide states & UTs</p>
         </div>
         <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
@@ -454,43 +433,55 @@
       <!-- Module Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
-        <!-- Module 1: License Monitor -->
+        <!-- Module 1: License & Blacklist Vault -->
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex justify-between items-center border-b pb-3 border-slate-100">
             <h3 class="font-bold text-slate-800 flex items-center gap-2">
-              <i data-lucide="award" class="w-4 h-4 text-teal-600"></i> ARN & EUIN Compliance Vault
+              <i data-lucide="award" class="w-4 h-4 text-teal-600"></i> ARN Compliance & Blacklist Control
             </h3>
-            <span class="text-[11px] bg-teal-50 text-teal-700 font-semibold px-2 py-0.5 rounded border border-teal-200">Auto-Reminders Active</span>
+            <span class="text-[11px] bg-teal-50 text-teal-700 font-semibold px-2 py-0.5 rounded border border-teal-200">Governance Active</span>
           </div>
-          <p class="text-xs text-slate-500">Tracks active MFD licenses, flags expiring certifications, and prevents non-compliant trade routing.</p>
+          <p class="text-xs text-slate-500">Tracks active licenses and allows instant blacklisting of distributors flagged for unlawful activity.</p>
           <div class="overflow-x-auto">
             <table class="w-full text-xs text-left border-collapse">
               <thead>
                 <tr class="bg-slate-50 border-b border-slate-200 text-slate-600">
                   <th class="p-2 font-semibold">Distributor / Firm</th>
                   <th class="p-2 font-semibold">ARN / EUIN</th>
-                  <th class="p-2 font-semibold">Expiry Date</th>
-                  <th class="p-2 font-semibold">License Status</th>
+                  <th class="p-2 font-semibold">Status</th>
+                  <th class="p-2 font-semibold text-right">Governance Action</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-100">
-                <tr>
+              <tbody class="divide-y divide-slate-100" id="mfd-compliance-table">
+                <tr id="mfd-row-284910">
                   <td class="p-2 font-medium">Horizon Wealth Partners</td>
                   <td class="p-2 font-mono text-slate-600">ARN-284910</td>
-                  <td class="p-2 text-slate-600">14-Nov-2028</td>
-                  <td class="p-2"><span class="bg-emerald-100 text-emerald-800 font-medium px-2 py-0.5 rounded text-[10px]">Active & Valid</span></td>
+                  <td class="p-2" id="status-badge-284910"><span class="bg-emerald-100 text-emerald-800 font-medium px-2 py-0.5 rounded text-[10px]">Active & Valid</span></td>
+                  <td class="p-2 text-right">
+                    <button onclick="openBlacklistModal('Horizon Wealth Partners', 'ARN-284910')" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-semibold px-2.5 py-1 rounded text-[11px] transition">
+                      Blacklist MFD
+                    </button>
+                  </td>
                 </tr>
-                <tr>
+                <tr id="mfd-row-192041">
                   <td class="p-2 font-medium">Apex Financial Consultants</td>
                   <td class="p-2 font-mono text-slate-600">ARN-192041</td>
-                  <td class="p-2 text-amber-600 font-semibold">28-Oct-2026</td>
-                  <td class="p-2"><span class="bg-amber-100 text-amber-800 font-medium px-2 py-0.5 rounded text-[10px]">Expiring (38d)</span></td>
+                  <td class="p-2" id="status-badge-192041"><span class="bg-amber-100 text-amber-800 font-medium px-2 py-0.5 rounded text-[10px]">Expiring (38d)</span></td>
+                  <td class="p-2 text-right">
+                    <button onclick="openBlacklistModal('Apex Financial Consultants', 'ARN-192041')" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-semibold px-2.5 py-1 rounded text-[11px] transition">
+                      Blacklist MFD
+                    </button>
+                  </td>
                 </tr>
-                <tr>
+                <tr id="mfd-row-094123">
                   <td class="p-2 font-medium">Shree Wealth Management</td>
                   <td class="p-2 font-mono text-slate-600">ARN-094123</td>
-                  <td class="p-2 text-rose-600 font-semibold">12-Aug-2026</td>
-                  <td class="p-2"><span class="bg-rose-100 text-rose-800 font-medium px-2 py-0.5 rounded text-[10px]">Expired / Blocked</span></td>
+                  <td class="p-2" id="status-badge-094123"><span class="bg-rose-100 text-rose-800 font-medium px-2 py-0.5 rounded text-[10px]">Blacklisted / Blocked</span></td>
+                  <td class="p-2 text-right">
+                    <button disabled class="bg-slate-100 text-slate-400 border border-slate-200 font-semibold px-2.5 py-1 rounded text-[11px] cursor-not-allowed">
+                      Access Revoked
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -843,14 +834,168 @@
       );
     }
 
-    // Calculator Sub-Tab Switcher
-    function switchCalcTab(tab) {
-      document.querySelectorAll('.subtab-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(`calc-${tab}`).classList.add('active');
-      runSipCalc();
+    // --- ADMIN BLACKLIST / REVOCATION LOGIC ---
+    let pendingBlacklistArn = '';
+    let pendingBlacklistName = '';
+
+    function openBlacklistModal(firmName, arnCode) {
+      pendingBlacklistName = firmName;
+      pendingBlacklistArn = arnCode;
+      
+      openCustomModal(
+        `🚨 Blacklist MFD: ${firmName}`,
+        `<div class="space-y-3">
+          <div class="bg-rose-50 border border-rose-200 text-rose-900 p-3 rounded-lg text-xs">
+            <p class="font-bold">Warning: Unlawful Activity & Malpractice Intervention</p>
+            <p class="mt-0.5">Blacklisting this distributor will immediately revoke API keys, freeze CAN batch transactions, and block commission disbursements.</p>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Reason for Revocation / Blacklist</label>
+            <select id="blacklist-reason" class="w-full p-2 border border-slate-300 rounded text-xs">
+              <option value="churning">Unauthorized Portfolio Churning</option>
+              <option value="arn_suspension">ARN License Suspended by Regulator</option>
+              <option value="fraud">Fraudulent Document Submission / Compliance Breach</option>
+              <option value="malpractice">Unlawful Activity / Mis-selling</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Admin Confirmation Notes</label>
+            <textarea id="blacklist-notes" placeholder="Enter compliance case reference or notes..." class="w-full p-2 border border-slate-300 rounded text-xs h-16"></textarea>
+          </div>
+        </div>`,
+        `<button onclick="closeInteractiveModal()" class="bg-slate-200 text-slate-700 px-3 py-1.5 rounded text-xs font-semibold">Cancel</button>
+         <button onclick="confirmBlacklist()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-1.5 rounded text-xs shadow transition">Confirm Blacklist</button>`
+      );
     }
 
-    // Dynamic SIP Calculator
+    function confirmBlacklist() {
+      const arnKey = pendingBlacklistArn.replace('ARN-', '');
+      const badgeElem = document.getElementById(`status-badge-${arnKey}`);
+      const rowElem = document.getElementById(`mfd-row-${arnKey}`);
+
+      if (badgeElem && rowElem) {
+        badgeElem.innerHTML = `<span class="bg-rose-100 text-rose-800 font-medium px-2 py-0.5 rounded text-[10px]">Blacklisted / Blocked</span>`;
+        const actionTd = rowElem.querySelector('td:last-child');
+        if (actionTd) {
+          actionTd.innerHTML = `<button disabled class="bg-slate-100 text-slate-400 border border-slate-200 font-semibold px-2.5 py-1 rounded text-[11px] cursor-not-allowed">Access Revoked</button>`;
+        }
+      }
+
+      closeInteractiveModal();
+      alert(` Distributor ${pendingBlacklistName} (${pendingBlacklistArn}) has been successfully blacklisted and access is revoked.`);
+    }
+
+    // --- INTERACTIVE CALCULATORS ENGINE ---
+    let currentCalcTab = 'sip';
+
+    function switchCalcTab(tab) {
+      currentCalcTab = tab;
+      document.querySelectorAll('.subtab-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`calc-${tab}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const container = document.getElementById('calc-content');
+      const subtitle = document.getElementById('calc-subtitle');
+
+      if (tab === 'sip') {
+        subtitle.innerText = "Model SIP growth and compound wealth accumulation over time";
+        container.innerHTML = `
+          <div class="grid grid-cols-3 gap-3">
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Monthly SIP (₹)</label>
+              <input id="sip-amount" type="number" value="10000" oninput="runSipCalc()" class="w-full mt-1 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Expected CAGR (%)</label>
+              <input id="sip-rate" type="number" value="12" oninput="runSipCalc()" class="w-full mt-1 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Tenure (Years)</label>
+              <input id="sip-years" type="number" value="30" oninput="runSipCalc()" class="w-full mt-1 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg flex justify-between items-center border border-slate-200">
+            <div>
+              <p class="text-xs text-slate-500">Total Invested Amount</p>
+              <p id="sip-invested" class="text-sm font-bold text-slate-700">₹36,00,000</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-slate-500">Est. Future Corpus</p>
+              <p id="sip-future" class="text-lg font-bold text-teal-700">₹3,52,99,138</p>
+            </div>
+          </div>
+        `;
+        runSipCalc();
+      } else if (tab === 'swp') {
+        subtitle.innerText = "Model systematic withdrawal plans, regular monthly income, and capital longevity";
+        container.innerHTML = `
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Initial Corpus (₹)</label>
+              <input id="swp-corpus" type="number" value="5000000" oninput="runSwpCalc()" class="w-full mt-1 px-2 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Monthly Payout (₹)</label>
+              <input id="swp-withdrawal" type="number" value="35000" oninput="runSwpCalc()" class="w-full mt-1 px-2 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Return (%)</label>
+              <input id="swp-rate" type="number" value="9" oninput="runSwpCalc()" class="w-full mt-1 px-2 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Tenure (Years)</label>
+              <input id="swp-years" type="number" value="15" oninput="runSwpCalc()" class="w-full mt-1 px-2 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg flex justify-between items-center border border-slate-200">
+            <div>
+              <p class="text-xs text-slate-500">Total Withdrawn Capital</p>
+              <p id="swp-withdrawn" class="text-sm font-bold text-slate-700">₹63,00,000</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-slate-500">Remaining Balance Corpus</p>
+              <p id="swp-balance" class="text-lg font-bold text-teal-700">₹58,41,200</p>
+            </div>
+          </div>
+        `;
+        runSwpCalc();
+      } else if (tab === 'emi') {
+        subtitle.innerText = "Compare borrowing cost vs investing via SIP over the same timeframe";
+        container.innerHTML = `
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Loan Amount (₹)</label>
+              <input id="emi-amount" type="number" value="2500000" oninput="runEmiCalc()" class="w-full mt-1 px-2 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Loan Rate (%)</label>
+              <input id="emi-rate" type="number" value="8.5" oninput="runEmiCalc()" class="w-full mt-1 px-2 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Tenure (Years)</label>
+              <input id="emi-years" type="number" value="20" oninput="runEmiCalc()" class="w-full mt-1 px-2 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">SIP Return (%)</label>
+              <input id="emi-sip-rate" type="number" value="12" oninput="runEmiCalc()" class="w-full mt-1 px-2 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none">
+            </div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg flex justify-between items-center border border-slate-200">
+            <div>
+              <p class="text-xs text-slate-500">Monthly EMI Payable</p>
+              <p id="emi-monthly" class="text-sm font-bold text-rose-700">₹21,696 / mo</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-slate-500">Same Amount Invested in SIP Yields</p>
+              <p id="emi-sip-yield" class="text-lg font-bold text-teal-700">₹2,16,88,410</p>
+            </div>
+          </div>
+        `;
+        runEmiCalc();
+      }
+    }
+
+    // Calculator Functions
     function runSipCalc() {
       const p = parseFloat(document.getElementById('sip-amount').value) || 0;
       const r = (parseFloat(document.getElementById('sip-rate').value) || 0) / 12 / 100;
@@ -869,7 +1014,44 @@
       document.getElementById('sip-future').innerText = `₹${Math.round(futureVal).toLocaleString('en-IN')}`;
     }
 
-    // Initial Trigger for Simulator
+    function runSwpCalc() {
+      let corpus = parseFloat(document.getElementById('swp-corpus').value) || 0;
+      const w = parseFloat(document.getElementById('swp-withdrawal').value) || 0;
+      const r = (parseFloat(document.getElementById('swp-rate').value) || 0) / 12 / 100;
+      const n = (parseFloat(document.getElementById('swp-years').value) || 0) * 12;
+
+      const totalWithdrawn = w * n;
+      for (let i = 0; i < n; i++) {
+        corpus = (corpus - w) * (1 + r);
+      }
+
+      const finalBalance = Math.max(0, corpus);
+      document.getElementById('swp-withdrawn').innerText = `₹${Math.round(totalWithdrawn).toLocaleString('en-IN')}`;
+      document.getElementById('swp-balance').innerText = `₹${Math.round(finalBalance).toLocaleString('en-IN')}`;
+    }
+
+    function runEmiCalc() {
+      const p = parseFloat(document.getElementById('emi-amount').value) || 0;
+      const r = (parseFloat(document.getElementById('emi-rate').value) || 0) / 12 / 100;
+      const n = (parseFloat(document.getElementById('emi-years').value) || 0) * 12;
+      const sipR = (parseFloat(document.getElementById('emi-sip-rate').value) || 0) / 12 / 100;
+
+      let emi = 0;
+      if (r > 0 && n > 0) {
+        emi = p * r * (Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1));
+      }
+
+      let sipYield = 0;
+      if (sipR > 0 && n > 0) {
+        sipYield = emi * ((Math.pow(1 + sipR, n) - 1) / sipR) * (1 + sipR);
+      }
+
+      document.getElementById('emi-monthly').innerText = `₹${Math.round(emi).toLocaleString('en-IN')} / mo`;
+      document.getElementById('emi-sip-yield').innerText = `₹${Math.round(sipYield).toLocaleString('en-IN')}`;
+    }
+
+    // Initial Triggers
+    switchCalcTab('sip');
     runRoiSimulator();
   </script>
 </body>

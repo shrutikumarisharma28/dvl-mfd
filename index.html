@@ -38,6 +38,50 @@
 
     <!-- 1. PUBLIC & ROI PORTAL -->
     <section id="portal-public" class="portal-view space-y-10 py-6">
+
+      <!-- ABOUT US DROPDOWN -->
+      <div class="flex justify-end -mb-4">
+        <div class="relative" id="about-dropdown">
+          <button type="button" onclick="toggleAboutMenu(event)" id="about-btn" aria-haspopup="true" aria-expanded="false"
+            class="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs shadow-sm transition flex items-center gap-2">
+            <i data-lucide="info" class="w-4 h-4 text-slate-500"></i> About Us
+            <i data-lucide="chevron-down" id="about-chevron" class="w-4 h-4 text-slate-500 transition-transform"></i>
+          </button>
+
+          <div id="about-menu" class="hidden absolute right-0 mt-2 w-64 bg-white border border-slate-200 rounded-xl shadow-lg z-30 py-1.5 text-left">
+            <button type="button" onclick="showAbout('story')" class="w-full flex items-start gap-3 px-4 py-2.5 hover:bg-slate-50 text-left">
+              <i data-lucide="book-open" class="w-4 h-4 text-teal-600 mt-0.5"></i>
+              <span>
+                <span class="block text-xs font-semibold text-slate-800">Our story</span>
+                <span class="block text-[11px] text-slate-500">Why we built FolioCraft</span>
+              </span>
+            </button>
+            <button type="button" onclick="showAbout('mission')" class="w-full flex items-start gap-3 px-4 py-2.5 hover:bg-slate-50 text-left">
+              <i data-lucide="target" class="w-4 h-4 text-teal-600 mt-0.5"></i>
+              <span>
+                <span class="block text-xs font-semibold text-slate-800">Mission & vision</span>
+                <span class="block text-[11px] text-slate-500">Where we're headed</span>
+              </span>
+            </button>
+            <button type="button" onclick="showAbout('why')" class="w-full flex items-start gap-3 px-4 py-2.5 hover:bg-slate-50 text-left">
+              <i data-lucide="badge-check" class="w-4 h-4 text-teal-600 mt-0.5"></i>
+              <span>
+                <span class="block text-xs font-semibold text-slate-800">Why FolioCraft</span>
+                <span class="block text-[11px] text-slate-500">What you get on the network</span>
+              </span>
+            </button>
+            <div class="border-t border-slate-100 my-1"></div>
+            <button type="button" onclick="showAbout('contact')" class="w-full flex items-start gap-3 px-4 py-2.5 hover:bg-slate-50 text-left">
+              <i data-lucide="mail" class="w-4 h-4 text-teal-600 mt-0.5"></i>
+              <span>
+                <span class="block text-xs font-semibold text-slate-800">Contact us</span>
+                <span class="block text-[11px] text-slate-500">Talk to our team</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div class="text-center max-w-3xl mx-auto space-y-4">
         <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
           Empowering Distributors & Investors on One Network
@@ -888,6 +932,63 @@
       }
       closeInteractiveModal();
     }
+
+    // ABOUT US DROPDOWN LOGIC
+    function toggleAboutMenu(e) {
+      e.stopPropagation();
+      const menu = document.getElementById('about-menu');
+      const isOpen = !menu.classList.contains('hidden');
+      setAboutMenu(!isOpen);
+    }
+
+    function setAboutMenu(open) {
+      document.getElementById('about-menu').classList.toggle('hidden', !open);
+      document.getElementById('about-chevron').classList.toggle('rotate-180', open);
+      document.getElementById('about-btn').setAttribute('aria-expanded', String(open));
+    }
+
+    function showAbout(section) {
+      setAboutMenu(false);
+      const content = {
+        story: {
+          title: 'Our story',
+          body: `<p>FolioCraft is a network for independent mutual fund distributors (MFDs) and the investors they serve.</p>
+                 <p>Distributors were juggling separate tools for portfolio tracking, KYC, GST reconciliation and client queries. We brought them into one platform so advisors spend more time advising.</p>`
+        },
+        mission: {
+          title: 'Mission & vision',
+          body: `<p><strong>Mission:</strong> Give independent distributors the technology of a large wealth firm, without the overhead.</p>
+                 <p><strong>Vision:</strong> A transparent investing network where advisors grow sustainably and every investor can see exactly what they own and what it costs.</p>`
+        },
+        why: {
+          title: 'Why FolioCraft',
+          body: `<ul class="list-disc pl-5 space-y-1.5">
+                   <li>Real-time portfolio tracking with live NAV sync</li>
+                   <li>Paperless eKYC and instant investor onboarding</li>
+                   <li>Automated GST reconciliation and commission release</li>
+                   <li>Built-in service ticketing for investor queries</li>
+                   <li>Zero direct fees for investors. AMCs pay distributors through the expense ratio</li>
+                 </ul>`
+        },
+        contact: {
+          title: 'Contact us',
+          body: `<p>Questions about joining the network or a demo? Reach out and we'll get back within one business day.</p>
+                 <p><strong>Email:</strong> hello@foliocraft.example</p>
+                 <p><strong>Support desk:</strong> Available 24/7 via the Help & Support button</p>`
+        }
+      };
+      const item = content[section];
+      openCustomModal(item.title, item.body);
+    }
+
+    // Close About Us menu on outside click or Escape
+    document.addEventListener('click', (e) => {
+      const dd = document.getElementById('about-dropdown');
+      if (dd && !dd.contains(e.target)) setAboutMenu(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setAboutMenu(false);
+    });
 
     // Initialize Page Defaults
     window.addEventListener('DOMContentLoaded', () => {

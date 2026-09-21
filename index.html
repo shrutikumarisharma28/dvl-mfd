@@ -18,7 +18,7 @@
 
   <!-- TOP NAVIGATION BAR -->
   <header class="bg-[#003838] text-white px-6 py-3.5 flex flex-wrap items-center justify-between border-b border-teal-800 shadow-md sticky top-0 z-40">
-    <div class="flex items-center space-x-3 mb-2 sm:mb-0">
+    <div class="flex items-center space-x-3 mb-2 sm:mb-0 cursor-pointer" onclick="switchPortal('public')">
       <div class="bg-teal-500 text-teal-950 font-bold px-2 py-1 rounded text-lg tracking-wider">FC</div>
       <div>
         <h1 class="text-lg font-bold leading-tight">FolioCraft</h1>
@@ -144,17 +144,17 @@
           <div class="lg:col-span-5 bg-[#002e2e] text-white p-6 rounded-xl shadow-inner space-y-6 flex flex-col justify-between">
             <div>
               <span class="text-[10px] font-mono tracking-widest uppercase text-teal-300 font-bold">5-YEAR NETWORK GROWTH PROJECTION</span>
-              <div class="mt-4 space-y-1">
+              <div class="mt-4 space-y-1 cursor-pointer hover:opacity-90 transition" onclick="openCustomModal('AUM Calculation Breakdown', '<p>Calculated using a 12% annual compounded asset valuation growth rate (CAGR) on monthly SIP installments over a 60-month horizon.</p>')">
                 <p class="text-[11px] text-teal-200 font-medium">Total Managed AUM</p>
                 <p id="sim-aum" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">₹9,89,83,640</p>
               </div>
 
               <div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-teal-800/80">
-                <div>
+                <div class="cursor-pointer hover:opacity-90 transition" onclick="openCustomModal('Gross Annual Trail Breakdown', '<p>Gross trail payout is computed as: <strong>Total Managed AUM × Blended Trail Commission Rate</strong>.</p>')">
                   <p class="text-[10px] text-teal-300 uppercase font-semibold">Gross Annual Trail</p>
                   <p id="sim-trail" class="text-sm font-bold text-white mt-0.5">₹6,92,885</p>
                 </div>
-                <div>
+                <div class="cursor-pointer hover:opacity-90 transition" onclick="openCustomModal('GST Withholding Rules', '<p>GST Registered MFDs with verified GSTIN obtain 100% payout releases. Non-registered MFD payouts are withheld subject to tax compliance mandates.</p>')">
                   <p class="text-[10px] text-teal-300 uppercase font-semibold">GST Status</p>
                   <p id="sim-gst-status" class="text-sm font-bold text-emerald-400 mt-0.5">100% Released</p>
                 </div>
@@ -172,7 +172,7 @@
       </div>
 
       <div class="fixed bottom-5 right-5 z-30">
-        <button onclick="openCustomModal('Help & Support', 'Our dedicated desk is available 24/7 to resolve network and portal queries.')" class="bg-[#0f4c4c] hover:bg-[#093535] text-white px-4 py-2.5 rounded-full shadow-lg text-xs font-semibold flex items-center gap-2 border border-teal-600 transition">
+        <button onclick="openSupportModal()" class="bg-[#0f4c4c] hover:bg-[#093535] text-white px-4 py-2.5 rounded-full shadow-lg text-xs font-semibold flex items-center gap-2 border border-teal-600 transition">
           <i data-lucide="message-square" class="w-4 h-4"></i> Help & Support
         </button>
       </div>
@@ -200,12 +200,12 @@
 
       <!-- Metrics -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div onclick="openCustomModal('Managed AUM Details', '<p>Total active client holdings across all equity, hybrid, and debt schemes under ARN-284910.</p>')" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition">
           <p class="text-xs text-slate-500 font-medium">Total Managed AUM</p>
           <p class="text-xl font-bold text-slate-800 mt-1">₹18,42,50,000</p>
           <p class="text-xs text-emerald-600 mt-1 font-medium">↑ +12.4% this month</p>
         </div>
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div onclick="openCustomModal('SIP Mandate Analytics', '<p>214 active monthly systematic investment mandates registered across 18 Fund Houses.</p>')" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:border-teal-500 transition">
           <p class="text-xs text-slate-500 font-medium">Active Monthly SIPs</p>
           <p class="text-xl font-bold text-slate-800 mt-1">₹14,80,000</p>
           <p class="text-xs text-slate-500 mt-1">214 Active Mandates</p>
@@ -213,12 +213,12 @@
         <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm bg-amber-50/30">
           <p class="text-xs text-amber-700 font-medium">GST Commission Withheld</p>
           <p class="text-xl font-bold text-amber-800 mt-1">₹18,420</p>
-          <button onclick="openCustomModal('Upload GST Declaration', 'Upload your active GST registration certificate to unlock withheld commissions.')" class="text-xs text-amber-600 underline font-medium mt-1 inline-block">Upload Proof to Release</button>
+          <button onclick="openGstUploadModal()" class="text-xs text-amber-600 underline font-medium mt-1 inline-block">Upload Proof to Release</button>
         </div>
         <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <p class="text-xs text-slate-500 font-medium">Investor Service Desk</p>
           <p class="text-xl font-bold text-slate-800 mt-1">2 Pending</p>
-          <button onclick="openCustomModal('Investor Tickets', '2 open client service tickets requiring attention.')" class="text-xs text-teal-600 font-medium mt-1 inline-block">Resolve Tickets →</button>
+          <button onclick="openServiceDeskModal()" class="text-xs text-teal-600 font-medium mt-1 inline-block">Resolve Tickets →</button>
         </div>
       </div>
 
@@ -257,10 +257,10 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100">
-                <tr><td class="p-2 font-medium">Tier-1 Fund House A</td><td class="p-2 text-teal-700 font-medium">0.85% - 1.05%</td><td class="p-2">0.65%</td><td class="p-2">0.30%</td></tr>
-                <tr><td class="p-2 font-medium">Tier-1 Fund House B</td><td class="p-2 text-teal-700 font-medium">0.80% - 1.00%</td><td class="p-2">0.60%</td><td class="p-2">0.25%</td></tr>
-                <tr><td class="p-2 font-medium">Tier-1 Fund House C</td><td class="p-2 text-teal-700 font-medium">0.85% - 1.10%</td><td class="p-2">0.70%</td><td class="p-2">0.35%</td></tr>
-                <tr><td class="p-2 font-medium">Tier-2 Fund House D</td><td class="p-2 text-teal-700 font-medium">0.75% - 0.95%</td><td class="p-2">0.55%</td><td class="p-2">0.20%</td></tr>
+                <tr class="hover:bg-slate-50 cursor-pointer" onclick="openCustomModal('Tier-1 Fund House A', '<p>Includes top-tier index and large-cap equity offerings with full commission automation.</p>')"><td class="p-2 font-medium">Tier-1 Fund House A</td><td class="p-2 text-teal-700 font-medium">0.85% - 1.05%</td><td class="p-2">0.65%</td><td class="p-2">0.30%</td></tr>
+                <tr class="hover:bg-slate-50 cursor-pointer" onclick="openCustomModal('Tier-1 Fund House B', '<p>Includes flexi-cap, tax-saver ELSS, and multi-asset funds.</p>')"><td class="p-2 font-medium">Tier-1 Fund House B</td><td class="p-2 text-teal-700 font-medium">0.80% - 1.00%</td><td class="p-2">0.60%</td><td class="p-2">0.25%</td></tr>
+                <tr class="hover:bg-slate-50 cursor-pointer" onclick="openCustomModal('Tier-1 Fund House C', '<p>Includes high-performing mid-cap and sectoral focus funds.</p>')"><td class="p-2 font-medium">Tier-1 Fund House C</td><td class="p-2 text-teal-700 font-medium">0.85% - 1.10%</td><td class="p-2">0.70%</td><td class="p-2">0.35%</td></tr>
+                <tr class="hover:bg-slate-50 cursor-pointer" onclick="openCustomModal('Tier-2 Fund House D', '<p>Specialized debt instruments and corporate bond funds.</p>')"><td class="p-2 font-medium">Tier-2 Fund House D</td><td class="p-2 text-teal-700 font-medium">0.75% - 0.95%</td><td class="p-2">0.55%</td><td class="p-2">0.20%</td></tr>
               </tbody>
             </table>
           </div>
@@ -272,10 +272,10 @@
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
         <div class="flex flex-wrap justify-between items-center gap-2">
           <h3 class="font-bold text-slate-800">Investor Portfolio & Churn Risk Tracker</h3>
-          <input type="text" placeholder="Search investor name..." class="px-3 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none w-64">
+          <input type="text" id="investor-search" onkeyup="filterInvestors()" placeholder="Search investor name..." class="px-3 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-teal-500 outline-none w-64">
         </div>
         <div class="overflow-x-auto">
-          <table class="w-full text-xs text-left border-collapse">
+          <table class="w-full text-xs text-left border-collapse" id="investors-table">
             <thead>
               <tr class="bg-slate-50 border-b border-slate-200 text-slate-600">
                 <th class="p-2.5 font-semibold">Investor Name</th>
@@ -288,8 +288,8 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
-              <tr>
-                <td class="p-2.5 font-medium text-slate-800">Rajesh Sharma</td>
+              <tr class="investor-row">
+                <td class="p-2.5 font-medium text-slate-800 name-col">Rajesh Sharma</td>
                 <td class="p-2.5 text-slate-600">CAN-9821-X</td>
                 <td class="p-2.5 font-bold text-slate-700">₹42,10,000</td>
                 <td class="p-2.5">₹25,000/mo</td>
@@ -297,8 +297,8 @@
                 <td class="p-2.5 text-teal-600 flex items-center gap-1"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Verified</td>
                 <td class="p-2.5"><button onclick="openCustomModal('Investor 360: Rajesh Sharma', '<p><strong>AUM:</strong> ₹42,10,000</p><p><strong>CAN:</strong> CAN-9821-X</p><p>All risk benchmarks normal.</p>')" class="text-teal-700 hover:underline font-semibold">View 360</button></td>
               </tr>
-              <tr>
-                <td class="p-2.5 font-medium text-slate-800">Priya Nair</td>
+              <tr class="investor-row">
+                <td class="p-2.5 font-medium text-slate-800 name-col">Priya Nair</td>
                 <td class="p-2.5 text-slate-600">CAN-8812-Y</td>
                 <td class="p-2.5 font-bold text-slate-700">₹18,50,000</td>
                 <td class="p-2.5">₹10,000/mo</td>
@@ -306,8 +306,8 @@
                 <td class="p-2.5 text-teal-600 flex items-center gap-1"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Verified</td>
                 <td class="p-2.5"><button onclick="openCustomModal('Investor 360: Priya Nair', '<p><strong>AUM:</strong> ₹18,50,000</p><p><strong>CAN:</strong> CAN-8812-Y</p><p>Medium risk: Schedule portfolio review.</p>')" class="text-teal-700 hover:underline font-semibold">View 360</button></td>
               </tr>
-              <tr>
-                <td class="p-2.5 font-medium text-slate-800">Anil Verma</td>
+              <tr class="investor-row">
+                <td class="p-2.5 font-medium text-slate-800 name-col">Anil Verma</td>
                 <td class="p-2.5 text-slate-400 italic">Pending CAN</td>
                 <td class="p-2.5 font-bold text-slate-700">₹65,00,000</td>
                 <td class="p-2.5 text-slate-400">Paused</td>
@@ -348,7 +348,7 @@
           <h2 class="text-2xl font-bold text-slate-800 mt-0.5">Welcome, Rajesh Sharma</h2>
           <p class="text-xs text-slate-500">Assigned Advisor: Horizon Wealth Partners (ARN-284910) | CAN: CAN-9821-X</p>
         </div>
-        <div class="text-right">
+        <div class="text-right cursor-pointer hover:opacity-80 transition" onclick="openCustomModal('XIRR Analytics', '<p>Calculated using money-weighted returns across all historical SIP installments and top-ups.</p>')">
           <p class="text-xs text-slate-500 font-medium">Total Portfolio Value</p>
           <p class="text-2xl font-bold text-teal-700">₹42,10,000</p>
           <p class="text-xs text-emerald-600 font-semibold">XIRR: +14.8%</p>
@@ -359,14 +359,13 @@
         <button onclick="openCustomModal('Invest Additional Capital', 'Select a scheme or fund from your watchlist to initiate a lump sum investment.')" class="bg-teal-700 hover:bg-teal-800 text-white p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
           <i data-lucide="plus-circle" class="w-4 h-4"></i> Invest More
         </button>
-        <!-- UPDATED: Manage SIPs button now opens screenshot modal -->
         <button onclick="openManageSipModal()" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
           <i data-lucide="sliders" class="w-4 h-4"></i> Manage SIPs
         </button>
         <button onclick="openCustomModal('Tax & Capital Gains', 'Download FY2025-26 capital gains report and ELSS deduction statements.')" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
           <i data-lucide="file-text" class="w-4 h-4"></i> Tax Statement
         </button>
-        <button onclick="openCustomModal('Help & Queries', 'Submit an inquiry or schedule a call with your assigned advisor.')" class="bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
+        <button onclick="openSupportModal()" class="bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-xl text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition">
           <i data-lucide="help-circle" class="w-4 h-4"></i> Help & Queries
         </button>
       </div>
@@ -374,7 +373,9 @@
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-3">
         <div class="flex justify-between items-center border-b pb-3 border-slate-100">
           <h3 class="font-bold text-slate-800">Current Scheme Holdings & Performance</h3>
-          <span class="text-xs text-teal-600 font-medium flex items-center gap-1"><i data-lucide="refresh-cw" class="w-3 h-3"></i> Live NAV Sync</span>
+          <button onclick="refreshNavSync()" class="text-xs text-teal-600 hover:text-teal-800 font-medium flex items-center gap-1 transition">
+            <i data-lucide="refresh-cw" class="w-3 h-3"></i> Live NAV Sync
+          </button>
         </div>
         <div class="overflow-x-auto">
           <table class="w-full text-xs text-left border-collapse">
@@ -431,25 +432,25 @@
           <h2 class="text-xl font-bold mt-1">FolioCraft Control Center</h2>
           <p class="text-xs text-teal-200">System-wide governance, license monitoring, and execution routing</p>
         </div>
-        <div class="flex items-center gap-2 bg-teal-950/60 px-3 py-1.5 rounded-lg border border-teal-800">
+        <button onclick="openCustomModal('Platform System Health Check', '<p class=\"text-emerald-600 font-semibold mb-1\">✓ All Microservices Healthy</p><ul class=\"list-disc pl-4 text-xs space-y-1\"><li>Execution Engine: 100% operational</li><li>KRA KYC Relay: Active</li><li>GSTR Clearinghouse: Synchronized</li></ul>')" class="flex items-center gap-2 bg-teal-950/60 hover:bg-teal-900 px-3 py-1.5 rounded-lg border border-teal-800 transition">
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
           <span class="text-xs font-semibold text-teal-100">Platform Health: 100% Operational</span>
-        </div>
+        </button>
       </div>
 
       <!-- Admin Top Metrics -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div onclick="openCustomModal('Tenant MFD Distribution', '<p>1,240 active MFD firms registered across 42 state and UT territories.</p>')" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 cursor-pointer transition">
           <p class="text-xs text-slate-500 font-medium">Active Tenant MFDs</p>
           <p id="admin-active-mfds" class="text-xl font-bold text-slate-800 mt-1">1,240 MFDs</p>
           <p class="text-xs text-slate-400 mt-0.5">Across 42 nationwide states & UTs</p>
         </div>
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div onclick="openCustomModal('System AUM Breakdown', '<p>Equity: ₹2,890 Cr | Debt: ₹910 Cr | Hybrid: ₹350 Cr</p>')" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 cursor-pointer transition">
           <p class="text-xs text-slate-500 font-medium">Total System AUM</p>
           <p class="text-xl font-bold text-slate-800 mt-1">₹4,150 Crore</p>
           <p class="text-xs text-emerald-600 mt-0.5">↑ 4.2% MoM growth</p>
         </div>
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div onclick="refreshNavSync()" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-teal-500 cursor-pointer transition">
           <p class="text-xs text-slate-500 font-medium">Official NAV Sync Engine</p>
           <p class="text-xl font-bold text-teal-700 mt-1">Synced</p>
           <p class="text-xs text-slate-400 mt-0.5">Last updated: Today, 23:00 IST</p>
@@ -465,7 +466,7 @@
             <h3 class="font-bold text-slate-800 flex items-center gap-2">
               <i data-lucide="shield-check" class="w-4 h-4 text-teal-600"></i> ARN & EUIN Compliance Vault
             </h3>
-            <span class="text-[11px] bg-teal-50 text-teal-700 font-semibold px-2 py-0.5 rounded border border-teal-200">Auto-Reminders Active</span>
+            <button onclick="openCustomModal('Auto-Reminder Engine', '<p>Automated SMS and email compliance notices are dispatched 60 days prior to ARN license expiry.</p>')" class="text-[11px] bg-teal-50 hover:bg-teal-100 text-teal-700 font-semibold px-2 py-0.5 rounded border border-teal-200 transition">Auto-Reminders Active</button>
           </div>
           <p class="text-xs text-slate-500">Tracks active MFD licenses, flags expiring certifications, and prevents non-compliant trade routing.</p>
           <div class="overflow-x-auto">
@@ -499,12 +500,14 @@
                     </button>
                   </td>
                 </tr>
-                <tr id="mfd-row-094123">
+                <tr id="mfd-row-896123">
                   <td class="p-2 font-medium">Shree Wealth Management</td>
                   <td class="p-2 font-mono text-slate-600">ARN-896123</td>
                   <td class="p-2 font-mono text-slate-500">12-Aug-2026</td>
-                  <td class="p-2 text-right" id="status-badge-094123">
-                    <span class="bg-rose-100 text-rose-800 font-medium px-2 py-0.5 rounded text-[10px]">Expired / Blocked</span>
+                  <td class="p-2 text-right" id="status-badge-896123">
+                    <button onclick="openUnblockModal('Shree Wealth Management', 'ARN-896123')" class="bg-rose-100 hover:bg-emerald-100 text-rose-800 hover:text-emerald-800 border border-rose-200 hover:border-emerald-200 font-semibold px-2 py-0.5 rounded text-[10px] transition">
+                      Expired / Blocked
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -518,11 +521,11 @@
             <h3 class="font-bold text-slate-800 flex items-center gap-2">
               <i data-lucide="activity" class="w-4 h-4 text-teal-600"></i> Gateway & NAV Sync Engine
             </h3>
-            <span class="text-[11px] bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.5 rounded border border-emerald-200">Live Latency</span>
+            <button onclick="openCustomModal('Latency Diagnostics', '<p>All execution gateways are operating well within acceptable performance thresholds (&lt; 200ms).</p>')" class="text-[11px] bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold px-2 py-0.5 rounded border border-emerald-200 transition">Live Latency</button>
           </div>
           <p class="text-xs text-slate-500">Real-time throughput metrics for order execution and KRA pipeline nodes.</p>
           <div class="space-y-2">
-            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+            <div onclick="openCustomModal('Primary Execution Gateway Inspection', '<p>Throughput: 1,420 orders/min<br>Error Rate: 0.00%<br>Gateway status: Healthy</p>')" class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200 hover:border-teal-500 cursor-pointer transition">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                 <span class="text-xs font-semibold text-slate-700">Primary Execution Gateway</span>
@@ -532,7 +535,7 @@
                 <span class="text-[10px] text-emerald-600 block">100% Success Rate</span>
               </div>
             </div>
-            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+            <div onclick="openCustomModal('KRA API Pipeline Inspection', '<p>Connected Nodes: CAMS, KFintech, NDML, DotEx<br>Average Validation Speed: 68ms</p>')" class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200 hover:border-teal-500 cursor-pointer transition">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                 <span class="text-xs font-semibold text-slate-700">KRA API Pipeline</span>
@@ -542,7 +545,7 @@
                 <span class="text-[10px] text-emerald-600 block">99.9% Success Rate</span>
               </div>
             </div>
-            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+            <div onclick="openCustomModal('Official NAV Feed Engine Inspection', '<p>Automated AMFI NAV Feed Ingestion Engine.<br>38,400 schemes synced daily.</p>')" class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200 hover:border-teal-500 cursor-pointer transition">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                 <span class="text-xs font-semibold text-slate-700">Official NAV Feed Sync Engine</span>
@@ -557,7 +560,7 @@
 
       </div>
 
-      <!-- Admin Governance Modules - Row 2 (ADDED FROM SCREENSHOT) -->
+      <!-- Admin Governance Modules - Row 2 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         <!-- Tenant Commission & GST Settlement Stream -->
@@ -566,16 +569,16 @@
             <h3 class="font-bold text-slate-800 flex items-center gap-2">
               <i data-lucide="receipt" class="w-4 h-4 text-teal-600"></i> Tenant Commission & GST Settlement Stream
             </h3>
-            <span class="text-[11px] bg-teal-50 text-teal-700 font-semibold px-2 py-0.5 rounded border border-teal-200">GSTR Ledger</span>
+            <button onclick="openCustomModal('GSTR Reconciliation', '<p>Automated GSTR-3B matching engine reconciles MFD payouts with GST portal filings every fortnight.</p>')" class="text-[11px] bg-teal-50 hover:bg-teal-100 text-teal-700 font-semibold px-2 py-0.5 rounded border border-teal-200 transition">GSTR Ledger</button>
           </div>
           <p class="text-xs text-slate-500">System-wide overview of total trail commissions processed and GST proof verification status across all 1,240 tenant MFDs.</p>
           
           <div class="grid grid-cols-2 gap-4 pt-2">
-            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+            <div onclick="openCustomModal('Monthly Trail Breakdown', '<p>Processed via automated clearinghouse across 44 AMCs in the current billing cycle.</p>')" class="bg-slate-50 p-3 rounded-lg border border-slate-200 hover:border-teal-500 cursor-pointer transition">
               <p class="text-[11px] text-slate-500 font-medium">Total Monthly Trail Processed</p>
               <p class="text-lg font-bold text-slate-800 mt-0.5">₹3.42 Crore</p>
             </div>
-            <div class="bg-amber-50/50 p-3 rounded-lg border border-amber-200/80">
+            <div onclick="openCustomModal('GST Withholding Ledger', '<p>₹12.45 Lakh held across 182 unregistered MFD accounts pending GSTIN proof submission.</p>')" class="bg-amber-50/50 p-3 rounded-lg border border-amber-200/80 hover:border-amber-400 cursor-pointer transition">
               <p class="text-[11px] text-amber-800 font-medium">GST Currently Withheld</p>
               <p class="text-lg font-bold text-amber-900 mt-0.5">₹12.45 Lakh</p>
             </div>
@@ -599,7 +602,7 @@
               <p class="text-xs font-bold text-slate-800">Complete Master System Audit (2020 - 2026)</p>
               <p class="text-[11px] text-slate-400">Contains CAN creations, SIP mandates, and ARN logs</p>
             </div>
-            <button onclick="openCustomModal('Export Master System Audit', 'Downloading master audit trail log (2020-2026)...')" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold px-3.5 py-1.5 rounded-lg text-xs shadow-sm transition flex items-center gap-1.5">
+            <button onclick="exportMasterAudit()" class="bg-teal-700 hover:bg-teal-800 text-white font-semibold px-3.5 py-1.5 rounded-lg text-xs shadow-sm transition flex items-center gap-1.5">
               <i data-lucide="download" class="w-3.5 h-3.5"></i> Export Vault
             </button>
           </div>
@@ -630,15 +633,15 @@
       <div class="space-y-3">
         <div>
           <label class="text-xs font-semibold text-slate-700 block mb-1">Full Name</label>
-          <input type="text" placeholder="e.g. Rajesh Sharma" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs focus:ring-2 focus:ring-teal-500 outline-none">
+          <input type="text" id="ekyc-name" placeholder="e.g. Rajesh Sharma" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs focus:ring-2 focus:ring-teal-500 outline-none">
         </div>
         <div>
           <label class="text-xs font-semibold text-slate-700 block mb-1">PAN Number</label>
-          <input type="text" placeholder="e.g. ABCDE1234F" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs font-mono uppercase focus:ring-2 focus:ring-teal-500 outline-none">
+          <input type="text" id="ekyc-pan" placeholder="e.g. ABCDE1234F" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs font-mono uppercase focus:ring-2 focus:ring-teal-500 outline-none">
         </div>
         <div>
           <label class="text-xs font-semibold text-slate-700 block mb-1">Mobile Number</label>
-          <input type="tel" placeholder="+91 98765 43210" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs focus:ring-2 focus:ring-teal-500 outline-none">
+          <input type="tel" id="ekyc-mobile" placeholder="+91 98765 43210" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs focus:ring-2 focus:ring-teal-500 outline-none">
         </div>
       </div>
 
@@ -677,8 +680,10 @@
     // Modal Controls
     function openEkycModal() { document.getElementById('ekyc-modal').classList.remove('hidden'); }
     function closeEkycModal() { document.getElementById('ekyc-modal').classList.add('hidden'); }
+    
     function submitEkyc() {
-      openCustomModal('Quick KYC Verification Initiated', '<p class="text-emerald-600 font-semibold mb-2">✓ Identity validation successful.</p><p>An instant digital consent link has been sent to the client.</p>');
+      const name = document.getElementById('ekyc-name').value || 'Investor';
+      openCustomModal('Quick KYC Verification Initiated', `<p class="text-emerald-600 font-semibold mb-2">✓ Identity validation successful for ${name}.</p><p>An instant digital consent link has been sent to the client's mobile number.</p>`);
       closeEkycModal();
     }
 
@@ -687,10 +692,12 @@
       document.getElementById('interactive-modal-body').innerHTML = contentHtml;
       document.getElementById('interactive-modal-footer').innerHTML = footerButtons || `<button onclick="closeInteractiveModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs transition">Close</button>`;
       document.getElementById('interactive-modal').classList.remove('hidden');
+      lucide.createIcons();
     }
+    
     function closeInteractiveModal() { document.getElementById('interactive-modal').classList.add('hidden'); }
 
-    // MANAGE SIP MODAL (MATCHING SCREENSHOT 2 EXACTLY)
+    // MANAGE SIP MODAL
     function openManageSipModal() {
       openCustomModal(
         'Manage Active SIP Mandates',
@@ -713,6 +720,63 @@
           </div>
         </div>`,
         `<button onclick="closeInteractiveModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold px-4 py-1.5 rounded text-xs transition">Close</button>`
+      );
+    }
+
+    // GST Proof Upload Modal
+    function openGstUploadModal() {
+      openCustomModal(
+        'Upload GST Registration Proof',
+        `<div class="space-y-3">
+          <p class="text-xs text-slate-600">Upload active GST certificate to release held commissions of ₹18,420.</p>
+          <div class="border-2 border-dashed border-slate-300 p-4 rounded-xl text-center">
+            <i data-lucide="upload-cloud" class="w-8 h-8 mx-auto text-teal-600 mb-2"></i>
+            <p class="text-xs font-semibold text-slate-700">Drag & drop GST certificate here</p>
+            <p class="text-[10px] text-slate-400 mt-1">PDF, PNG, or JPG (Max 5MB)</p>
+          </div>
+        </div>`,
+        `<button onclick="closeInteractiveModal()" class="bg-slate-200 text-slate-700 px-3 py-1.5 rounded text-xs">Cancel</button>
+         <button onclick="confirmGstUpload()" class="bg-teal-700 text-white font-bold px-4 py-1.5 rounded text-xs hover:bg-teal-800">Submit Certificate</button>`
+      );
+    }
+
+    function confirmGstUpload() {
+      openCustomModal('Document Uploaded Successfully', '<p class="text-emerald-600 font-semibold">✓ Your GST certificate is undergoing verification. Commission release scheduled within 24 hours.</p>');
+    }
+
+    // Service Desk Ticket Modal
+    function openServiceDeskModal() {
+      openCustomModal(
+        'Investor Service Desk Tickets',
+        `<div class="space-y-2">
+          <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
+            <div>
+              <p class="font-bold text-slate-800 text-xs">TKT-892: Address Update Request</p>
+              <p class="text-[11px] text-slate-500">Submitted by: Rajesh Sharma</p>
+            </div>
+            <button onclick="openCustomModal('Ticket Resolved', 'Ticket TKT-892 marked as resolved.')" class="bg-teal-700 text-white text-[11px] font-semibold px-2.5 py-1 rounded">Resolve</button>
+          </div>
+          <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg flex justify-between items-center">
+            <div>
+              <p class="font-bold text-slate-800 text-xs">TKT-904: SIP Date Change</p>
+              <p class="text-[11px] text-slate-500">Submitted by: Priya Nair</p>
+            </div>
+            <button onclick="openCustomModal('Ticket Resolved', 'Ticket TKT-904 marked as resolved.')" class="bg-teal-700 text-white text-[11px] font-semibold px-2.5 py-1 rounded">Resolve</button>
+          </div>
+        </div>`
+      );
+    }
+
+    // Help & Support Modal
+    function openSupportModal() {
+      openCustomModal(
+        'Help & Support Center',
+        `<div class="space-y-3">
+          <p class="text-xs text-slate-600">How can we assist you today?</p>
+          <textarea placeholder="Describe your query or issue..." class="w-full p-2.5 border border-slate-300 rounded-lg text-xs outline-none focus:ring-1 focus:ring-teal-500 h-24"></textarea>
+        </div>`,
+        `<button onclick="closeInteractiveModal()" class="bg-slate-200 text-slate-700 px-3 py-1.5 rounded text-xs">Cancel</button>
+         <button onclick="openCustomModal('Support Ticket Raised', 'Your query has been logged. Our helpdesk team will respond within 2 hours.')" class="bg-teal-700 text-white font-bold px-4 py-1.5 rounded text-xs hover:bg-teal-800">Send Ticket</button>`
       );
     }
 
@@ -894,13 +958,27 @@
       document.getElementById('emi-sip-yield').innerText = `₹${Math.round(sipYield).toLocaleString('en-IN')}`;
     }
 
-    // BLACKLIST FLOW LOGIC
-    let pendingBlacklistArn = '';
-    let pendingBlacklistName = '';
+    // Filter Investors Table
+    function filterInvestors() {
+      const q = document.getElementById('investor-search').value.toLowerCase();
+      document.querySelectorAll('.investor-row').forEach(row => {
+        const name = row.querySelector('.name-col').innerText.toLowerCase();
+        row.style.display = name.includes(q) ? '' : 'none';
+      });
+    }
+
+    // NAV Refresh Simulation
+    function refreshNavSync() {
+      openCustomModal('Live NAV Sync', '<p class="text-emerald-600 font-semibold mb-1">✓ Scheme NAVs Synced</p><p class="text-xs text-slate-500">Updated all portfolio valuations with official evening NAV prices.</p>');
+    }
+
+    // BLACKLIST / UNBLOCK LOGIC FOR ADMIN
+    let pendingArnKey = '';
+    let pendingFirmName = '';
 
     function openBlacklistModal(firmName, arnCode) {
-      pendingBlacklistName = firmName;
-      pendingBlacklistArn = arnCode;
+      pendingFirmName = firmName;
+      pendingArnKey = arnCode.replace('ARN-', '');
       
       openCustomModal(
         `🚨 Blacklist MFD: ${firmName}`,
@@ -924,13 +1002,37 @@
     }
 
     function confirmBlacklist() {
-      const arnKey = pendingBlacklistArn.replace('ARN-', '');
-      const statusTd = document.getElementById(`status-badge-${arnKey}`);
-
+      const statusTd = document.getElementById(`status-badge-${pendingArnKey}`);
       if (statusTd) {
-        statusTd.innerHTML = `<span class="bg-rose-100 text-rose-800 font-medium px-2 py-0.5 rounded text-[10px]">Expired / Blocked</span>`;
+        statusTd.innerHTML = `<button onclick="openUnblockModal('${pendingFirmName}', 'ARN-${pendingArnKey}')" class="bg-rose-100 hover:bg-emerald-100 text-rose-800 hover:text-emerald-800 border border-rose-200 hover:border-emerald-200 font-semibold px-2 py-0.5 rounded text-[10px] transition">Expired / Blocked</button>`;
       }
       closeInteractiveModal();
+    }
+
+    function openUnblockModal(firmName, arnCode) {
+      pendingFirmName = firmName;
+      pendingArnKey = arnCode.replace('ARN-', '');
+
+      openCustomModal(
+        `Re-activate MFD: ${firmName}`,
+        `<div class="space-y-3">
+          <p class="text-xs text-slate-600">Re-activating this distributor will restore gateway routing and payout clearing.</p>
+        </div>`,
+        `<button onclick="closeInteractiveModal()" class="bg-slate-200 text-slate-700 px-3 py-1.5 rounded text-xs">Cancel</button>
+         <button onclick="confirmUnblock()" class="bg-emerald-600 text-white font-bold px-4 py-1.5 rounded text-xs">Re-activate MFD</button>`
+      );
+    }
+
+    function confirmUnblock() {
+      const statusTd = document.getElementById(`status-badge-${pendingArnKey}`);
+      if (statusTd) {
+        statusTd.innerHTML = `<button onclick="openBlacklistModal('${pendingFirmName}', 'ARN-${pendingArnKey}')" class="bg-emerald-100 hover:bg-rose-100 text-emerald-800 hover:text-rose-700 border border-emerald-200 hover:border-rose-200 font-semibold px-2 py-0.5 rounded text-[10px] transition">Active & Valid</button>`;
+      }
+      closeInteractiveModal();
+    }
+
+    function exportMasterAudit() {
+      openCustomModal('Export Master System Audit', 'Downloading master audit trail log (2020-2026)...');
     }
 
     // ABOUT US DROPDOWN LOGIC
